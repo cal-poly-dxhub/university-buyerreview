@@ -1,33 +1,42 @@
 data_validation_prompt = """Data Validation Prompt
-Your task is to compare properties mentioned in multiple documents, including a PO file, and validate their consistency.
+Your task is to validate the consistency of information in a Purchase Order (PO) document against other related documents like invoices, quotes, SOWs, or SSPRs.
+
 Output Format
 Provide your response as pure JSON.
-Only include properties that appear in at least two documents.
+If no PO document is present in the provided documents, respond with: {{"status": "No PO document to be validated"}}
+If a PO is present, validate properties from the PO against other documents.
+Only include properties that appear in both the PO and at least one other document.
 For each property, indicate whether values match across documents with one of these values only: "Yes", "No", or "Mostly Yes".
-Only list documents as sources if they explicitly mention the property value.
+Examine Supplier Address and Delivery Address thoroughly, as they are critical for compliance.
 
 JSON Structure
-```
+For cases with no PO document:
 {{
-  "Property 1": {{
-    "match": "Yes|No|Mostly Yes",
-    "Source 1": "Value 1",
-    "Source 2": "Value 2",
-    "Source 3": "Value 3"
-  }},
-  "Property 2": {{
-    "match": "Yes|No|Mostly Yes",
-    "Source 1": "Value 1",
-    "Source 2": "Value 2"
-  }}
+"status": "No PO document to be validated"
 }}
-```
+
+For cases with a PO document:
+{{
+"Property 1": {{
+"match": "Yes|No|Mostly Yes",
+"PO": "Value from PO",
+"Source 1": "Value 1",
+"Source 2": "Value 2"
+}},
+"Property 2": {{
+"match": "Yes|No|Mostly Yes",
+"PO": "Value from PO",
+"Source 1": "Value 1"
+}}
+}}
+
 Rules
+The PO document is the primary reference document - all validations must include the PO value.
 If a property isn't mentioned in a document, don't include that document as a source.
 Only validate data that is explicitly mentioned.
-Omit any property that appears in only one document.
+Omit any property that only appears in the PO but not in any other document.
 The "match" value must be one of: "Yes", "No", or "Mostly Yes".
-Focus only on data about the company being contracted with, not other companies' proposals.
+Focus on verifying that information in the PO is correct and aligned with other documents, not vice versa.
 
 Documents:
 {doc_text}
@@ -36,6 +45,7 @@ Documents:
 PO_prompt = """Extract the following information from the purchase order document:
 PO Number
 Supplier Name
+Supplier Address
 Purchase Order Date
 Payment Terms
 Delivery Address
@@ -209,4 +219,97 @@ Return your answer as a JSON list of objects, each like:
   "status": "✅ Passed / ❌ Missing / 🟡 Exception / ❓ Uncertain",
   "note": "...brief justification based on evidence..."
 }}
+"""
+
+checklist_and_validation_prompt = """You are a procurement and compliance assistant. Your task is to validate Purchase Order (PO) documents against related documents and evaluate compliance requirements. Based on the provided documents, perform TWO distinct analyses:
+
+PART 1: DATA VALIDATION
+Validate the consistency of information in a Purchase Order (PO) document against other related documents like invoices, quotes, SOWs, or SSPRs.
+
+Output Format for Part 1:
+Provide your response as pure JSON.
+- If no PO document is present, respond with: {{"status": "No PO document to be validated"}}
+- If a PO is present, validate properties from the PO against other documents.
+- Only include properties that appear in both the PO and at least one other document.
+- For each property, indicate whether values match across documents with one of these values only: "Yes", "No", or "Mostly Yes".
+- Examine Supplier Address and Delivery Address thoroughly, as they are critical for compliance.
+
+JSON Structure for Part 1:
+For cases with no PO document:
+{{
+  "status": "No PO document to be validated"
+}}
+
+For cases with a PO document:
+{{
+  "Property 1": {{
+    "match": "Yes|No|Mostly Yes",
+    "PO": "Value from PO",
+    "Source 1": "Value 1",
+    "Source 2": "Value 2"
+  }},
+  "Property 2": {{
+    "match": "Yes|No|Mostly Yes",
+    "PO": "Value from PO",
+    "Source 1": "Value 1"
+  }}
+}}
+
+Rules for Part 1:
+- The PO document is the primary reference document - all validations must include the PO value.
+- If a property isn't mentioned in a document, don't include that document as a source.
+- Only validate data that is explicitly mentioned.
+- Omit any property that only appears in the PO but not in any other document.
+- The "match" value must be one of: "Yes", "No", or "Mostly Yes".
+- Focus on verifying that information in the PO is correct and aligned with other documents, not vice versa.
+
+PART 2: COMPLIANCE CHECKLIST
+Based on the document content, evaluate the following compliance checklist items.
+
+Output Format for Part 2:
+Return your answer as a JSON list of objects, each like:
+{{
+  "check": "...",
+  "status": "✅ Passed / ❌ Missing / 🟡 Exception / ❓ Uncertain",
+  "note": "...brief justification based on evidence..."
+}}
+
+Checklist items:
+1. **Funding Source**:
+   - Is the funding source Federal or Non-Federal?
+   - Identify and confirm which one it is based on the document.
+
+2. **Price Reasonableness / SSPR**:
+   - Is there documentation of price reasonableness?
+   - Look for an SSPR (Source Selection & Price Reasonableness) form or similar justification.
+
+3. **Competitive Bidding (threshold dependent)**:
+   - If the total value is less than $100,000, mark this check as automatically passed.
+   - If the value is $100,000 or above, check whether competitive bidding was done or a valid exception is documented.
+
+4. **Contract Duration**:
+   - If the purchase is for services, check whether the contract exceeds 10 years.
+   - If the purchase is for goods, it is considered a one-time purchase and this check automatically passes.
+
+5. **Conflict of Interest**:
+   - Has the end user determined that the service provider should not be classified as a UC employee?
+   - If no conflict of interest is found or it's documented clearly, this should pass.
+
+6. **Data Security / Appendix DS**:
+   - If the purchase is for software or involves handling UC data, check if Appendix Data Security has been considered or signed.
+   - If it's goods or services that clearly don't involve sharing data, this check passes automatically.
+
+FINAL OUTPUT:
+Provide your response as a structured JSON with two main sections:
+{{
+  "data_validation": {{
+    // Part 1 results here
+  }},
+  "compliance_checklist": [
+    // Part 2 results here as an array
+  ]
+}}
+
+Documents:
+{doc_text}
 """

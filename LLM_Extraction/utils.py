@@ -88,15 +88,17 @@ def render_json_output(data):
             st.markdown(f"- **{source_name}**: {value}")
         st.markdown("---")
 
-
 def render_key_fields(key_fields):
     for k, v in key_fields.items():
         if isinstance(v, list):
             st.markdown(f"**{k}**:")
             for i, item in enumerate(v, 1):
-                st.markdown(f"- **Item {i}:**")
-                for sub_k, sub_v in item.items():
-                    st.markdown(f"  - {sub_k}: {sub_v}")
+                st.markdown(f"**Item {i}:**")
+                if isinstance(item, dict):
+                    for sub_k, sub_v in item.items():
+                        st.markdown(f"  - {sub_k}: {sub_v}")
+                else:
+                    st.markdown(f"  - {item}")
         else:
             st.markdown(f"- **{k}**: {v}")
 

@@ -1,4 +1,4 @@
-import re 
+import re
 import os
 import json
 import boto3
@@ -6,12 +6,14 @@ import streamlit as st
 
 bedrock = boto3.client(service_name='bedrock-runtime')
 
+
 def clean_file_name(file_name):
     base_name = os.path.basename(file_name)
     name, _ = os.path.splitext(base_name)
     cleaned_name = re.sub(r"[^\w\s\-\(\)\[\]]", "", name)
     cleaned_name = re.sub(r"\s+", " ", cleaned_name).strip()
     return cleaned_name if cleaned_name else "Document"
+
 
 def try_parse_json_like(text):
     try:
@@ -25,7 +27,8 @@ def try_parse_json_like(text):
             return json.loads(cleaned)
         except Exception:
             return None
-        
+
+
 def create_doc_messages(prompt, files):
     content = [{"text": prompt}]
     for i, file in enumerate(files):
@@ -42,17 +45,18 @@ def create_doc_messages(prompt, files):
         })
     return [{"role": "user", "content": content}]
 
+
 def query_bedrock_with_multiple_pdfs(prompt, files, model_id="us.anthropic.claude-3-7-sonnet-20250219-v1:0"):
     messages = create_doc_messages(prompt, files)
     response = bedrock.converse(
         modelId=model_id,
         messages=messages,
         inferenceConfig={
-            "maxTokens": 100000,
             "temperature": 0
         }
     )
     return response['output']['message']['content'][0]['text']
+
 
 def render_json_checklist(data):
     for item in data:

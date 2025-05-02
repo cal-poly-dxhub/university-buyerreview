@@ -1,139 +1,15 @@
 import streamlit as st
 import boto3
 import json
-import re
-import os
+from utils import try_parse_json_like, query_bedrock_with_multiple_pdfs
+from prompts import sspr_prompt
 
 # AWS setup
 session = boto3.Session(region_name="us-west-2")
 bedrock = session.client(service_name='bedrock-runtime')
 MODEL_ID = "us.anthropic.claude-3-7-sonnet-20250219-v1:0"
 
-sspr_prompt = """
-# SSPR Document Analysis Prompt
-
-## Task
-Analyze the provided documents to check for an SSPR (Source Selection & Price Reasonableness) and extract specific information.
-
-## Output Format
-Return your response in a structured JSON format with the following fields:
-
-```json
-{
-  "SSPR Found": "Yes/No",
-  "Funding Source": "Federal Funds/Non-Federal Funds",
-  "Dollar Amount": "$X",
-  "Desired Supplier": "Company Name",
-  "Source Selection": {
-    "Funding Source": "",
-    "Type": ""
-  },
-  "Sections Always Required": [
-    "I - SOURCE SELECTION",
-    "VII - PRICING",
-    "VIII - APPROVALS"
-  ],
-  "Sections Required for this Type": [
-    "List additional required sections based on the selected funding source and type"
-  ],
-  "Section Details": [
-    {
-      "Section Number": "I",
-      "Section Name": "SOURCE SELECTION (I)",
-      "Is Complete": true/false,
-      "Fields": [
-        {
-          "Field Name": "Field Label",
-          "Field Value": "Extracted Value"
-        }
-      ]
-    }
-  ]
-}
-```
-
-## Analysis Rules
-
-### Always Required Sections
-Sections I, VII, and VIII are always required regardless of funding source or type.
-
-### Additional Required Sections by Funding Type
-Based on which checkbox is selected in Section I:
-
-1. **Federal Funds**:
-   - New or Existing Formal Competitive Bid/Contract#: No additional sections
-   - Competitive Proposals of < $100K: Section II
-   - Sole Source: Sections III, IV
-   - Certified Small Business (Only <$250K): Section III
-
-2. **Non-Federal Funds**:
-   - New or Existing Formal Competitive Bid/Contract#: No additional sections
-   - Certified Small Business or DVBE (Only <$250K): Section III
-   - Sole Source: Sections III, IV
-   - Professional/Personal Services: Sections III, V
-   - Unusual & Compelling Urgency: Section VI
-
-### Section Information
-For each required section, indicate:
-- Section Number and Name (formatted with proper title case)
-- Whether it's complete (true/false)
-- List of fields with their corresponding values (with proper labels)
-
-# YOU HAVE TO INCLUDE Always Required Sections & Additional Required Sections by Funding Type
-⚠️ **IMPORTANT**: Return only valid JSON. Do NOT include any explanation or notes before or after the JSON. No markdown. No commentary.
-"""
-
-
-# === Utility ===
-def clean_file_name(file_name):
-    base_name = os.path.basename(file_name)
-    name, _ = os.path.splitext(base_name)
-    cleaned_name = re.sub(r"[^\w\s\-\(\)\[\]]", "", name)
-    cleaned_name = re.sub(r"\s+", " ", cleaned_name).strip()
-    return cleaned_name if cleaned_name else "Document"
-
-
-def try_parse_json_like(text):
-    try:
-        return json.loads(text)
-    except json.JSONDecodeError:
-        try:
-            start = min([i for i in (text.find('['), text.find('{')) if i != -1])
-            end = max([text.rfind(']'), text.rfind('}')]) + 1
-            cleaned = text[start:end].strip()
-            return json.loads(cleaned)
-        except Exception:
-            return None
-
 # === SSPR Functions ===
-
-
-def create_doc_messages(prompt, files):
-    content = [{"text": prompt}]
-    for i, file in enumerate(files):
-        safe_name = clean_file_name(file.name)
-        file_bytes = file.read()
-        content.insert(i, {
-            "document": {
-                "name": safe_name,
-                "format": "pdf",
-                "source": {
-                    "bytes": file_bytes
-                }
-            }
-        })
-    return [{"role": "user", "content": content}]
-
-
-def query_bedrock_with_multiple_pdfs(prompt, files):
-    messages = create_doc_messages(prompt, files)
-    response = bedrock.converse(
-        modelId=MODEL_ID,
-        messages=messages,
-        inferenceConfig={"maxTokens": 10000, "temperature": 0}
-    )
-    return response['output']['message']['content'][0]['text']
-
 
 def render_structured_output(data):
     top_fields = ["SSPR Found", "Funding Source",
@@ -165,6 +41,7 @@ def render_structured_output(data):
             st.markdown("---")
 
 # === Checklist Functions ===
+
 def build_checklist_prompt(doc_text):
     return f"""
 You are a compliance assistant. Based on the following extracted document content, evaluate the checklist items and respond in strict JSON format.
@@ -205,36 +82,6 @@ Return your answer as a JSON list of objects, each like:
   "note": "...brief justification based on evidence..."
 }}
 """
-
-
-# def build_checklist_prompt(doc_text):
-#     return f"""
-# You are a compliance assistant. Based on the following extracted document content, evaluate the checklist items and respond in strict JSON format.
-
-# Document content:
-# {doc_text}
-
-# Checklist items:
-# 1. Competitive Bidding:
-#    - Was competitive bidding done?
-#    - If not, was an exception documented?
-
-# 2. Use of UC Templates:
-#    - Were UC templates used?
-#    - If not, did a Policy Exception Authority approve the exception?
-
-# 3. Contract Duration:
-#    - Does the total contract duration exceed 10 years?
-#    - If so, was an exception approved?
-# If this is goods, not services, then it is a one time purchase and it passes this requirement
-
-# Return your answer as a JSON list of objects, each like:
-# {{
-#   "check": "...",
-#   "status": "✅ Passed / ❌ Missing / 🟡 Exception / ❓ Uncertain",
-#   "note": "...brief justification based on evidence..."
-# }}
-# """
 
 
 def query_bedrock_from_text(prompt):

@@ -38,13 +38,11 @@ Total Amount
 Contact Person for Order Confirmation
 Present the extracted information in a structured format with clear labels for each field."""
 
-sspr_prompt = """
-# SSPR Document Analysis Prompt
-
-## Task
+sspr_prompt = """SSPR Document Analysis Prompt
+Task
 Analyze the provided documents to check for an SSPR (Source Selection & Price Reasonableness) and extract specific information.
 
-## Output Format
+Output Format
 Return your response in a structured JSON format with the following fields:
 
 ```json
@@ -59,8 +57,8 @@ Return your response in a structured JSON format with the following fields:
   },
   "Sections Always Required": [
     "I - SOURCE SELECTION",
-    "VII - PRICING",
-    "VIII - APPROVALS"
+    "VII - CONFLICT OF INTEREST STATEMENT",
+    "VIII - REPRESENTATION"
   ],
   "Sections Required for this Type": [
     "List additional required sections based on the selected funding source and type"
@@ -81,12 +79,12 @@ Return your response in a structured JSON format with the following fields:
 }
 ```
 
-## Analysis Rules
+Analysis Rules
 
-### Always Required Sections
+Always Required Sections
 Sections I, VII, and VIII are always required regardless of funding source or type.
 
-### Additional Required Sections by Funding Type
+Additional Required Sections by Funding Type
 Based on which checkbox is selected in Section I:
 
 1. **Federal Funds**:
@@ -102,7 +100,7 @@ Based on which checkbox is selected in Section I:
    - Professional/Personal Services: Sections III, V
    - Unusual & Compelling Urgency: Section VI
 
-### Section Information
+Section Information
 For each required section, indicate:
 - Section Number and Name (formatted with proper title case)
 - Whether it's complete (true/false)

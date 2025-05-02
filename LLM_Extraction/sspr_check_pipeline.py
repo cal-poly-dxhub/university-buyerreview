@@ -1,12 +1,9 @@
 import streamlit as st
-import boto3
+import re
 import json
 from utils import try_parse_json_like, query_bedrock_with_multiple_pdfs
 from prompts import sspr_prompt
 
-# AWS setup
-session = boto3.Session(region_name="us-west-2")
-bedrock = session.client(service_name='bedrock-runtime')
 MODEL_ID = "us.anthropic.claude-3-7-sonnet-20250219-v1:0"
 
 # === SSPR Functions ===
@@ -84,16 +81,6 @@ Return your answer as a JSON list of objects, each like:
 """
 
 
-def query_bedrock_from_text(prompt):
-    messages = [{"role": "user", "content": [{"text": prompt}]}]
-    response = bedrock.converse(
-        modelId=MODEL_ID,
-        messages=messages,
-        inferenceConfig={"maxTokens": 4000, "temperature": 0}
-    )
-    return response['output']['message']['content'][0]['text']
-
-
 def render_json_checklist(data):
     for item in data:
         status = item.get("status", "❓ Uncertain")
@@ -131,7 +118,7 @@ if uploaded_files:
             checklist_prompt = build_checklist_prompt(
                 json.dumps(parsed_sspr, indent=2))
             with st.spinner("Running Checklist Compliance Check..."):
-                checklist_response = query_bedrock_from_text(checklist_prompt)
+                checklist_response = query_bedrock_with_multiple_pdfs(checklist_prompt,[], MODEL_ID)
                 parsed_checklist = try_parse_json_like(
                     checklist_response.strip())
 

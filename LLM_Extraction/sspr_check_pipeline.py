@@ -1,12 +1,10 @@
 import streamlit as st
-import re
 import json
-from utils import try_parse_json_like, query_bedrock_with_multiple_pdfs
-from prompts import sspr_prompt
+from utils import try_parse_json_like, query_bedrock_with_multiple_pdfs, render_json_checklist
+from prompts import sspr_prompt, checklist_prompt
 
 MODEL_ID = "us.anthropic.claude-3-7-sonnet-20250219-v1:0"
 
-# === SSPR Functions ===
 
 def render_structured_output(data):
     top_fields = ["SSPR Found", "Funding Source",
@@ -37,62 +35,6 @@ def render_structured_output(data):
                     f"  - **{field['Field Name']}**: {field['Field Value']}")
             st.markdown("---")
 
-# === Checklist Functions ===
-
-def build_checklist_prompt(doc_text):
-    return f"""
-You are a compliance assistant. Based on the following extracted document content, evaluate the checklist items and respond in strict JSON format.
-
-Document content:
-{doc_text}
-
-Checklist items:
-
-1. **Funding Source**:
-   - Is the funding source Federal or Non-Federal?
-   - Identify and confirm which one it is based on the document.
-
-2. **Price Reasonableness / SSPR**:
-   - Is there documentation of price reasonableness?
-   - Look for an SSPR (Source Selection & Price Reasonableness) form or similar justification.
-
-3. **Competitive Bidding (threshold dependent)**:
-   - If the total value is less than $100,000, mark this check as automatically passed.
-   - If the value is $100,000 or above, check whether competitive bidding was done or a valid exception is documented.
-
-4. **Contract Duration**:
-   - If the purchase is for services, check whether the contract exceeds 10 years.
-   - If the purchase is for goods, it is considered a one-time purchase and this check automatically passes.
-
-5. **Conflict of Interest**:
-   - Has the end user determined that the service provider should not be classified as a UC employee?
-   - If no conflict of interest is found or it’s documented clearly, this should pass.
-
-6. **Data Security / Appendix DS**:
-   - If the purchase is for software or involves handling UC data, check if Appendix Data Security has been considered or signed.
-   - If it's goods or services that clearly don't involve sharing data, this check passes automatically.
-
-Return your answer as a JSON list of objects, each like:
-{{
-  "check": "...",
-  "status": "✅ Passed / ❌ Missing / 🟡 Exception / ❓ Uncertain",
-  "note": "...brief justification based on evidence..."
-}}
-"""
-
-
-def render_json_checklist(data):
-    for item in data:
-        status = item.get("status", "❓ Uncertain")
-        icon = {
-            "✅ Passed": "✅",
-            "❌ Missing": "❌",
-            "🟡 Exception": "⚠️",
-            "❓ Uncertain": "❓"
-        }.get(status, "❓")
-        with st.expander(f"{icon} {item['check']}"):
-            st.markdown(f"**Note:** {item['note']}")
-
 
 # === Streamlit App ===
 st.set_page_config(page_title="SSPR + Checklist Analyzer")
@@ -115,10 +57,11 @@ if uploaded_files:
             render_structured_output(parsed_sspr)
 
             # Now send entire SSPR JSON string to checklist prompt
-            checklist_prompt = build_checklist_prompt(
-                json.dumps(parsed_sspr, indent=2))
+            checklist_prompt = checklist_prompt.format(
+                doc_text=json.dumps(parsed_sspr, indent=2))
             with st.spinner("Running Checklist Compliance Check..."):
-                checklist_response = query_bedrock_with_multiple_pdfs(checklist_prompt,[], MODEL_ID)
+                checklist_response = query_bedrock_with_multiple_pdfs(
+                    checklist_prompt, [], MODEL_ID)
                 parsed_checklist = try_parse_json_like(
                     checklist_response.strip())
 
@@ -130,7 +73,8 @@ if uploaded_files:
             else:
                 st.error("❌ Failed to parse checklist response as JSON")
                 st.code(checklist_response)
-                st.warning("Try copying this response and checking it in a JSON validator like https://jsonlint.com")
+                st.warning(
+                    "Try copying this response and checking it in a JSON validator like https://jsonlint.com")
         else:
             st.error("Failed to parse SSPR response")
             st.code(sspr_response)

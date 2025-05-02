@@ -2,6 +2,7 @@ import re
 import os
 import json
 import boto3
+import streamlit as st
 
 bedrock = boto3.client(service_name='bedrock-runtime')
 
@@ -52,3 +53,15 @@ def query_bedrock_with_multiple_pdfs(prompt, files, model_id="us.anthropic.claud
         }
     )
     return response['output']['message']['content'][0]['text']
+
+def render_json_checklist(data):
+    for item in data:
+        status = item.get("status", "❓ Uncertain")
+        icon = {
+            "✅ Passed": "✅",
+            "❌ Missing": "❌",
+            "🟡 Exception": "⚠️",
+            "❓ Uncertain": "❓"
+        }.get(status, "❓")
+        with st.expander(f"{icon} {item['check']}"):
+            st.markdown(f"**Note:** {item['note']}")

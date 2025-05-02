@@ -7,25 +7,31 @@ For each property, indicate whether values match across documents with one of th
 Only list documents as sources if they explicitly mention the property value.
 
 JSON Structure
-json{
-  "Property 1": {
+```
+{{
+  "Property 1": {{
     "match": "Yes|No|Mostly Yes",
     "Source 1": "Value 1",
     "Source 2": "Value 2",
     "Source 3": "Value 3"
-  },
-  "Property 2": {
+  }},
+  "Property 2": {{
     "match": "Yes|No|Mostly Yes",
     "Source 1": "Value 1",
     "Source 2": "Value 2"
-  }
-}
+  }}
+}}
+```
 Rules
 If a property isn't mentioned in a document, don't include that document as a source.
 Only validate data that is explicitly mentioned.
 Omit any property that appears in only one document.
 The "match" value must be one of: "Yes", "No", or "Mostly Yes".
-Focus only on data about the company being contracted with, not other companies' proposals."""
+Focus only on data about the company being contracted with, not other companies' proposals.
+
+Documents:
+{doc_text}
+"""
 
 PO_prompt = """Extract the following information from the purchase order document:
 PO Number

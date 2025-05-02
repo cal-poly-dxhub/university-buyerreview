@@ -2,8 +2,7 @@ import streamlit as st
 import json
 from utils import try_parse_json_like, query_bedrock_with_multiple_pdfs, render_json_checklist
 from prompts import sspr_prompt, checklist_prompt
-
-MODEL_ID = "us.anthropic.claude-3-7-sonnet-20250219-v1:0"
+from model_registry import ModelRegistry
 
 
 def render_structured_output(data):
@@ -61,7 +60,7 @@ if uploaded_files:
                 doc_text=json.dumps(parsed_sspr, indent=2))
             with st.spinner("Running Checklist Compliance Check..."):
                 checklist_response = query_bedrock_with_multiple_pdfs(
-                    checklist_prompt, [], MODEL_ID)
+                    checklist_prompt, [], ModelRegistry.sonnet_3_7)
                 parsed_checklist = try_parse_json_like(
                     checklist_response.strip())
 

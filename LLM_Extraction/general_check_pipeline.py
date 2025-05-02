@@ -3,14 +3,14 @@ import json
 
 from general_doc_parser import parse_documents_together
 from prompts import checklist_prompt
-from utils import try_parse_json_like, query_bedrock_with_multiple_pdfs, render_json_checklist
-
-MODEL_ID = "mistral.mistral-large-2407-v1:0"
+from utils import try_parse_json_like, query_bedrock_with_multiple_pdfs, render_json_checklist, render_parsed_documents
+from model_registry import ModelRegistry
 
 st.set_page_config(page_title="Checklist Validator (All Docs)")
 st.title("📑 Checklist Validator for All Document Types")
 
-uploaded_files = st.file_uploader("Upload your PDF documents", type=["pdf"], accept_multiple_files=True)
+uploaded_files = st.file_uploader("Upload your PDF documents", type=[
+                                  "pdf"], accept_multiple_files=True)
 
 if uploaded_files:
     if st.button("Run Full Validation"):
@@ -18,12 +18,7 @@ if uploaded_files:
             parsed_data = parse_documents_together(uploaded_files)
 
         if parsed_data and isinstance(parsed_data, dict) and "error" not in parsed_data:
-            st.success("✅ Documents successfully parsed")
-            st.subheader("📋 Extracted Information")
-
-            for doc_name, content in parsed_data.items():
-                with st.expander(doc_name):
-                    st.json(content)
+            render_parsed_documents(parsed_data)
 
             checklist_input_text = json.dumps(parsed_data, indent=2)
 
@@ -31,11 +26,14 @@ if uploaded_files:
             with open("intermediate_extracted_data.txt", "w", encoding="utf-8") as f:
                 f.write(checklist_input_text)
 
-            full_prompt = checklist_prompt.format(doc_text=checklist_input_text)
+            full_prompt = checklist_prompt.format(
+                doc_text=checklist_input_text)
 
             with st.spinner("Running Checklist Evaluation with DeepSeek..."):
-                checklist_response = query_bedrock_with_multiple_pdfs(full_prompt, [], MODEL_ID)
-                parsed_checklist = try_parse_json_like(checklist_response.strip())
+                checklist_response = query_bedrock_with_multiple_pdfs(
+                    full_prompt, [], ModelRegistry.mistral_large)
+                parsed_checklist = try_parse_json_like(
+                    checklist_response.strip())
 
             st.subheader("🧾 Raw Checklist Model Output")
             st.code(checklist_response)

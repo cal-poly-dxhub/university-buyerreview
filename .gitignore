@@ -1,2 +1,7 @@
 Sample-Attachments
 __pycache__
+Textract
+.DS_Store
+*.txt
+.env
+.venv

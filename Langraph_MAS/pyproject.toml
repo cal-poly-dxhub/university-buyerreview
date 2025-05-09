@@ -1,0 +1,16 @@
+[project]
+name = "langraph-mas"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "boto3>=1.38.8",
+    "ipykernel>=6.29.5",
+    "ipython>=9.2.0",
+    "langchain>=0.3.25",
+    "langchain-core>=0.3.58",
+    "langgraph>=0.4.1",
+    "python-dotenv>=1.1.0",
+    "streamlit>=1.45.0",
+]

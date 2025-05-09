@@ -1,0 +1,70 @@
+SSPR Document Analysis Prompt
+Task
+Analyze the provided documents to check for an SSPR (Source Selection & Price Reasonableness) and extract specific information.
+
+Output Format
+Return your response in a structured JSON format with the following fields:
+
+```json
+{
+  "SSPR Found": "Yes/No",
+  "Funding Source": "Federal Funds/Non-Federal Funds",
+  "Dollar Amount": "$X",
+  "Desired Supplier": "Company Name",
+  "Source Selection": {
+    "Funding Source": "",
+    "Type": ""
+  },
+  "Sections Always Required": [
+    "I - SOURCE SELECTION",
+    "VII - CONFLICT OF INTEREST STATEMENT",
+    "VIII - REPRESENTATION"
+  ],
+  "Sections Required for this Type": [
+    "List additional required sections based on the selected funding source and type"
+  ],
+  "Section Details": [
+    {
+      "Section Number": "I",
+      "Section Name": "SOURCE SELECTION (I)",
+      "Is Complete": true/false,
+      "Fields": [
+        {
+          "Field Name": "Field Label",
+          "Field Value": "Extracted Value"
+        }
+      ]
+    }
+  ]
+}
+```
+
+Analysis Rules
+
+Always Required Sections
+Sections I, VII, and VIII are always required regardless of funding source or type.
+
+Additional Required Sections by Funding Type
+Based on which checkbox is selected in Section I:
+
+1. **Federal Funds**:
+   - New or Existing Formal Competitive Bid/Contract#: No additional sections
+   - Competitive Proposals of < $100K: Section II
+   - Sole Source: Sections III, IV
+   - Certified Small Business (Only <$250K): Section III
+
+2. **Non-Federal Funds**:
+   - New or Existing Formal Competitive Bid/Contract#: No additional sections
+   - Certified Small Business or DVBE (Only <$250K): Section III
+   - Sole Source: Sections III, IV
+   - Professional/Personal Services: Sections III, V
+   - Unusual & Compelling Urgency: Section VI
+
+Section Information
+For each required section, indicate:
+- Section Number and Name (formatted with proper title case)
+- Whether it's complete (true/false)
+- List of fields with their corresponding values (with proper labels)
+
+# YOU HAVE TO INCLUDE Always Required Sections & Additional Required Sections by Funding Type
+⚠️ **IMPORTANT**: Return only valid JSON. Do NOT include any explanation or notes before or after the JSON. No markdown. No commentary.

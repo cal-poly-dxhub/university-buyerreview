@@ -4,6 +4,10 @@ from typing import List
 import os
 
 TOOL_CONFIG_DIR = "Tools_Config"
+TOOL_REGISTRY = {
+    "summarize_document": lambda d: {"summary": summarize_document(d["doc_text"])},
+    "get_prompt_for_doc_type": lambda d: {"prompt": get_prompt_for_doc_type(d["doc_type"])}
+}
 
 def get_prompt_for_doc_type(doc_type: str) -> str:
     return PARSER_PROMPT_REGISTRY.get(doc_type.upper(), "")
@@ -15,16 +19,9 @@ def get_task_prompt(task_name: str) -> str:
     return TASK_PROMPT_REGISTRY.get(task_name.upper(), "")
 
 def run_tool_by_name(tool_name: str, input_data: dict) -> dict:
-    if tool_name == "get_prompt_for_doc_type":
-        doc_type = input_data.get("doc_type", "")
-        return {"prompt": get_prompt_for_doc_type(doc_type)}
-
-    elif tool_name == "summarize_document":
-        doc_text = input_data.get("doc_text", "")
-        return {"summary": summarize_document(doc_text)}
-
-    else:
-        raise ValueError(f"Unknown tool name: {tool_name}")
+    if tool_name not in TOOL_REGISTRY:
+        raise ValueError(f"Unknown tool: {tool_name}")
+    return TOOL_REGISTRY[tool_name](input_data)
 
 def get_tool_config(selected_tool_names: List[str]) -> dict:
     tools = []

@@ -2,15 +2,13 @@ import asyncio
 import streamlit as st
 from typing import TypedDict, List, Dict, Any
 from streamlit.runtime.uploaded_file_manager import UploadedFile
-from pandas import DataFrame
-import json
 
 from langgraph.graph import StateGraph, END
 from langchain_core.runnables import RunnableLambda
 
-from doc_parser import parse_documents_parallel
-from validation import validate_data
-from checklist import run_checklist
+from Agents.doc_parser import parse_documents_parallel
+from Agents.validation import validate_data
+from Agents.checklist import run_checklist
 
 
 # --- Pipeline State Definition ---
@@ -90,53 +88,3 @@ if __name__ == "__main__":
             "validation_result": final_output.get("validation_result"),
             "checklist_result": final_output.get("checklist_result")
         })
-
-        # st.subheader("✅ Parsed Documents")
-        # parsed_docs = final_output.get("parsed_data", {})
-
-        # if parsed_docs:
-        #     tab_names = list(parsed_docs.keys())
-        #     tabs = st.tabs(tab_names)
-
-        #     for tab, doc_name in zip(tabs, tab_names):
-        #         with tab:
-        #             doc = parsed_docs[doc_name]
-        #             st.markdown(f"**Document Type**: `{doc.get('doc_type', 'Unknown')}`")
-        #             data = doc.get("parsed_data", {})
-
-        #             if "line_items" in data:
-        #                 st.markdown("### Line Items")
-        #                 st.dataframe(DataFrame(data["line_items"]))
-                    
-        #             for key, value in data.items():
-        #                 if key != "line_items":
-        #                     st.markdown(f"**{key.replace('_', ' ').title()}:** {value}")
-
-        # # --- Checklist Results ---
-        # checklist = final_output.get("checklist_result")
-        # if checklist:
-        #     st.markdown("### ✅ Compliance Checklist")
-        #     if isinstance(checklist, str):
-        #         try:
-        #             checklist = json.loads(checklist)
-        #         except:
-        #             pass
-
-        #     for item in checklist:
-        #         st.markdown(f"- **{item['check']}** — {item['status']}: {item['note']}")
-
-        # # --- Validation Results ---
-        # validation = final_output.get("validation_result")
-        # if validation:
-        #     st.markdown("### 🧪 Validation Result")
-        #     if isinstance(validation, str):
-        #         try:
-        #             validation = json.loads(validation)
-        #         except:
-        #             pass
-
-        #     for key, val in validation.items():
-        #         match = val.get("match", "❓")
-        #         st.markdown(f"**{key}** — Match: `{match}`")
-        #         st.code(json.dumps(val, indent=2))
-

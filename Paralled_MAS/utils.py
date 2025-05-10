@@ -5,8 +5,8 @@ import boto3
 import streamlit as st
 from model_registry import ModelRegistry
 from tools import run_tool_by_name
-bedrock = boto3.client(service_name='bedrock-runtime')
 
+bedrock = boto3.client(service_name='bedrock-runtime')
 
 def clean_file_name(file_name):
     base_name = os.path.basename(file_name)

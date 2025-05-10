@@ -14,4 +14,3 @@ def load_prompts_from_dir(path: str) -> dict:
 
 PARSER_PROMPT_REGISTRY = load_prompts_from_dir(PARSER_PROMPTS_DIR)
 TASK_PROMPT_REGISTRY = load_prompts_from_dir(TASK_PROMPTS_DIR)
-# print("Loaded Parser Prompts:", TASK_PROMPT_REGISTRY["PARSER"])

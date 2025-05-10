@@ -13,7 +13,7 @@ def run_checklist(state: dict) -> dict:
 
     response = query_bedrock_with_multiple_pdfs(
         prompt=prompt,
-        files=[],  # Again, only structured data needed
+        files=[],  # No files needed — we already have parsed data
         model_id=ModelRegistry.sonnet_3_5
     )
     parsed = try_parse_json_like(response)

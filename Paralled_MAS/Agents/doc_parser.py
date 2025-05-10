@@ -11,7 +11,8 @@ def route_and_parse_document(file, prompt_path="Task_Prompts/Parser.txt"):
         prompt=prompt,
         files=[file],
         model_id=ModelRegistry.sonnet_3_7,
-        tool_config=get_tool_config()
+        tool_config=get_tool_config(
+            ["get_prompt_for_doc_type", "summarize_document"])
     )
     parsed = try_parse_json_like(response)
     return parsed if parsed else {"error": "Failed to parse", "raw": response}

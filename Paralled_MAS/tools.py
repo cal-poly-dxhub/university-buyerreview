@@ -1,4 +1,9 @@
 from prompt_loader import PARSER_PROMPT_REGISTRY, TASK_PROMPT_REGISTRY
+import json
+from typing import List
+import os
+
+TOOL_CONFIG_DIR = "Tools_Config"
 
 def get_prompt_for_doc_type(doc_type: str) -> str:
     return PARSER_PROMPT_REGISTRY.get(doc_type.upper(), "")
@@ -21,44 +26,19 @@ def run_tool_by_name(tool_name: str, input_data: dict) -> dict:
     else:
         raise ValueError(f"Unknown tool name: {tool_name}")
 
-def get_tool_config():
+def get_tool_config(selected_tool_names: List[str]) -> dict:
+    tools = []
+
+    for name in selected_tool_names:
+        path = os.path.join(TOOL_CONFIG_DIR, f"{name}.json")
+        if not os.path.exists(path):
+            raise FileNotFoundError(f"Tool config not found: {path}")
+        with open(path) as f:
+            spec = json.load(f)
+            tools.append({"toolSpec": spec})
+
     return {
-        "tools": [
-            {
-                "toolSpec": {
-                    "name": "get_prompt_for_doc_type",
-                    "description": "Returns the parser prompt for a document type like SSPR or PO.",
-                    "inputSchema": {
-                        "json": {
-                            "type": "object",
-                            "properties": {
-                                "doc_type": {
-                                    "type": "string"
-                                }
-                            },
-                            "required": ["doc_type"]
-                        }
-                    }
-                }
-            },
-            {
-                "toolSpec": {
-                    "name": "summarize_document",
-                    "description": "Summarizes the document if no known type matches.",
-                    "inputSchema": {
-                        "json": {
-                            "type": "object",
-                            "properties": {
-                                "doc_text": {
-                                    "type": "string"
-                                }
-                            },
-                            "required": ["doc_text"]
-                        }
-                    }
-                }
-            }
-        ]
+        "tools": tools
     }
 
 

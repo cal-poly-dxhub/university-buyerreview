@@ -9,9 +9,8 @@ def summarize_document(doc_text: str) -> str:
 def get_task_prompt(task_name: str) -> str:
     return TASK_PROMPT_REGISTRY.get(task_name.upper(), "")
 
-template_path = "Task_Prompts/Parser.txt"
 
-def build_general_doc_prompt_from_file():
+def build_general_doc_prompt_from_file(template_path="Task_Prompts/Parser.txt"):
     with open(template_path, "r") as f:
         template = f.read()
     

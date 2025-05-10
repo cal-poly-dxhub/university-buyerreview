@@ -26,9 +26,12 @@ Checklist items:
    - If the purchase is for software or involves handling UC data, check if Appendix Data Security has been considered or signed.
    - If it's goods or services that clearly don't involve sharing data, this check passes automatically.
 
-Return your answer as a JSON list of objects, each like:
+Return your answer as a JSON object, each like:
 {{
   "check": "...",
   "status": "✅ Passed / ❌ Missing / 🟡 Exception / ❓ Uncertain",
   "note": "...brief justification based on evidence..."
 }}
+it will be parsed as a json so don't return a normal list
+Documents:
+{doc_text}

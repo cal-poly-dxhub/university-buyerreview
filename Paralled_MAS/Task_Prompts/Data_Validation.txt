@@ -37,3 +37,6 @@ Only validate data that is explicitly mentioned.
 Omit any property that only appears in the PO but not in any other document.
 The "match" value must be one of: "Yes", "No", or "Mostly Yes".
 Focus on verifying that information in the PO is correct and aligned with other documents, not vice versa.
+
+Documents:
+{doc_text}

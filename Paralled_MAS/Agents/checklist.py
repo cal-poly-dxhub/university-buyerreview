@@ -2,8 +2,9 @@ from utils import query_bedrock_with_multiple_pdfs, try_parse_json_like
 from prompt_loader import TASK_PROMPT_REGISTRY
 from model_registry import ModelRegistry
 import json
+from state import PipelineState
 
-def run_checklist(state: dict) -> dict:
+def run_checklist(state: PipelineState) -> PipelineState:
     parsed = state.get("parsed_data", {})
     if not parsed:
         return {"checklist_result": "❌ No parsed data available"}

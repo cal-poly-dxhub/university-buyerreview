@@ -7,7 +7,9 @@ If no PO document is present in the provided documents, respond with: {{"status"
 If a PO is present, validate properties from the PO against other documents.
 Only include properties that appear in both the PO and at least one other document.
 For each property, indicate whether values match across documents with one of these values only: "Yes", "No", or "Mostly Yes".
-Examine Supplier Address and Delivery Address thoroughly, as they are critical for compliance.
+
+Examine Supplier Address and Delivery Address thoroughly, as they are critical for compliance. 
+Even is different in address is one letter, Flag that as "Mostly Yes" not "Yes"
 
 JSON Structure
 For cases with no PO document:

@@ -2,8 +2,9 @@ from utils import query_bedrock_with_multiple_pdfs, try_parse_json_like
 from prompt_loader import TASK_PROMPT_REGISTRY
 from model_registry import ModelRegistry
 import json
+from state import PipelineState
 
-def validate_data(state: dict) -> dict:
+def validate_data(state: PipelineState) -> PipelineState:
     parsed = state.get("parsed_data", {})
     if not parsed:
         return {"validation_result": "❌ No parsed data available"}

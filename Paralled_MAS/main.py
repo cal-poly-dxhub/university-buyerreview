@@ -1,7 +1,5 @@
 import asyncio
 import streamlit as st
-from typing import TypedDict, List, Dict, Any
-from streamlit.runtime.uploaded_file_manager import UploadedFile
 
 from langgraph.graph import StateGraph, END
 from langchain_core.runnables import RunnableLambda
@@ -9,28 +7,20 @@ from langchain_core.runnables import RunnableLambda
 from Agents.doc_parser import parse_documents_parallel
 from Agents.validation import validate_data
 from Agents.checklist import run_checklist
+from state import PipelineState
 
-
-# --- Pipeline State Definition ---
-class PipelineState(TypedDict, total=False):
-    uploaded_files: List[UploadedFile]
-    parsed_data: Dict[str, Any]
-    checklist_result: Any
-    validation_result: Any
-    po_check: str
-
-# --- Node: Parse uploaded documents ---
 async def parse_documents_node(state: PipelineState) -> PipelineState:
     parsed = await parse_documents_parallel(state["uploaded_files"])
-    return {"parsed_data": parsed}
+    return { "parsed_data": parsed}
 
 
-def check_po_exists(state: PipelineState) -> Dict[str, str]:
+def check_po_exists(state: PipelineState) -> PipelineState:
     parsed = state.get("parsed_data", {})
     for doc in parsed.values():
         if doc.get("doc_type", "").upper() == "PO":
             return {"po_check": "Yes"}
     return {"po_check": "No"}
+
 
 # --- LangGraph builder ---
 def build_graph():
@@ -66,7 +56,7 @@ def build_graph():
 if __name__ == "__main__":
     st.set_page_config(page_title="📄 Document Pipeline", layout="centered")
     st.title("📄 Document Parser with Checklist + Conditional Validation")
-    
+
     st.subheader("🧭 Pipeline Architecture Overview")
     st.markdown("The diagram below shows the steps taken to process your uploaded documents, including parsing, checklist validation, and conditional PO validation.")
     st.image("Architecture.png", use_container_width=True)

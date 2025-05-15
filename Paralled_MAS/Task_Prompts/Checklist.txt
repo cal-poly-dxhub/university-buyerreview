@@ -11,7 +11,7 @@ Checklist items:
    - Look for an SSPR (Source Selection & Price Reasonableness) form or similar justification.
 
 3. **Competitive Bidding (threshold dependent)**:
-   - If the total value is less than $100,000, mark this check as automatically passed.
+   - If the total value is less than $100,000, mark this check as automatically return "✅ Passed".
    - If the value is $100,000 or above, check whether competitive bidding was done or a valid exception is documented.
 
 4. **Contract Duration**:
@@ -22,14 +22,10 @@ Checklist items:
    - Has the end user determined that the service provider should not be classified as a UC employee?
    - If no conflict of interest is found or it’s documented clearly, this should pass.
 
-6. **Data Security / Appendix DS**:
-   - If the purchase is for software or involves handling UC data, check if Appendix Data Security has been considered or signed.
-   - If it's goods or services that clearly don't involve sharing data, this check passes automatically.
-
 Return your answer as a JSON object, each like:
 {{
   "check": "...",
-  "status": "✅ Passed / ❌ Missing / 🟡 Exception / ❓ Uncertain",
+  "status": "✅ Passed / ❌ Missing / ❓ Uncertain",
   "note": "...brief justification based on evidence..."
 }}
 it will be parsed as a json so don't return a normal list

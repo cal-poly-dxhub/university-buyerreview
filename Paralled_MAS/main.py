@@ -17,50 +17,47 @@ class PipelineState(TypedDict, total=False):
     parsed_data: Dict[str, Any]
     checklist_result: Any
     validation_result: Any
-
-
-# --- Router: only run validate_data if PO document is present ---
-def should_run_validation(state: PipelineState) -> str:
-    parsed = state.get("parsed_data", {})
-    for doc in parsed.values():
-        if doc.get("doc_type", "").upper() == "PO":
-            return "validate"
-    return "skip"
-
+    po_check: str
 
 # --- Node: Parse uploaded documents ---
-
 async def parse_documents_node(state: PipelineState) -> PipelineState:
     parsed = await parse_documents_parallel(state["uploaded_files"])
     return {"parsed_data": parsed}
 
 
+def check_po_exists(state: PipelineState) -> Dict[str, str]:
+    parsed = state.get("parsed_data", {})
+    for doc in parsed.values():
+        if doc.get("doc_type", "").upper() == "PO":
+            return {"po_check": "Yes"}
+    return {"po_check": "No"}
+
 # --- LangGraph builder ---
 def build_graph():
     graph = StateGraph(PipelineState)
 
-    graph.add_node("parse_documents", RunnableLambda(parse_documents_node))
-    graph.add_node("checklist", RunnableLambda(run_checklist))
-    graph.add_node("validate_data", RunnableLambda(validate_data))
-    graph.add_node("skip", RunnableLambda(lambda state: {
-        "parsed_data": state["parsed_data"]
-    }))
+    # Nodes
+    graph.add_node("Parse Documents", RunnableLambda(parse_documents_node))
+    graph.add_node("Checklist", RunnableLambda(run_checklist))
+    graph.add_node("Check PO Exists", RunnableLambda(check_po_exists))
+    graph.add_node("Validate PO data", RunnableLambda(validate_data))
 
-    graph.set_entry_point("parse_documents")
+    # Entry
+    graph.set_entry_point("Parse Documents")
 
-    # Always run checklist
-    graph.add_edge("parse_documents", "checklist")
+    # After parsing
+    graph.add_edge("Parse Documents", "Checklist")
+    graph.add_edge("Parse Documents", "Check PO Exists")
 
-    # Conditionally run validation
-    graph.add_conditional_edges("parse_documents", should_run_validation, {
-        "validate": "validate_data",
-        "skip": "skip"
+    # Conditional: PO present?
+    graph.add_conditional_edges("Check PO Exists", lambda s: s["po_check"], {
+        "Yes": "Validate PO data",
+        "No": END
     })
 
-    # Terminal edges
-    graph.add_edge("checklist", END)
-    graph.add_edge("validate_data", END)
-    graph.add_edge("skip", END)
+    # Endpoints
+    graph.add_edge("Checklist", END)
+    graph.add_edge("Validate PO data", END)
 
     return graph.compile()
 
@@ -69,6 +66,12 @@ def build_graph():
 if __name__ == "__main__":
     st.set_page_config(page_title="📄 Document Pipeline", layout="centered")
     st.title("📄 Document Parser with Checklist + Conditional Validation")
+    
+    st.subheader("🧭 Pipeline Architecture Overview")
+    st.markdown("The diagram below shows the steps taken to process your uploaded documents, including parsing, checklist validation, and conditional PO validation.")
+    st.image("Architecture.png", use_container_width=True)
+
+    st.subheader("📂 Run Pipeline")
 
     uploaded_files = st.file_uploader(
         "Upload one or more PDF files",
@@ -76,7 +79,8 @@ if __name__ == "__main__":
         accept_multiple_files=True
     )
 
-    if uploaded_files:
+    # Only run if user clicks the button
+    if uploaded_files and st.button("Run Pipeline"):
         with st.spinner("Running document pipeline..."):
             pipeline = build_graph()
             initial_state: PipelineState = {"uploaded_files": uploaded_files}

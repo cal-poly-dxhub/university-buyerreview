@@ -4,6 +4,7 @@ Your task is to validate the consistency of information in a Purchase Order (PO)
 Output Format
 Provide your response as pure JSON.
 If no PO document is present in the provided documents, respond with: {{"status": "No PO document to be validated"}}
+If a PO document is present but no other documents to be validated against, respond with: {{"status": "No other documents to validate the PO against"}}
 If a PO is present, validate properties from the PO against other documents.
 Only include properties that appear in both the PO and at least one other document.
 For each property, indicate whether values match across documents with one of these values only: "Yes", "No", or "Mostly Yes".

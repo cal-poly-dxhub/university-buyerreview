@@ -7,6 +7,7 @@ from langchain_core.runnables import RunnableLambda
 from Agents.doc_parser import parse_documents_parallel
 from Agents.validation import validate_data
 from Agents.checklist import run_checklist
+from Agents.union_job_classifier import union_job_check
 from state import PipelineState
 
 async def parse_documents_node(state: PipelineState) -> PipelineState:
@@ -17,6 +18,8 @@ async def parse_documents_node(state: PipelineState) -> PipelineState:
 def check_po_exists(state: PipelineState) -> PipelineState:
     parsed = state.get("parsed_data", {})
     for doc in parsed.values():
+        doc_type = doc.get("doc_type", "").upper()
+        print(f"Checking document type: {doc_type}")
         if doc.get("doc_type", "").upper() == "PO":
             return {"po_check": "Yes"}
     return {"po_check": "No"}
@@ -31,6 +34,7 @@ def build_graph():
     graph.add_node("Checklist", RunnableLambda(run_checklist))
     graph.add_node("Check PO Exists", RunnableLambda(check_po_exists))
     graph.add_node("Validate PO data", RunnableLambda(validate_data))
+    graph.add_node("Check if Union Job", RunnableLambda(union_job_check))
 
     # Entry
     graph.set_entry_point("Parse Documents")
@@ -38,6 +42,8 @@ def build_graph():
     # After parsing
     graph.add_edge("Parse Documents", "Checklist")
     graph.add_edge("Parse Documents", "Check PO Exists")
+    graph.add_edge("Parse Documents", "Check if Union Job")
+
 
     # Conditional: PO present?
     graph.add_conditional_edges("Check PO Exists", lambda s: s["po_check"], {
@@ -48,6 +54,7 @@ def build_graph():
     # Endpoints
     graph.add_edge("Checklist", END)
     graph.add_edge("Validate PO data", END)
+    graph.add_edge("Check if Union Job", END)
 
     return graph.compile()
 
@@ -80,5 +87,6 @@ if __name__ == "__main__":
         st.json({
             "parsed_data": final_output.get("parsed_data"),
             "validation_result": final_output.get("validation_result"),
-            "checklist_result": final_output.get("checklist_result")
+            "checklist_result": final_output.get("checklist_result"),
+            "union_job_check": final_output.get("union_job_check")
         })

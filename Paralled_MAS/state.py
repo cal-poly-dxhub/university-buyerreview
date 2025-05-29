@@ -7,4 +7,5 @@ class PipelineState(TypedDict, total=False):
     parsed_data: Dict[str, Any]
     checklist_result: Any
     validation_result: Any
+    union_job_check: Any
     po_check: str

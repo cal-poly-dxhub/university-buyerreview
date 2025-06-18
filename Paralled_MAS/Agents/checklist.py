@@ -4,13 +4,20 @@ from model_registry import ModelRegistry
 import json
 from state import PipelineState
 
+
 def run_checklist(state: PipelineState) -> PipelineState:
     parsed = state.get("parsed_data", {})
     if not parsed:
-        return {"checklist_result": "❌ No parsed data available"}
+        return {
+            "checklist_result": {
+                "error": "❌ No parsed data available",
+                "result": None
+            }
+        }
 
     doc_text = json.dumps(parsed, indent=2)
-    prompt = TASK_PROMPT_REGISTRY.get("CHECKLIST", "").replace("{doc_text}", doc_text)
+    prompt = TASK_PROMPT_REGISTRY.get(
+        "CHECKLIST", "").replace("{doc_text}", doc_text)
 
     response = query_bedrock_with_multiple_pdfs(
         prompt=prompt,
@@ -18,4 +25,9 @@ def run_checklist(state: PipelineState) -> PipelineState:
         model_id=ModelRegistry.sonnet_3_5
     )
     parsed = try_parse_json_like(response)
-    return {"checklist_result": parsed}
+    return {
+        "checklist_result": {
+            "error": None,
+            "result": parsed
+        }
+    }

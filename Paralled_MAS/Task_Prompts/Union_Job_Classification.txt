@@ -1,23 +1,37 @@
-You will be given a list of union jobs and documents about purchase order and its details. Your job is to look through the desciption of the service being given.
-If the service includes any union jobs, uou should flag that. Otherwise, say "Passed"
+You will be provided with a list of official union job titles and a document related to a purchase order. Your task is to review the service description in the document and determine whether it includes any union job.
 
-Note: Be flexible with string matching. Use semantic role understanding, not keyword lookup. For example, "Lead Custodian", "Custodian II", or "Custodian (Per Diem)" should all map to "Custodian".
-Return your output in json format with no any additions at all. I will be parsing this as JSON and don't want it to fail
+If a union job is detected, flag it. If not, return "Passed".
+
+Be flexible with variations in phrasing. Use semantic understanding to recognize job roles, not exact keyword matches. For example, "Lead Custodian", "Custodian II", or "Custodian (Per Diem)" should all be understood as "Custodian".
+
+Return your response **only in valid JSON format** with no extra commentary or explanation.
+
 ---
+
 What to Do:
 For each document:
-1. Parse all relevant fields.
-2. Determine if any job mentioned is a union job (based on core role, not exact string match).
-3. Return a structured response with:
-   - "doc_type" (if available)
-   - "union_job_detected": true/false
-   - "matched_union_title" (if any)
-   - "match_source" (e.g., title, line_item, description, etc.)
+1. Parse relevant job-related information.
+2. Identify whether any union job from the list is mentioned (by role, not string).
+3. Respond with a structured JSON object containing:
+   - `"union_job_detected"`: true/false  
+   - `"matched_union_title"`: The best matching title from the list (or `null`)  
+   - `"match_sources"`:  
+     - If a union job **is detected**, this must be a list containing:
+       - `"doc_name"`: Name or identifier of the document  
+       - `"doc_type"`: Type of the document (if available)  
+       - `"rationale"`: A list of one or more references (e.g., ["description", "line_item"]) that justify the match  
+     - If **no union job is detected**, this list must be empty (`[]`)  
+
+**Note:** `doc_name` and `doc_type` must not appear at the top level. They should only be included inside `match_sources` when a match is detected.
+
+Important: The value for `"matched_union_title"` **must exactly match** one of the job titles in the "Union Job Reference List" below. We will use this title for price lookup later.
 
 ---
+
 Union Job Reference List:
-Access Representative, Admin Care Partner, Admitting Worker, Anesthesia Technician, Angiography Technologist, Automotive Attendant, Automotive Equipment Operator, Biomedical Equipment Technician, Building Maintenance Worker, Cardiovascular Technician, Catheterization Laboratory Radiationiologic Technologist, Certified Phlebotomy Technician, Cook, Cook Housekeeper, CT Technologist, Control Service Technician, Custodian, Cytogenetic Technologist, Delivery Worker, Dental Hygienist, Dietetic Assistant, Dosimetrist, Driver, Electroencephalogram Technologist, Electricocardiograph Technician, Emergency Trauma Technician, Food Service Worker, Gastrointestinal Endoscopy Technician, Grounds Equipment Operator, Groundskeeper, Health Information Coder, Histology Technologist, Hospital Assistant, Hospital Blank Aid, Hospital Laboratory Technician, Hospital Medical Transcriber, Hospital Unit Service Coordinator, Heavy Duty Equipment Technician, Interventional Radiationiologic Technologist, Intraoperative Neurophysiological Monitoring Technologist, Irrigation Specialist, Laboratory Helper, Laborer, Lift Team Technician, Light Fixture Attendant, Linen Service Worker, Mail Processor, Mammography Technologist, Medical Assistant, Medical Center Cook, Medical Center Custodian, Medical Center Development Technician, Medical Center Electric Technician, Medical Center Food Service Worker, Medical Center Laboratory Mechanic, Medical Center Security Officer, Medical Center Storekeeper, Medical Center Stores Worker, Medical Laboratory Technician, Medical Office Service Coordinator, Medical Records Administrator, Medical Records Technician, Mental Health Practitioner, MRI Technologist, Nurse Aid, Nursery Technician, Occupational Therapy Certified Assistant, Operations Room Support Assistant, Orthopedic Technician, Parking Representative, Patient Biller, Patient Care Dialysis Technician, Patient Escort, Patient Records Abstractor, Patient Transport Technician, Perfusionist, Perinatal Technician, Pest Control Operator, Pharmacy Technician, Physical Therapy Assistant, Polysomnography Technologist, Proctor, Prosthetist Orthotist, Psychiatric Technician, Pulmonary Technician, Radiation Therapy Technologist, Radiationiologic Assistant, Radiationiologic Equipment Specialist, Radiationiologic Technologist, Registered Dietetic Technician, Registered Respiratory Therapy, Rehab Aid, Reprographics Technician, Respiratory Care Practitioner, Respiratory Therapy, Security Guard, Sports Assistant, Sterile Processing Technician, Storekeeper, Stores Worker, Surgical Technician, Telemetry Technician, Tree Trim, Ultrasound Technologist, Urology Technician, Vocational Nurse, Volunteer Service Coordinator
+{union_job_list}
 
 ---
+
 Document:
 {doc_text}

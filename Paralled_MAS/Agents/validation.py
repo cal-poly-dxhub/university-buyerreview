@@ -31,9 +31,7 @@ def validate_data(state: PipelineState) -> PipelineState:
 
         return {
             "validation_result": {
-                "error": None if parsed_result else "❌ Failed to parse validation response",
-                "result": parsed_result,
-                "raw": response
+                "result": parsed_result
             }
         }
 

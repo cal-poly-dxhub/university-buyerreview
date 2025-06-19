@@ -27,7 +27,6 @@ def run_checklist(state: PipelineState) -> PipelineState:
     parsed = try_parse_json_like(response)
     return {
         "checklist_result": {
-            "error": None,
             "result": parsed
         }
     }

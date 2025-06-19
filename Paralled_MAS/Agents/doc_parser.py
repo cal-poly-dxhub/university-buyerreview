@@ -22,11 +22,16 @@ def route_and_parse_document(file, prompt_path="Task_Prompts/Parser.txt"):
 
     parsed = try_parse_json_like(response)
 
-    return {
-        "result": parsed if parsed else None,
-        "error": None if parsed else "❌ Failed to parse document.",
-        "raw": response
-    }
+    if parsed:
+        return {
+            "result": parsed
+        }
+    else:
+        return {
+            "result": None,
+            "error": "❌ Failed to parse document.",
+            "raw": response
+        }
 
 
 # --- Async wrapper for single document ---

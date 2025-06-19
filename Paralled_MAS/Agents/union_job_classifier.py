@@ -1,25 +1,10 @@
-import os
 import json
-import pandas as pd
-
-from utils import query_bedrock_with_multiple_pdfs, try_parse_json_like
+from utils import query_bedrock_with_multiple_pdfs_with_tools, try_parse_json_like
+from union_job_utils import load_union_job_data, CSV_PATH, TITLE_COLUMN
 from prompt_loader import TASK_PROMPT_REGISTRY
 from model_registry import ModelRegistry
 from state import PipelineState
-
-# === CONFIGURATION ===
-TITLE_COLUMN = "Deciphered Job Code Description"
-COST_COLUMN = "Total UC Cost"
-CSV_PATH = os.path.join("Data", "union_job_titles.csv")
-
-
-def load_union_job_data(filepath=CSV_PATH, title_col=TITLE_COLUMN):
-    df = pd.read_csv(filepath)
-    df.columns = df.columns.str.strip()  # Clean column names
-    if title_col not in df.columns:
-        raise ValueError(f"Missing required column: '{title_col}' in CSV.")
-    titles = df[title_col].dropna().astype(str).tolist()
-    return df, titles
+from tools import get_tool_config
 
 
 def union_job_check(state: PipelineState) -> PipelineState:
@@ -51,10 +36,13 @@ def union_job_check(state: PipelineState) -> PipelineState:
             .replace("{union_job_list}", union_list_str)
         )
 
-        response = query_bedrock_with_multiple_pdfs(
+        response = query_bedrock_with_multiple_pdfs_with_tools(
             prompt=prompt,
             files=[],
             model_id=ModelRegistry.haiku_3_5,
+            tool_config=get_tool_config([
+                "get_UC_cost"
+            ])
         )
 
         raw_output = try_parse_json_like(response)

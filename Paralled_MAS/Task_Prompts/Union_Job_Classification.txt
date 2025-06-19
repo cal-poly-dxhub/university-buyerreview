@@ -4,6 +4,8 @@ If a union job is detected, flag it. If not, return "Passed".
 
 Be flexible with variations in phrasing. Use semantic understanding to recognize job roles, not exact keyword matches. For example, "Lead Custodian", "Custodian II", or "Custodian (Per Diem)" should all be understood as "Custodian".
 
+You also have access to a tool called `get_UC_cost`, which returns the official UC cost for a given union job title. Use this tool **if a union job is detected** so that you can compare it to the price stated in the document.
+
 Return your response **only in valid JSON format** with no extra commentary or explanation.
 
 ---
@@ -24,6 +26,11 @@ For each document:
          - the **field** it was found in (e.g., description, title, line item)
          - and the **union job title** it was mapped to.
      - If **no union job is detected**, this list must be empty (`[]`)  
+
+4. If a union job was detected and UC cost is retrieved using the tool, include a `"cost_check"` section with:
+   - `"UC_Cost"`: Cost returned from the tool  
+   - `"PO_Cost"`: Cost from the document  
+   - `"Pass"`: `true` if the PO cost is greater than or equal to the UC cost, `false` otherwise  
 
 **Note:** `doc_name` and `doc_type` must not appear at the top level. They should only be included inside `match_sources` when a match is detected.
 

@@ -10,3 +10,6 @@ class ModelRegistry:
     mistral_7b = "mistral.mistral-7b-instruct-v0:2"
     mixtral_8x7b = "mistral.mixtral-8x7b-instruct-v0:1"
     mistral_large = "mistral.mistral-large-2407-v1:0"
+
+    # Titan
+    titan_2 = "amazon.titan-text-v2:0"

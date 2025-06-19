@@ -2,7 +2,11 @@ import json
 import numpy as np
 import faiss
 import boto3
+import os
+from model_registry import ModelRegistry
 
+JSONL_PATH = os.path.join("Data", "embeddings.jsonl")
+REGION = "us-west-2"
 # Load embeddings from JSONL
 def load_embeddings(jsonl_path):
     vectors = []
@@ -42,11 +46,10 @@ def embed_input(input_string,c,model_id):
 
 
 def vector_search(inputString):
-    jsonl_path = 'embeddings.jsonl'
-    vectors, texts = load_embeddings(jsonl_path)
+    vectors, texts = load_embeddings(JSONL_PATH)
     index = build_faiss_index(vectors)
-    client2 =  boto3.client("bedrock-runtime",region_name="us-west-2")
-    model_id = "amazon.titan-embed-text-v2:0"
+    client2 =  boto3.client("bedrock-runtime",region_name=REGION)
+    model_id = ModelRegistry.titan_2
     query_vector = embed_input(inputString,client2,model_id)  
     D, I = search_faiss(index, query_vector, k=5)
     results = [(texts[idx], D[0][rank]) for rank, idx in enumerate(I[0])]

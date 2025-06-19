@@ -5,6 +5,7 @@ from utils import parse_pdf_form_fields, sanitize_doc_name
 
 bedrock = boto3.client(service_name='bedrock-runtime')
 
+
 def create_doc_messages(prompt, files):
     content = [{"text": prompt}]
     for i, file in enumerate(files):
@@ -33,6 +34,7 @@ def query_bedrock_with_multiple_pdfs(prompt, files, model_id=ModelRegistry.sonne
     )
     return response['output']['message']['content'][0]['text']
 
+
 def query_bedrock_with_multiple_pdfs_with_tools(prompt, files, model_id, tool_config):
     messages = create_doc_messages(prompt, files)
 
@@ -45,13 +47,13 @@ def query_bedrock_with_multiple_pdfs_with_tools(prompt, files, model_id, tool_co
     )
 
     bedrock_message = response["output"]["message"]
-    messages.append(bedrock_message)  
+    messages.append(bedrock_message)
 
     content = bedrock_message["content"]
     tool_use = next((c["toolUse"] for c in content if "toolUse" in c), None)
 
     if not tool_use:
-        return content[0].get("text", "<no text>")
+        return "".join([c["text"] for c in content if "text" in c])
 
     return handle_bedrock_tool_use(messages, tool_use, model_id, tool_config)
 
@@ -93,13 +95,14 @@ def handle_bedrock_tool_use(messages, tool_use, model_id, tool_config):
 
     return followup["output"]["message"]["content"][0].get("text", "<no text>")
 
-def build_pdf_based_message(bedrock_client, model_id, input_text, input_files):
+
+def build_pdf_based_message(model_id, input_text, input_files):
     content_blocks = [{"text": input_text}]
 
     for f in input_files:
         doc_format = f.name.split(".")[-1]
-        doc_bytes  = f.read()
-        doc_name   = sanitize_doc_name(f.name)
+        doc_bytes = f.read()
+        doc_name = sanitize_doc_name(f.name)
 
         # Add parsed form fields if available
         parsed_fields = parse_pdf_form_fields(doc_bytes)
@@ -115,7 +118,7 @@ def build_pdf_based_message(bedrock_client, model_id, input_text, input_files):
             }
         })
 
-    message  = {"role": "user", "content": content_blocks}
+    message = {"role": "user", "content": content_blocks}
     messages = [message]
 
-    return bedrock_client.converse(modelId=model_id, messages=messages)
+    return bedrock.converse(modelId=model_id, messages=messages)

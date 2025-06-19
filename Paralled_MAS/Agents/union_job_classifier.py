@@ -40,14 +40,6 @@ def union_job_check(state: PipelineState) -> PipelineState:
                     "error": f"❌ Missing required column: '{TITLE_COLUMN}' in CSV.",
                 }
             }
-        if COST_COLUMN not in df.columns:
-            return {
-                "union_job_check": {
-                    "error": f"❌ Missing required column: '{COST_COLUMN}' in CSV.",
-                }
-            }
-
-        df[COST_COLUMN] = pd.to_numeric(df[COST_COLUMN], errors="coerce")
         df["__normalized_title__"] = df[TITLE_COLUMN].astype(
             str).str.strip().str.lower()
 
@@ -82,7 +74,7 @@ def union_job_check(state: PipelineState) -> PipelineState:
         matched_row = None
 
         if matched_title and not match_df.empty:
-            records = match_df.to_dict(orient="records")
+            records = match_df.drop(columns=["__normalized_title__"], errors="ignore").to_dict(orient="records")
             matched_row = records[0] if records else None
         elif matched_title:
             matched_row = {

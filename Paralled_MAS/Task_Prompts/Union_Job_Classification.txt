@@ -19,7 +19,10 @@ For each document:
      - If a union job **is detected**, this must be a list containing:
        - `"doc_name"`: Name or identifier of the document  
        - `"doc_type"`: Type of the document (if available)  
-       - `"rationale"`: A list of one or more references (e.g., ["description", "line_item"]) that justify the match  
+       - `"rationale"`: A short explanation (1–2 sentences) that clearly describes why the match was made. It must mention:
+         - the **phrase** that was matched
+         - the **field** it was found in (e.g., description, title, line item)
+         - and the **union job title** it was mapped to.
      - If **no union job is detected**, this list must be empty (`[]`)  
 
 **Note:** `doc_name` and `doc_type` must not appear at the top level. They should only be included inside `match_sources` when a match is detected.

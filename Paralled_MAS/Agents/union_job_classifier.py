@@ -91,7 +91,7 @@ def union_job_check(state: PipelineState) -> PipelineState:
 
         return {
             "union_job_check": {
-                "llm_response": raw_output,
+                **raw_output,
                 "matched_row": matched_row
             }
         }

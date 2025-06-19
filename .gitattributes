@@ -1,0 +1,20 @@
+# Auto normalize line endings
+* text=auto
+
+# Always use LF for Python and other code
+*.py text eol=lf
+*.sh text eol=lf
+*.js text eol=lf
+*.ts text eol=lf
+*.css text eol=lf
+*.html text eol=lf
+*.json text eol=lf
+*.md text eol=lf
+*.yml text eol=lf
+
+# Keep binary files untouched
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.pdf binary
+*.ipynb binary

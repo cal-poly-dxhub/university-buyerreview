@@ -1,6 +1,26 @@
 import re
 import os
 import json
+import re
+import os
+import io
+from PyPDF2 import PdfReader
+import streamlit as st
+
+def sanitize_doc_name(name: str) -> str:
+    cleaned_name = re.sub(r"[^\w\s\-\(\)\[\]]", "", os.path.splitext(name)[0])
+    return re.sub(r"\s+", " ", cleaned_name).strip() or "Document"
+
+def parse_pdf_form_fields(file_bytes: bytes) -> dict:
+    try:
+        reader = PdfReader(io.BytesIO(file_bytes))
+        fields = reader.get_fields()
+        if not fields:
+            return {}
+        st.write("Fields successfully parsed.")
+        return {name: field.get("/V") for name, field in fields.items()}
+    except Exception as e:
+        return {"error": str(e)}
 
 
 def clean_file_name(file_name):

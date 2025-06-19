@@ -1,6 +1,7 @@
 from model_registry import ModelRegistry
 from utils import clean_file_name
 import boto3
+from utils import parse_pdf_form_fields, sanitize_doc_name
 
 bedrock = boto3.client(service_name='bedrock-runtime')
 
@@ -91,3 +92,30 @@ def handle_bedrock_tool_use(messages, tool_use, model_id, tool_config):
     )
 
     return followup["output"]["message"]["content"][0].get("text", "<no text>")
+
+def build_pdf_based_message(bedrock_client, model_id, input_text, input_files):
+    content_blocks = [{"text": input_text}]
+
+    for f in input_files:
+        doc_format = f.name.split(".")[-1]
+        doc_bytes  = f.read()
+        doc_name   = sanitize_doc_name(f.name)
+
+        # Add parsed form fields if available
+        parsed_fields = parse_pdf_form_fields(doc_bytes)
+        if parsed_fields:
+            parsed_output = f"{doc_name} form parsed output, use this for information about the interactive form: {parsed_fields}"
+            input_text += "\n\n" + parsed_output
+
+        content_blocks.append({
+            "document": {
+                "name": doc_name,
+                "format": doc_format,
+                "source": {"bytes": doc_bytes}
+            }
+        })
+
+    message  = {"role": "user", "content": content_blocks}
+    messages = [message]
+
+    return bedrock_client.converse(modelId=model_id, messages=messages)

@@ -4,6 +4,7 @@ import streamlit as st
 from botocore.exceptions import ClientError
 from Agents.pc_llm_mapping import pc_llm_mapping
 from Agents.pc_vector_mapping import pc_vector_mapping
+import asyncio
 
 def main():
     st.title("UCSD Buyer: Purchasing Category Classification & Mapping")
@@ -19,7 +20,7 @@ def main():
 
         try:
             with st.spinner("Running LLM Classification..."):
-                pc_output = pc_llm_mapping(uploaded_files)
+                pc_output = asyncio.run(pc_llm_mapping(uploaded_files))
 
             llm_categories = pc_output["categories"]
             full_text = pc_output["full_text"]

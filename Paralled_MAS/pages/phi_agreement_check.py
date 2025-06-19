@@ -1,6 +1,7 @@
 from botocore.exceptions import ClientError
 import streamlit as st
 from Agents.phi_agreement_checker import phi_agreement_checker
+import asyncio
 
 def main():
     st.title("UCSD Buyer: Check if the PHI Agreement needs to be signed")
@@ -15,7 +16,7 @@ def main():
 
         try:
             with st.spinner("Processing all documents in one call…"):
-                response = phi_agreement_checker(uploaded_files)
+                response = asyncio.run(phi_agreement_checker(uploaded_files))
             output_message = response["output"]["message"]
             st.write("Model response:")
             for block in output_message["content"]:

@@ -1,3 +1,6 @@
-The contents of these documents describe the quotes and service details of a particular requested good or service. 
+The contents of these parsed documents describe the quotes and service details of a particular requested good or service. 
 If the actual service itself seems at all like it would require the use of Personal Health Information, say {{PHI}} in this exact format, and give the exact word for word quotes from which you decided that this contains PHI. 
 Otherwise, say {{NOPHI}} with the same reasoning.
+
+Parsed documents:
+{parsed_data}

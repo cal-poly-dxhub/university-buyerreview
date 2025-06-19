@@ -7,11 +7,11 @@ import boto3
 
 bedrock = boto3.client(service_name='bedrock-runtime')
 
-def phi_agreement_checker(uploaded_files):
+async def phi_agreement_checker(uploaded_files):
+    parsed_data = await parse_documents_parallel(uploaded_files)
     base_prompt = TASK_PROMPT_REGISTRY.get("PHI_AGREEMENT_CHECK", "")
-    parsed_data = parse_documents_parallel(uploaded_files)
     final_prompt = base_prompt.replace("{parsed_data}", str(parsed_data))
-    messages = create_doc_messages(final_prompt, uploaded_files)
+    messages = create_doc_messages(final_prompt, [])
     response = bedrock.converse(
         modelId=ModelRegistry.haiku_3_5,
         messages=messages,

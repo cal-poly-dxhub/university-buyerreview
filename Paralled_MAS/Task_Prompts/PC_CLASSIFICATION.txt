@@ -5,8 +5,11 @@ choose from:
 
 {pc_category_list}
 
-based on the content within the attached documents, select ONE purchasing category that the service
+based on the content in the parsed documents provided, select ONE purchasing category that the service
 lines up best with, and say the purchasing category in this exact format:
 {{SELECTED_PURCHASING_CATEGORY_HERE}}
 Then, give your reasoning for deciding this with evidence that goes
 back to the original document.
+
+Parsed documents:
+{parsed_data}

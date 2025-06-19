@@ -9,7 +9,7 @@ CSV_PATH = os.path.join("Data", "PC_Buyer_Assignments - Copy(Buyer Review).csv")
 COLUMN_TO_SEARCH = "Purchasing Category"
 
 def pc_llm_mapping(uploaded_files):
-    base_prompt = TASK_PROMPT_REGISTRY.get("PC_CATEGORY_CLASSIFICATION", "")
+    base_prompt = TASK_PROMPT_REGISTRY.get("PC_CLASSIFICATION", "")
     pc_list = get_unique_purchasing_categories(CSV_PATH)
     formatted_list = ", ".join(f"'{cat}'" for cat in pc_list)
     prompt = base_prompt.replace("{pc_category_list}", formatted_list)

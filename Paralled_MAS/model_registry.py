@@ -12,4 +12,5 @@ class ModelRegistry:
     mistral_large = "mistral.mistral-large-2407-v1:0"
 
     # Titan
-    titan_2 = "amazon.titan-text-v2:0"
+    titan_2 = "amazon.titan-embed-text-v2:0"
+    

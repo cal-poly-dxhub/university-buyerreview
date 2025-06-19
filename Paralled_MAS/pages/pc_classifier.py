@@ -8,7 +8,7 @@ from Agents.pc_vector_mapping import pc_vector_mapping
 def main():
     st.title("UCSD Buyer: Purchasing Category Classification & Mapping")
 
-    uploaded_files = st.file_uploader("Upload Relevant Files", accept_multiple_files=True)
+    uploaded_files = st.file_uploader("Upload Relevant Files", accept_multiple_files=True, type="pdf")
 
     if st.button("Classify and Map"):
         st.divider()
@@ -24,20 +24,7 @@ def main():
             llm_categories = pc_output["categories"]
             full_text = pc_output["full_text"]
             response = pc_output["response"]
-
-            with st.spinner("Matching with Buyer Assignments..."):
-                buyer_output = pc_vector_mapping(llm_categories)
-
-            if not buyer_output["matched_df"].empty:
-                st.success("Exact category matches found:")
-                st.dataframe(buyer_output["matched_df"])
-            elif not buyer_output["fallback_df"].empty:
-                st.warning("No exact match. Vector similarity fallback matches:")
-                for i, (text, distance) in enumerate(buyer_output["vector_results"], 1):
-                    st.markdown(f"**{i}.** `{text}`  \nDistance: {distance:.4f}")
-                st.dataframe(buyer_output["fallback_df"])
-            else:
-                st.error("No matches found in either exact or vector fallback.")
+            matched_df = pc_output["matched_df"]
 
             st.divider()
             st.write("**LLM Response:**")
@@ -51,6 +38,29 @@ def main():
                 f"Stop reason: {response['stopReason']}"
             )
 
+
+            if not matched_df.empty:
+                st.write("Matching rows:")
+                st.dataframe(matched_df)
+            else:
+                st.write("No exact matches found, running vector similarity search...")
+                if llm_categories:
+                    with st.spinner("Matching with Buyer Assignments..."):
+                        vector_output = pc_vector_mapping(llm_categories)
+
+                    fallback_df = vector_output["fallback_df"]
+                    vector_results = vector_output["vector_results"]
+
+                    if not fallback_df.empty:
+                        st.write("PC Vector Search Results:")
+                        for i, (text, distance) in enumerate(vector_results, 1):
+                            st.markdown(f"**{i}.** `{text}`  \nDistance: {distance:.4f}")
+                        st.write("CSV rows matching vector search categories:")
+                        st.dataframe(fallback_df)
+                    else:
+                        st.write("No matches found in CSV for vector search categories.")
+
+            
         except ClientError as err:
             st.error(f"A client error occurred: {err.response['Error']['Message']}")
 

@@ -26,9 +26,9 @@ def main():
             response = pc_output["response"]
             matched_df = pc_output["matched_df"]
 
-            st.divider()
             st.write("**LLM Response:**")
             st.write(full_text)
+            st.divider()
 
             token_usage = response["usage"]
             st.caption(

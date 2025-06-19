@@ -1,0 +1,93 @@
+from model_registry import ModelRegistry
+from utils import clean_file_name
+import boto3
+
+bedrock = boto3.client(service_name='bedrock-runtime')
+
+def create_doc_messages(prompt, files):
+    content = [{"text": prompt}]
+    for i, file in enumerate(files):
+        safe_name = clean_file_name(file.name)
+        file_bytes = file.read()
+        content.insert(i, {
+            "document": {
+                "name": safe_name,
+                "format": "pdf",
+                "source": {
+                    "bytes": file_bytes
+                }
+            }
+        })
+    return [{"role": "user", "content": content}]
+
+
+def query_bedrock_with_multiple_pdfs(prompt, files, model_id=ModelRegistry.sonnet_3_7):
+    messages = create_doc_messages(prompt, files)
+    response = bedrock.converse(
+        modelId=model_id,
+        messages=messages,
+        inferenceConfig={
+            "temperature": 0
+        }
+    )
+    return response['output']['message']['content'][0]['text']
+
+def query_bedrock_with_multiple_pdfs_with_tools(prompt, files, model_id, tool_config):
+    messages = create_doc_messages(prompt, files)
+
+    # Step 1: Send the initial message
+    response = bedrock.converse(
+        modelId=model_id,
+        messages=messages,
+        inferenceConfig={"temperature": 0},
+        toolConfig=tool_config,
+    )
+
+    bedrock_message = response["output"]["message"]
+    messages.append(bedrock_message)  
+
+    content = bedrock_message["content"]
+    tool_use = next((c["toolUse"] for c in content if "toolUse" in c), None)
+
+    if not tool_use:
+        return content[0].get("text", "<no text>")
+
+    return handle_bedrock_tool_use(messages, tool_use, model_id, tool_config)
+
+
+def handle_bedrock_tool_use(messages, tool_use, model_id, tool_config):
+    # Step 2: Run the tool locally
+    from tools import run_tool_by_name
+    result_data = run_tool_by_name(tool_use["name"], tool_use["input"])
+
+    # Decide if result is text or json
+    if isinstance(result_data, str):
+        content_block = [{"text": result_data}]
+    elif isinstance(result_data, dict):
+        content_block = [{"json": result_data}]
+    else:
+        raise TypeError("Tool output must be a str or dict")
+
+    # Step 3: Respond with toolResult
+    tool_result_message = {
+        "role": "user",
+        "content": [{
+            "toolResult": {
+                "toolUseId": tool_use["toolUseId"],
+                "content": content_block,
+                "status": "success"
+            }
+        }]
+    }
+
+    messages.append(tool_result_message)
+
+    # Step 4: Send the updated full message thread
+    followup = bedrock.converse(
+        modelId=model_id,
+        messages=messages,
+        inferenceConfig={"temperature": 0},
+        toolConfig=tool_config
+    )
+
+    return followup["output"]["message"]["content"][0].get("text", "<no text>")

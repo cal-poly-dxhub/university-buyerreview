@@ -2,7 +2,7 @@ from prompt_loader import PARSER_PROMPT_REGISTRY, TASK_PROMPT_REGISTRY
 import json
 from typing import List
 import os
-from union_job_utils import load_union_job_data, TITLE_COLUMN, COST_COLUMN
+from utils import get_uc_cost
 
 TOOL_CONFIG_DIR = "Tools_Config"
 TOOL_REGISTRY = {
@@ -24,15 +24,6 @@ def get_task_prompt(task_name: str) -> str:
     return TASK_PROMPT_REGISTRY.get(task_name.upper(), "")
 
 
-def get_uc_cost(job_title: str) -> str:
-    df, _ = load_union_job_data()
-    df["__normalized_title__"] = df[TITLE_COLUMN].astype(
-        str).str.strip().str.lower()
-    title_norm = job_title.strip().lower()
-    match = df[df["__normalized_title__"] == title_norm]
-    if not match.empty:
-        return str(match.iloc[0][COST_COLUMN])
-    return "N/A"
 
 
 def run_tool_by_name(tool_name: str, input_data: dict) -> dict:

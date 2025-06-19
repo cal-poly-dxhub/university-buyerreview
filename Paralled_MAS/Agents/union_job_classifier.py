@@ -1,6 +1,6 @@
 import json
 from utils import query_bedrock_with_multiple_pdfs_with_tools, try_parse_json_like
-from union_job_utils import load_union_job_data, CSV_PATH, TITLE_COLUMN
+from utils.union_job_utils import load_union_job_data, CSV_PATH, TITLE_COLUMN
 from prompt_loader import TASK_PROMPT_REGISTRY
 from model_registry import ModelRegistry
 from state import PipelineState

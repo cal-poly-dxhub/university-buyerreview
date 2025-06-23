@@ -20,9 +20,4 @@ if uploaded_files and st.button("Run Full Pipeline"):
         final_output = asyncio.run(pipeline.ainvoke(initial_state))
 
     st.subheader("✅ Final Output")
-    st.json({
-        "parsed_data": final_output.get("parsed_data"),
-        "validation_result": final_output.get("validation_result"),
-        "checklist_result": final_output.get("checklist_result"),
-        "union_job_check": final_output.get("union_job_check")
-    })
+    st.json(final_output)

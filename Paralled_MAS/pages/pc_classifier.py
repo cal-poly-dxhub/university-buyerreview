@@ -2,9 +2,10 @@
 
 import streamlit as st
 from botocore.exceptions import ClientError
-from Agents.pc_llm_mapping import pc_llm_mapping
 from Agents.pc_vector_mapping import pc_vector_mapping
 import asyncio
+from Graphs.pc_classifier_only import build_pc_category_graph
+from state import PipelineState
 
 def main():
     st.title("UCSD Buyer: Purchasing Category Classification & Mapping")
@@ -20,37 +21,40 @@ def main():
 
         try:
             with st.spinner("Running LLM Classification..."):
-                pc_output = asyncio.run(pc_llm_mapping(uploaded_files))
+                pipeline = build_pc_category_graph()
+                initial_state: PipelineState = {
+                    "uploaded_files": uploaded_files}
+                final_output = asyncio.run(pipeline.ainvoke(initial_state))
 
-            llm_categories = pc_output["categories"]
-            full_text = pc_output["full_text"]
-            response = pc_output["response"]
-            matched_df = pc_output["matched_df"]
+            llm_categories = final_output["pc_mapping"]["categories"]
+            full_text = final_output["pc_mapping"]["full_text"]
+            matched_df = final_output["pc_mapping"]["matched_df"]
 
             st.write("**LLM Response:**")
             st.write(full_text)
             st.divider()
 
-            token_usage = response["usage"]
+            token_usage = final_output["pc_mapping"]["usage"]
             st.caption(
                 f"Tokens in: {token_usage['inputTokens']}, "
                 f"out: {token_usage['outputTokens']}, "
                 f"total: {token_usage['totalTokens']}. "
-                f"Stop reason: {response['stopReason']}"
+                f"Stop reason: {final_output['pc_mapping']['stop_reason']}"
             )
 
 
             if not matched_df.empty:
                 st.write("Matching rows:")
                 st.dataframe(matched_df)
+                st.json(final_output)
             else:
                 st.write("No exact matches found, running vector similarity search...")
                 if llm_categories:
                     with st.spinner("Matching with Buyer Assignments..."):
                         vector_output = pc_vector_mapping(llm_categories)
 
-                    fallback_df = vector_output["fallback_df"]
-                    vector_results = vector_output["vector_results"]
+                    fallback_df = vector_output["pc_mapping"]["matched_df"]
+                    vector_results = vector_output["pc_mapping"]["vector_results"]
 
                     if not fallback_df.empty:
                         st.write("PC Vector Search Results:")

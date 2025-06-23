@@ -1,12 +1,8 @@
 from langgraph.graph import StateGraph, END
 from langchain_core.runnables import RunnableLambda
-from Agents.doc_parser import parse_documents_parallel
+from Agents.doc_parser import parse_documents_node
 from Agents.union_job_classifier import union_job_check
 from state import PipelineState
-
-async def parse_documents_node(state: PipelineState) -> PipelineState:
-    parsed = await parse_documents_parallel(state["uploaded_files"])
-    return {"parsed_data": parsed}
 
 def build_union_job_graph():
     graph = StateGraph(PipelineState)

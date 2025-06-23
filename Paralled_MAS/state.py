@@ -9,3 +9,5 @@ class PipelineState(TypedDict, total=False):
     validation_result: Any
     union_job_check: Any
     po_check: str
+    phi_agreement: Any
+    pc_mapping: Any

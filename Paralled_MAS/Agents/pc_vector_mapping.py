@@ -19,6 +19,8 @@ def pc_vector_mapping(llm_categories):
         fallback_df = df[df[COLUMN_TO_SEARCH].astype(str).isin(search_keys)]
 
     return {
-        "fallback_df": fallback_df,
-        "vector_results": vector_results
+        "pc_mapping": {
+            "matched_df": fallback_df,
+            "vector_results": vector_results
+        }
     }

@@ -3,6 +3,7 @@ from tools import build_general_doc_prompt_from_file
 from utils import try_parse_json_like, query_bedrock_with_multiple_pdfs_with_tools
 from model_registry import ModelRegistry
 from tools import get_tool_config
+from state import PipelineState
 
 # --- Synchronous single document processor ---
 
@@ -46,3 +47,7 @@ async def parse_documents_parallel(files):
     tasks = [async_parse_document(file) for file in files]
     results = await asyncio.gather(*tasks)
     return dict(zip([file.name for file in files], results))
+
+async def parse_documents_node(state: PipelineState) -> PipelineState:
+    parsed = await parse_documents_parallel(state["uploaded_files"])
+    return {"parsed_data": parsed}

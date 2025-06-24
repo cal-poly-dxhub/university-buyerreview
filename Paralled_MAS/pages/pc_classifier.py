@@ -12,7 +12,7 @@ import pandas as pd
 def main():
     st.title("UCSD Buyer: Purchasing Category Classification & Mapping")
 
-    uploaded_files = st.file_uploader("Upload Relevant Files", accept_multiple_files=True, type="pdf")
+    uploaded_files = st.file_uploader("Upload Relevant Files", accept_multiple_files=True, type=["pdf", "png", "jpg", "jpeg", "docx", "txt", "xlsx"])
 
     if st.button("Classify and Map"):
         st.divider()

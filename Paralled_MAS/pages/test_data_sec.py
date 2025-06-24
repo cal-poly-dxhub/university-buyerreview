@@ -8,7 +8,7 @@ st.set_page_config(page_title="🧪 Union Job Classifier", layout="centered")
 st.title("🧪 Union Job Classifier (Isolated Test)")
 
 uploaded_files = st.file_uploader(
-    "Upload one or more PDF files", type="pdf", accept_multiple_files=True)
+    "Upload one or more PDF files", type=["pdf", "png", "jpg", "jpeg", "docx", "txt", "xlsx"], accept_multiple_files=True)
 
 if uploaded_files and st.button("Run Data Security Flagger"):
     with st.spinner("Running..."):
@@ -18,5 +18,5 @@ if uploaded_files and st.button("Run Data Security Flagger"):
 
     st.subheader("📝 Union Job Output")
     st.json(output.get("run_data_sec_classification"))
-    
+
     # Show matched row if available

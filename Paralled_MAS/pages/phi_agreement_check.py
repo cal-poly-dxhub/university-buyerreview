@@ -8,7 +8,7 @@ from state import PipelineState
 def main():
     st.title("UCSD Buyer: Check if the PHI Agreement needs to be signed")
     uploaded_files = st.file_uploader(
-        "Upload Relevant Files", accept_multiple_files=True, type="pdf")
+        "Upload Relevant Files", accept_multiple_files=True, type=["pdf", "png", "jpg", "jpeg", "docx", "txt", "xlsx"])
 
     if st.button("Done uploading files"):
         st.divider()

@@ -6,6 +6,8 @@ from Agents.pc_vector_mapping import pc_vector_mapping
 import asyncio
 from Graphs.pc_classifier_only import build_pc_category_graph
 from state import PipelineState
+import pandas as pd
+
 
 def main():
     st.title("UCSD Buyer: Purchasing Category Classification & Mapping")
@@ -45,7 +47,8 @@ def main():
 
             if not matched_df.empty:
                 st.write("Matching rows:")
-                st.dataframe(matched_df)
+                df = pd.DataFrame(matched_df)
+                st.dataframe(df)
                 st.json(final_output)
             else:
                 st.write("No exact matches found, running vector similarity search...")

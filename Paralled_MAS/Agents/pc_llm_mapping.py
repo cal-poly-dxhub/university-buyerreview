@@ -54,7 +54,7 @@ async def pc_llm_mapping(state: PipelineState) -> PipelineState:
         "pc_mapping": {
             "full_text": full_text,
             "categories": llm_categories,
-            "matched_df": matched_df,
+            "matched_df": matched_df.to_dict(orient="records"),
             "stop_reason": response.get('stopReason', None),
             "usage": response.get('usage', None),
         }

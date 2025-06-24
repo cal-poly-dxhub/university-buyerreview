@@ -32,7 +32,8 @@ def query_bedrock_with_multiple_pdfs(prompt, files, model_id=ModelRegistry.sonne
             "temperature": 0
         }
     )
-    return response['output']['message']['content'][0]['text']
+    content = response['output']['message']['content']        
+    return "".join([c['text'] for c in content if 'text' in c])
 
 
 def query_bedrock_with_multiple_pdfs_with_tools(prompt, files, model_id, tool_config):

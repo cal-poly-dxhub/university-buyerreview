@@ -8,22 +8,56 @@ bedrock = boto3.client(service_name='bedrock-runtime')
 
 def create_doc_messages(prompt, files):
     content = [{"text": prompt}]
+
+    def get_file_format(filename):
+        """Determine the file format based on file extension"""
+        ext = filename.lower().split('.')[-1]
+        format_mapping = {
+            'pdf': 'pdf',
+            'png': 'png',
+            'jpg': 'jpeg',
+            'jpeg': 'jpeg',
+            'docx': 'docx',
+            'txt': 'txt',
+            'xlsx': 'xlsx'
+        }
+        return format_mapping.get(ext, 'pdf')  # default to pdf if unknown
+
+    def is_image_format(format_type):
+        """Check if the format is an image type"""
+        return format_type in ['png', 'jpeg']
+
     for i, file in enumerate(files):
         safe_name = clean_file_name(file.name)
         file_bytes = file.read()
-        content.insert(i, {
-            "document": {
-                "name": safe_name,
-                "format": "pdf",
-                "source": {
-                    "bytes": file_bytes
+        file_format = get_file_format(file.name)
+
+        if is_image_format(file_format):
+            # For images, use the image block format
+            content.insert(i, {
+                "image": {
+                    "format": file_format,
+                    "source": {
+                        "bytes": file_bytes
+                    }
                 }
-            }
-        })
+            })
+        else:
+            # For documents (PDF, DOCX, TXT, XLSX), use the document block format
+            content.insert(i, {
+                "document": {
+                    "name": safe_name,
+                    "format": file_format,
+                    "source": {
+                        "bytes": file_bytes
+                    }
+                }
+            })
+
     return [{"role": "user", "content": content}]
 
 
-def query_bedrock_with_multiple_pdfs(prompt, files, model_id=ModelRegistry.sonnet_3_7):
+def query_bedrock_with_multiple_files(prompt, files, model_id=ModelRegistry.sonnet_3_7):
     messages = create_doc_messages(prompt, files)
     response = bedrock.converse(
         modelId=model_id,
@@ -32,11 +66,11 @@ def query_bedrock_with_multiple_pdfs(prompt, files, model_id=ModelRegistry.sonne
             "temperature": 0
         }
     )
-    content = response['output']['message']['content']        
+    content = response['output']['message']['content']
     return "".join([c['text'] for c in content if 'text' in c])
 
 
-def query_bedrock_with_multiple_pdfs_with_tools(prompt, files, model_id, tool_config):
+def query_bedrock_with_multiple_files_with_tools(prompt, files, model_id, tool_config):
     messages = create_doc_messages(prompt, files)
 
     # Step 1: Send the initial message

@@ -45,7 +45,7 @@ def main():
             )
 
 
-            if not matched_df.empty:
+            if matched_df:
                 st.write("Matching rows:")
                 df = pd.DataFrame(matched_df)
                 st.dataframe(df)

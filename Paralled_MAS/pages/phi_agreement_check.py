@@ -18,7 +18,7 @@ def main():
             return
 
         try:
-            with st.spinner("Processing all documents in one call…"):
+            with st.spinner("Checking if we need a PHI Agreement..."):
                 pipeline = build_phi_agreement_graph()
                 initial_state: PipelineState = {
                     "uploaded_files": uploaded_files}

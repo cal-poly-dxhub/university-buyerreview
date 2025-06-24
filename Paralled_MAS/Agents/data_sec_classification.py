@@ -1,6 +1,6 @@
-from ..utils import query_bedrock_with_multiple_pdfs, try_parse_json_like
-from ..prompt_loader import TASK_PROMPT_REGISTRY
-from ..model_registry import ModelRegistry
+from utils import query_bedrock_with_multiple_pdfs, try_parse_json_like
+from prompt_loader import TASK_PROMPT_REGISTRY
+from model_registry import ModelRegistry
 import json
 
 def run_data_sec_classification(state: dict) -> dict:

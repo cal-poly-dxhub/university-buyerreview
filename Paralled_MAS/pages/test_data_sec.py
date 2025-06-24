@@ -1,7 +1,7 @@
 import streamlit as st
 import asyncio
-from Paralled_MAS.Graphs.data_sec_only import build_data_sec_graph
-from Paralled_MAS.state import PipelineState
+from Graphs.data_sec_only import build_data_sec_graph
+from state import PipelineState
 import pandas as pd
 
 st.set_page_config(page_title="🧪 Union Job Classifier", layout="centered")

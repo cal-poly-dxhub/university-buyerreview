@@ -1,8 +1,8 @@
 from langgraph.graph import StateGraph, END
 from langchain_core.runnables import RunnableLambda
-from Paralled_MAS.Agents.doc_parser import parse_documents_parallel
-from Paralled_MAS.Agents.data_sec_classification import run_data_sec_classification
-from Paralled_MAS.state import PipelineState
+from Agents.doc_parser import parse_documents_parallel
+from Agents.data_sec_classification import run_data_sec_classification
+from state import PipelineState
 
 async def parse_documents_node(state: PipelineState) -> PipelineState:
     parsed = await parse_documents_parallel(state["uploaded_files"])

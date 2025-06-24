@@ -17,13 +17,13 @@ from .embedding_utils import (
 
 from .filtering_utils import get_unique_purchasing_categories
 
-from .vector_utils import (
-    load_embeddings,
-    build_faiss_index,
-    search_faiss,
-    embed_input,
-    vector_search,
-)
+# from .vector_utils import (
+#     load_embeddings,
+#     build_faiss_index,
+#     search_faiss,
+#     embed_input,
+#     vector_search,
+# )
 # UI render utilities
 from .render_utils import (
     render_json_checklist,

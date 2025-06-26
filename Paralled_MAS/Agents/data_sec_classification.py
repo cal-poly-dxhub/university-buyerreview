@@ -87,7 +87,7 @@ async def run_data_sec_classification(state: PipelineState) -> PipelineState:
     print()
     print(parsed["information_exchanged"])
 
-    similarity_search_classification = search_similar_description(parsed["information_exchanged"])
+    similarity_search_classification = (search_similar_description(parsed["information_exchanged"])["institutional information type"], search_similar_description(parsed["information_exchanged"])["institutional information type"])
     parsed["similarity_search_classification"] = similarity_search_classification
 
     return {"data_security": parsed}

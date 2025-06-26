@@ -48,15 +48,14 @@ async def run_data_sec_classification(state: PipelineState) -> PipelineState:
 
     try:
         gs_result = goods_services_classification(parsed_data)
+        print(gs_result)
+        if gs_result == "goods":
+            return {"goods": 0}
+        if gs_result == "uncertain":
+            return {"uncertain": 0}
     except:
         print("error")
 
-    print(gs_result)
-
-    if gs_result == "goods":
-        return {"goods": 0}
-    if gs_result == "uncertain":
-        return {"uncertain": 0}
 
     base_prompt = TASK_PROMPT_REGISTRY.get("SECURITY_CLASSIFICATION", "")
     final_prompt = base_prompt.replace("{parsed_data}", str(parsed_data))
@@ -86,9 +85,9 @@ async def run_data_sec_classification(state: PipelineState) -> PipelineState:
         return {"data_security": "❌ Error in parsing response"}
     
     print()
-    print(parsed)
+    print(parsed["information_exchanged"])
 
-    similarity_search_classification = search_similar_description(parsed[information_exchanged])
+    similarity_search_classification = search_similar_description(parsed["information_exchanged"])
     parsed["similarity_search_classification"] = similarity_search_classification
 
     return {"data_security": parsed}

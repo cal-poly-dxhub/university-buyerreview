@@ -7,6 +7,7 @@ from Agents.validation import validate_data
 from Agents.union_job_classifier import union_job_check
 from Agents.pc_llm_mapping import pc_llm_mapping
 from Agents.phi_agreement_checker import phi_agreement_checker
+from Agents.data_sec_classification import run_data_sec_classification
 from state import PipelineState
 
 
@@ -29,6 +30,7 @@ def build_full_pipeline_graph():
     graph.add_node("Check if Union Job", RunnableLambda(union_job_check))
     graph.add_node("PHI Agreement Check", RunnableLambda(phi_agreement_checker))
     graph.add_node("LLM PC Classifier", RunnableLambda(pc_llm_mapping))
+    graph.add_node("Data Security Classification", RunnableLambda(run_data_sec_classification))
 
     # Entry
     graph.set_entry_point("Parse Documents")
@@ -39,6 +41,7 @@ def build_full_pipeline_graph():
     graph.add_edge("Parse Documents", "Check if Union Job")
     graph.add_edge("Parse Documents", "PHI Agreement Check")
     graph.add_edge("Parse Documents", "LLM PC Classifier")
+    graph.add_edge("Parse Documents", "Data Security Classification")
 
     graph.add_conditional_edges("Check PO Exists", lambda s: s["po_check"], {
         "Yes": "Validate PO data",
@@ -50,5 +53,6 @@ def build_full_pipeline_graph():
     graph.add_edge("Check if Union Job", END)
     graph.add_edge("PHI Agreement Check", END)
     graph.add_edge("LLM PC Classifier", END)
+    graph.add_edge("Data Security Classification", END)
 
     return graph.compile()

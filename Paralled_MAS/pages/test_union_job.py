@@ -10,7 +10,7 @@ st.set_page_config(page_title="🧪 Union Job Classifier", layout="centered")
 st.title("🧪 Union Job Classifier (Isolated Test)")
 
 uploaded_files = st.file_uploader(
-    "Upload one or more PDF files", type=["pdf", "png", "jpg", "jpeg", "docx", "txt", "xlsx"], accept_multiple_files=True)
+    "Upload one or more PDF files", type=["pdf"], accept_multiple_files=True)
 
 # ---- ENTRY POINT ----
 if uploaded_files and st.button("Run Union Job Classifier"):

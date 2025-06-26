@@ -1,4 +1,4 @@
-Human: You are a document classification specialist for the University of California. Your task is to analyze the provided procurement documents (PO, SOW, Invoice, etc.) to determine if any service described requires security classification.
+Human: You are a document classification specialist for the University of California. Your task is to analyze the provided procurement documents (PO, SOW, Invoice, etc.) to determine the protection level needed for a service.
 
 Assistant:
 - Extract and quote all specific information from the documents that describes:
@@ -6,12 +6,14 @@ Assistant:
   * What university data the service provider might access
   * How the service interacts with university systems
   * Any data handling, processing, storage, or transmission aspects
+  * Specifically what information was exchanged to the party doing the service
   * **Do not include any information not related to the service description**
 
-Use these guidelines to determine if a service should be flagged:
-- Flag if the service includes **data access, system access, or technical services** that could affect university IT security
-- Examples of flaggable language include: "remote support," "hosted service," "data transfer," "maintenance on university systems," etc.
-- Information whose unauthorized disclosure could result in fines, penalties, impact to UC stakeholders, or privacy violations should be flagged
+Use these guidelines to determine which of the 4 protection levels a service falls under:
+P4 - (High risk of security breach)	Institutional Information and related IT Resources whose unauthorized disclosure or modification could result in significant fines, penalties, regulatory action, or civil or criminal violations. Statutory, regulatory and contract obligations are major drivers for this risk level. Other drivers include, but are not limited to, the risk of significant harm or impairment to UC students, patients, research subjects, employees, guests/program participants, UC reputation, the overall operation of the Location or essential services. (Statutory.)
+P3 - (Moderate risk of security breach)	Institutional Information and related IT Resources whose unauthorized disclosure or modification could result in small to moderate fines, penalties or civil actions. Institutional Information of which unauthorized use, access, disclosure, acquisition, modification, loss or deletion could result in moderate damage to UC, its students, patients, research subjects, employees, community and/or reputation; could have a moderate impact on the privacy of a group; could result in moderate financial loss; or could require legal action. This classification level also includes lower risk items that, when combined, represent increased risk. (Proprietary.)
+P2 - (Low risk of security breach)	Institutional Information and related IT Resources that may not be specifically protected by statute, regulations or other contractual obligations or mandates, but are generally not intended for public use or access. In addition, information of which unauthorized use, access, disclosure, acquisition, modification or loss could result in minor damage or small financial loss, or cause minor impact on the privacy of an individual or group. (Internal.)
+P1 - (Minimal risk of security breach) Public information or information intended to be readily obtainable by the public, but whose integrity is important and for which unauthorized modification is the primary protection concern. IT Resources for which the application of minimum security requirements is sufficient. (Public.)
 
 Important:
 - You **may** make reasonable inferences from the text (e.g., “remote technical support” implies system access). **List all inferences under an 'inferences' section**
@@ -19,15 +21,19 @@ Important:
 - If a document lacks details, say so clearly under "information_gaps"
 - If the text does not explicitly mention data transfer to third parties, write “Not Mentioned” (do not guess)
 
+Note: Be careful when classifying information. Over-classification may result in additional cost and
+compliance requirements, while under-classification may result in inadequate protections that could
+lead to data breaches.
+
 Please format your response as follows:
 
 ```json
 {
   "document service description": "Explain the nature of the service and summarize the information in your own words",
-  "flagged": "Yes/No",
-  "reasoning": "Provide reasoning as to why or why not this information should be flagged",
+  "llm_protection_level": "P1/P2/P3/P4",
+  "information_exchanged": "From the service description, infer what information is being provided to the party doing the service",
   "all_extracted_service_information": [
-    "Direct quote 1 from any part of the PO/SOW/Invoice describing service aspects",
+    "Direct quote 1 from any part of the PO/SOW/Invoice/other that led you to your classification",
     "Direct quote 2..."
   ],
   "inferences": [
@@ -36,3 +42,6 @@ Please format your response as follows:
   ],
   "information_gaps": "List any missing information that would help with classification"
 }
+
+Parsed documents:
+{parsed_data}

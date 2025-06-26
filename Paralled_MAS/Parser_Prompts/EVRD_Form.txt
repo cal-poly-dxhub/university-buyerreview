@@ -1,0 +1,3 @@
+Extract the following key information from the invoice or quotes document:
+Name of UC Employee
+Description the goods and/or services

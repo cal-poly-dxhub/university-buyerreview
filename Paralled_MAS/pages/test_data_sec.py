@@ -16,7 +16,7 @@ if uploaded_files and st.button("Run"):
         state: PipelineState = {"uploaded_files": uploaded_files}
         output = asyncio.run(graph.ainvoke(state))
 
-    st.subheader("📝 Union Job Output")
-    st.json(output.get("run_data_sec_classification"))
+    st.subheader("📝 Data Security Result")
+    st.json(output)
 
     # Show matched row if available

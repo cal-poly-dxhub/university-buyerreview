@@ -10,7 +10,7 @@ st.title("📄 Document Parser with Checklist + PO Validation")
 st.subheader("📂 Upload Documents")
 uploaded_files = st.file_uploader(
     "Upload one or more PDF files",
-    type="pdf",
+    type=["pdf", "png", "jpg", "jpeg", "docx", "txt", "xlsx"],
     accept_multiple_files=True
 )
 

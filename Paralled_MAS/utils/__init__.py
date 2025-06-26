@@ -4,8 +4,8 @@ from .file_format_utils import try_parse_json_like, clean_file_name, sanitize_do
 # Bedrock interaction helpers
 from .bedrock_utils import (
     create_doc_messages,
-    query_bedrock_with_multiple_pdfs,
-    query_bedrock_with_multiple_pdfs_with_tools,
+    query_bedrock_with_multiple_files,
+    query_bedrock_with_multiple_files_with_tools,
     handle_bedrock_tool_use,
     build_pdf_based_message,
 )

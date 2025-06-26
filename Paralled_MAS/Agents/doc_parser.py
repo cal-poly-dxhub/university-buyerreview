@@ -1,6 +1,6 @@
 import asyncio
 from tools import build_general_doc_prompt_from_file
-from utils import try_parse_json_like, query_bedrock_with_multiple_pdfs_with_tools
+from utils import try_parse_json_like, query_bedrock_with_multiple_files_with_tools
 from model_registry import ModelRegistry
 from tools import get_tool_config
 from state import PipelineState
@@ -11,7 +11,7 @@ from state import PipelineState
 def route_and_parse_document(file, prompt_path="Task_Prompts/Parser.txt"):
     prompt = build_general_doc_prompt_from_file(prompt_path)
 
-    response = query_bedrock_with_multiple_pdfs_with_tools(
+    response = query_bedrock_with_multiple_files_with_tools(
         prompt=prompt,
         files=[file],
         model_id=ModelRegistry.sonnet_3_7,
@@ -47,6 +47,7 @@ async def parse_documents_parallel(files):
     tasks = [async_parse_document(file) for file in files]
     results = await asyncio.gather(*tasks)
     return dict(zip([file.name for file in files], results))
+
 
 async def parse_documents_node(state: PipelineState) -> PipelineState:
     parsed = await parse_documents_parallel(state["uploaded_files"])

@@ -1,5 +1,5 @@
 import json
-from utils import query_bedrock_with_multiple_pdfs_with_tools, try_parse_json_like
+from utils import query_bedrock_with_multiple_files_with_tools, try_parse_json_like
 from utils.union_job_utils import load_union_job_data, CSV_PATH, TITLE_COLUMN
 from prompt_loader import TASK_PROMPT_REGISTRY
 from model_registry import ModelRegistry
@@ -36,7 +36,7 @@ def union_job_check(state: PipelineState) -> PipelineState:
             .replace("{union_job_list}", union_list_str)
         )
 
-        response = query_bedrock_with_multiple_pdfs_with_tools(
+        response = query_bedrock_with_multiple_files_with_tools(
             prompt=prompt,
             files=[],
             model_id=ModelRegistry.haiku_3_5,
@@ -62,7 +62,8 @@ def union_job_check(state: PipelineState) -> PipelineState:
         matched_row = None
 
         if matched_title and not match_df.empty:
-            records = match_df.drop(columns=["__normalized_title__"], errors="ignore").to_dict(orient="records")
+            records = match_df.drop(
+                columns=["__normalized_title__"], errors="ignore").to_dict(orient="records")
             matched_row = records[0] if records else None
         elif matched_title:
             matched_row = {

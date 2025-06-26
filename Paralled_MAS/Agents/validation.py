@@ -1,4 +1,4 @@
-from utils import query_bedrock_with_multiple_pdfs, try_parse_json_like
+from utils import query_bedrock_with_multiple_files, try_parse_json_like
 from prompt_loader import TASK_PROMPT_REGISTRY
 from model_registry import ModelRegistry
 import json
@@ -21,7 +21,7 @@ def validate_data(state: PipelineState) -> PipelineState:
         prompt = TASK_PROMPT_REGISTRY.get(
             "DATA_VALIDATION", "").replace("{doc_text}", doc_text)
 
-        response = query_bedrock_with_multiple_pdfs(
+        response = query_bedrock_with_multiple_files(
             prompt=prompt,
             files=[],
             model_id=ModelRegistry.sonnet_3_5

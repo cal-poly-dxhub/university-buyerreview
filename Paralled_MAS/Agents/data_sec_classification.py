@@ -1,4 +1,4 @@
-from utils import query_bedrock_with_multiple_pdfs, try_parse_json_like
+from utils import query_bedrock_with_multiple_files, try_parse_json_like
 from prompt_loader import TASK_PROMPT_REGISTRY
 from model_registry import ModelRegistry
 from utils import create_doc_messages

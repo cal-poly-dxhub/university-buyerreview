@@ -11,3 +11,4 @@ class PipelineState(TypedDict, total=False):
     po_check: str
     phi_agreement: Any
     pc_mapping: Any
+    data_security: Any

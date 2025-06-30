@@ -81,19 +81,3 @@ def compress_file_if_needed(file, filename: str) -> io.BytesIO:
     file.seek(0)
     return file
 
-if __name__ == "__main__":
-    import io
-
-    # Open the original image from disk
-    with open("Pizigani_1367_Chart_10MB.jpg", "rb") as f:
-        original = io.BytesIO(f.read())
-
-    # Compress it using your function
-    compressed = compress_image(original, target_quality=75, resize_factor=0.5)
-
-    # Save the result to disk for inspection
-    with open("compressed_chart.jpg", "wb") as out:
-        out.write(compressed.getbuffer())
-
-    print("✅ Compression complete. Saved as compressed_chart.jpg")
-

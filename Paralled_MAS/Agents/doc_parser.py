@@ -12,6 +12,7 @@ from tools import get_tool_config
 from state import PipelineState
 
 
+
 # --- Synchronous single document processor ---
 def route_and_parse_document(file, prompt_path="Task_Prompts/Parser.txt"):
     prompt = build_general_doc_prompt_from_file(prompt_path)
@@ -19,7 +20,7 @@ def route_and_parse_document(file, prompt_path="Task_Prompts/Parser.txt"):
     response = query_bedrock_with_multiple_files_with_tools(
         prompt=prompt,
         files=[file],
-        model_id=ModelRegistry.sonnet_3_7,
+        model_id=ModelRegistry.sonnet_3,
         tool_config=get_tool_config([
             "get_prompt_for_doc_type",
             "summarize_document"
@@ -27,7 +28,6 @@ def route_and_parse_document(file, prompt_path="Task_Prompts/Parser.txt"):
     )
 
     parsed = try_parse_json_like(response)
-
     if parsed:
         return {
             "result": parsed

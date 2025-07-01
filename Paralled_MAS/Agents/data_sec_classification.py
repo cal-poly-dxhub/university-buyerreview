@@ -19,7 +19,7 @@ def goods_services_classification(parsed_data) -> str:
     print(messages)
 
     response = bedrock.converse(
-        modelId=ModelRegistry.sonnet_3_5,
+        modelId=ModelRegistry.sonnet_3_7,
         messages=messages,
         inferenceConfig={
             "temperature": 0
@@ -64,7 +64,7 @@ async def run_data_sec_classification(state: PipelineState) -> PipelineState:
     print(messages)
 
     response = bedrock.converse(
-        modelId=ModelRegistry.sonnet_3_5,
+        modelId=ModelRegistry.sonnet_3_7,
         messages=messages,
         inferenceConfig={
             "temperature": 0

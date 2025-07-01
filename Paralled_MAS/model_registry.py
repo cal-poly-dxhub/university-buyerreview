@@ -1,10 +1,16 @@
 class ModelRegistry:
     # Claude 3.7
-    sonnet_3_7 = "anthropic.claude-3-sonnet-20240229-v1:0"
+    sonnet_3_7 = "us.anthropic.claude-3-7-sonnet-20250219-v1:0"
+    sonnet_4 = "us.anthropic.claude-sonnet-4-20250514-v1:0"
+    opus_4 = "us.anthropic.claude-opus-4-20250514-v1:0"
+
+    sonnet_3 = "anthropic.claude-3-sonnet-20240229-v1:0"
 
     # Claude 3.5
     sonnet_3_5 = "anthropic.claude-3-5-sonnet-20240620-v1:0"
     haiku_3_5 = "anthropic.claude-3-5-haiku-20241022-v1:0"
+
+    opus_3 = "us.anthropic.claude-3-opus-20240229-v1:0"
 
     # Mistral
     mistral_7b = "mistral.mistral-7b-instruct-v0:2"

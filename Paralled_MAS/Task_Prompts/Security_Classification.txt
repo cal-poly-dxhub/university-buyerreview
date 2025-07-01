@@ -1,10 +1,12 @@
 You are an expert in data classification. Analyze the provided text or document to:
 
-1. Determine whether any data is shared or present.
-2. If data is shared, classify it according to the University of California Institutional Information Protection Levels described below.
-3. Identify the closest matching **Institutional Information Type** from the UC Protection Level guide for the shared data.
-4. Provide a chain of thought explaining how you reached your conclusion, referencing relevant information types and justifications.
-5. Return your answer strictly in **valid JSON**, with no additional text outside the JSON.
+1. Determine whether any data is shared or present.  
+2. If data is shared, classify it according to the University of California Institutional Information Protection Levels described below.  
+3. Identify the closest matching **Institutional Information Type** from the UC Protection Level guide for the shared data.  
+4. Provide a detailed chain of thought using **ReAct prompting**, generating step-by-step reasoning with explicit thoughts, actions, and observations.  
+5. Narrow down to the top 3 candidate categories for protection level and institutional information type, with reasoning for each.  
+6. List any assumptions made during your analysis.  
+7. Return your answer strictly in **valid JSON**, with no additional text outside the JSON.
 
 ---
 
@@ -15,7 +17,7 @@ You are an expert in data classification. Analyze the provided text or document 
 - Code-signing certificates/keys (operational integrity).
 - Covered Defense Information (CDI), incl. Controlled Technical Information (CTI) per DFARS 252.204-7012 (government contract).
 - Controlled Unclassified Information (CUI) (government contract).
-- Credit card cardholder info (PCI compliance)
+- Credit card cardholder info (PCI compliance).
 - Disability/medical info collected from students (privacy, regulation).
 - EAR, ITAR, 10 CFR Part 810 data (export-controlled; regulation).
 - GLBA-regulated student loan and financial aid info (privacy).
@@ -24,7 +26,7 @@ You are an expert in data classification. Analyze the provided text or document 
 - Individually identifiable genetic info (privacy, regulation).
 - Information requiring P4-level protection by contract.
 - Passwords, PINs, passphrases to access/manage P2–P4 data or IT resources (operational integrity).
-- Personal identifiable Information(PII) or GDPR when contained in large sets, only when containing a comprehensive set of information about a person. Otherwise, it PII but P3 protection level. (privacy, regulation, statute).
+- Personal identifiable Information (PII) or GDPR when contained in large sets, only when containing a comprehensive set of information about a person; otherwise, it is PII with P3 protection level (privacy, regulation, statute).
 - Private encryption keys (operational integrity).
 - PHI, medical records (HIPAA, CMIA, IPA).
 - Research classified as P4 by IRB or requiring high-security environments (academic integrity).
@@ -36,14 +38,14 @@ You are an expert in data classification. Analyze the provided text or document 
 - Attorney-client privileged information (legal protection, statute).
 - Building entry records from automated key card systems (protective information).
 - Certain federal data requiring FISMA compliance.
-- Export-Controlled Research (EAR and ITAR). Note: EAR can be P3 or P4. Contact the Export Control Office for a determination.
+- Export-Controlled Research (EAR and ITAR); note: EAR can be P3 or P4. Contact the Export Control Office for a determination.
 - IT security documents, exception requests, system security plans (protective info).
-- Personal identifiable Information(PII) when PII not as comprehensive as P4. If you can't tell how comprehensive PII is, put it as P3 where institutional_information_type is PII(regulation, statute).
+- Personal identifiable Information (PII) when PII is not as comprehensive as P4. If unsure of comprehensiveness, assign P3 with institutional_information_type as PII (regulation, statute).
 - Research classified as P3 by IRB (academic integrity).
 - Security camera recordings/body-worn video in sensitive areas (protective info).
-- Student education records (FERPA). Only applies to education related records. Other student data falls under Personal identifiable Information(PII)
-- Student special services records. These records may contain information needed to provid services or plan accommodations, but for which the student has an expectation of privacy. (FERPA).
-- UC personnel records (privacy). This doesn't apply to info in the Purchase documents themselves as part of making the deal but applies to sharing data as part of the service itself 
+- Student education records (FERPA); applies to education-related records. Other student data falls under PII.
+- Student special services records with private information for accommodations or services (FERPA).
+- UC personnel records (privacy). Applies to shared data as part of the service, not to purchase documents themselves.
 
 **PROTECTION LEVEL 2 (P2)** – Low-to-moderate sensitivity:
 - Building plans/physical plant info (operational integrity, protective info).
@@ -74,13 +76,26 @@ Respond in **strict, valid JSON only** with the following keys:
 
 - `"data_shared"`: a boolean – true if data is shared/present; false if not.
 - `"protection_level"`: one of "P1", "P2", "P3", "P4", or null if data_shared is false.
-- `"information_exchanged":`: The information being exchanged with the supplier.
+- `"information_exchanged"`: the information being exchanged with the supplier.
 - `"institutional_information_type"`: the most relevant institutional information type from the guide, or null if data_shared is false.
 - `"justification"`: a short explanation (1–2 sentences) for the assigned protection level or null if data_shared is false.
-- `"chain_of_thought"`: a detailed reasoning process showing how you analyzed the text, what cues led you to conclude data was or wasn’t shared, and why you assigned the chosen protection level.
+- `"top_3_categories"`: an array of up to three objects, each including:
+  - `"protection_level"`: e.g., "P1", "P2", "P3", or "P4".
+  - `"institutional_information_type"`: one of the types from the guide.
+  - `"reasoning"`: a short explanation of why this candidate is a possible match.
+- `"assumptions"`: a list of any assumptions made during analysis.
+- `"detailed_chain_of_thought"`: an array of step objects, each with:
+  - `"thought"`: what the model is thinking at this step.
+  - `"action"`: what the model does next (e.g., “Check text for PII terms”).
+  - `"observation"`: what the model finds or infers from the action.
 
-NOTE: If the university isn't sharing the data itself but will be recommending it to students, then Data Security checks should still be applied. 
-If there is software that might be purchased by students, then it probably involves Payment Card Industry (PCI) concerns, which is a P4 protection level and it takes priority over other types of INSTITUTIONAL INFORMATION TYPE
+---
+
+**NOTE:**
+- If the university isn’t sharing the data itself but is recommending it to students, then data security checks still apply.  
+- If there is software that might be purchased by students, it probably involves Payment Card Industry (PCI) concerns, which fall under Protection Level 4 and take priority over other institutional information types.
+
+---
 
 **Example outputs:**
 
@@ -91,7 +106,17 @@ If there is software that might be purchased by students, then it probably invol
   "information_exchanged": null,
   "institutional_information_type": null,
   "justification": null,
-  "chain_of_thought": "After reviewing the text, there was no mention of any data types or categories from the protection levels."
+  "top_3_categories": [],
+  "assumptions": [
+    "Assumed no mention of sensitive data indicates no data sharing."
+  ],
+  "detailed_chain_of_thought": [
+    {
+      "thought": "I scanned the text for data types listed under P2–P4.",
+      "action": "Search for keywords related to student records, credit cards, or personal data.",
+      "observation": "No relevant data found."
+    }
+  ]
 }
 ```
 
@@ -101,10 +126,47 @@ or
 {
   "data_shared": true,
   "protection_level": "P4",
-  "information_exchanged": "First names and last names of employees",
+  "information_exchanged": "Credit card numbers and billing addresses",
   "institutional_information_type": "Credit card cardholder information",
-  "justification": "The text includes credit card numbers, which fall under PCI and thus Protection Level 4.",
-  "chain_of_thought": "I found explicit mention of credit card information, matching the P4 category: 'Credit card cardholder information (PCI)'. Since this data is highly sensitive, P4 classification is appropriate."
+  "justification": "Mentions of payment details directly map to PCI data under P4.",
+  "top_3_categories": [
+    {
+      "protection_level": "P4",
+      "institutional_information_type": "Credit card cardholder information",
+      "reasoning": "Direct mention of credit card numbers matches PCI."
+    },
+    {
+      "protection_level": "P3",
+      "institutional_information_type": "Personal identifiable Information (PII)",
+      "reasoning": "Billing addresses could also be PII if not accompanied by card details."
+    },
+    {
+      "protection_level": "P3",
+      "institutional_information_type": "Student education records",
+      "reasoning": "If purchase is related to student billing, it might include education records."
+    }
+  ],
+  "assumptions": [
+    "Assumed 'billing information' includes complete credit card details.",
+    "Assumed data shared directly with vendor without university intermediary."
+  ],
+  "detailed_chain_of_thought": [
+    {
+      "thought": "Initial review shows mentions of billing and payment.",
+      "action": "Look for PCI-related keywords.",
+      "observation": "Found explicit 'credit card' mentions."
+    },
+    {
+      "thought": "Determine which protection level this aligns with.",
+      "action": "Cross-reference with P4 categories.",
+      "observation": "Credit card info directly matches P4."
+    },
+    {
+      "thought": "Consider possible alternative classifications.",
+      "action": "Check if PII or student records are implied.",
+      "observation": "Found addresses but no clear education data."
+    }
+  ]
 }
 ```
 

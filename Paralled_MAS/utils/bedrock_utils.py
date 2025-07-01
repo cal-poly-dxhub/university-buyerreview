@@ -57,13 +57,15 @@ def create_doc_messages(prompt, files):
     return [{"role": "user", "content": content}]
 
 
-def query_bedrock_with_multiple_files(prompt, files, model_id=ModelRegistry.sonnet_3_7):
+def query_bedrock_with_multiple_files(prompt, files, model_id=ModelRegistry.sonnet_4):
     messages = create_doc_messages(prompt, files)
     response = bedrock.converse(
         modelId=model_id,
         messages=messages,
         inferenceConfig={
-            "temperature": 0
+            "temperature": 0,
+            "top_p": 0,
+            "top_k": 1
         }
     )
     content = response['output']['message']['content']
@@ -80,7 +82,6 @@ def query_bedrock_with_multiple_files_with_tools(prompt, files, model_id, tool_c
         inferenceConfig={"temperature": 0},
         toolConfig=tool_config,
     )
-
     bedrock_message = response["output"]["message"]
     messages.append(bedrock_message)
 

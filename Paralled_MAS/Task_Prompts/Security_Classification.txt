@@ -1,47 +1,112 @@
-Human: You are a document classification specialist for the University of California. Your task is to analyze the provided procurement documents (PO, SOW, Invoice, etc.) to determine the protection level needed for a service.
+You are an expert in data classification. Analyze the provided text or document to:
 
-Assistant:
-- Extract and quote all specific information from the documents that describes:
-  * The exact nature of the service
-  * What university data the service provider might access
-  * How the service interacts with university systems
-  * Any data handling, processing, storage, or transmission aspects
-  * Specifically what information was exchanged to the party doing the service
-  * **Do not include any information not related to the service description**
+1. Determine whether any data is shared or present.
+2. If data is shared, classify it according to the University of California Institutional Information Protection Levels described below.
+3. Identify the closest matching **Institutional Information Type** from the UC Protection Level guide for the shared data.
+4. Provide a chain of thought explaining how you reached your conclusion, referencing relevant information types and justifications.
+5. Return your answer strictly in **valid JSON**, with no additional text outside the JSON.
 
-Use these guidelines to determine which of the 4 protection levels a service falls under:
-P4 - (High risk of security breach)	Institutional Information and related IT Resources whose unauthorized disclosure or modification could result in significant fines, penalties, regulatory action, or civil or criminal violations. Statutory, regulatory and contract obligations are major drivers for this risk level. Other drivers include, but are not limited to, the risk of significant harm or impairment to UC students, patients, research subjects, employees, guests/program participants, UC reputation, the overall operation of the Location or essential services. (Statutory.)
-P3 - (Moderate risk of security breach)	Institutional Information and related IT Resources whose unauthorized disclosure or modification could result in small to moderate fines, penalties or civil actions. Institutional Information of which unauthorized use, access, disclosure, acquisition, modification, loss or deletion could result in moderate damage to UC, its students, patients, research subjects, employees, community and/or reputation; could have a moderate impact on the privacy of a group; could result in moderate financial loss; or could require legal action. This classification level also includes lower risk items that, when combined, represent increased risk. (Proprietary.)
-P2 - (Low risk of security breach)	Institutional Information and related IT Resources that may not be specifically protected by statute, regulations or other contractual obligations or mandates, but are generally not intended for public use or access. In addition, information of which unauthorized use, access, disclosure, acquisition, modification or loss could result in minor damage or small financial loss, or cause minor impact on the privacy of an individual or group. (Internal.)
-P1 - (Minimal risk of security breach) Public information or information intended to be readily obtainable by the public, but whose integrity is important and for which unauthorized modification is the primary protection concern. IT Resources for which the application of minimum security requirements is sufficient. (Public.)
+---
 
-Important:
-- You **may** make reasonable inferences from the text (e.g., “remote technical support” implies system access). **List all inferences under an 'inferences' section**
-- Do **not** make unsupported assumptions. Only infer if the language is industry-standard.
-- If a document lacks details, say so clearly under "information_gaps"
-- If the text does not explicitly mention data transfer to third parties, write “Not Mentioned” (do not guess)
+**UC Protection Levels:**
 
-Note: Be careful when classifying information. Over-classification may result in additional cost and
-compliance requirements, while under-classification may result in inadequate protections that could
-lead to data breaches.
+**PROTECTION LEVEL 4 (P4)** – Highest risk; data requiring maximum protection:
+- Building access systems (life/safety).
+- Code-signing certificates/keys (operational integrity).
+- Covered Defense Information (CDI), incl. Controlled Technical Information (CTI) per DFARS 252.204-7012 (government contract).
+- Controlled Unclassified Information (CUI) (government contract).
+- Credit card cardholder info (PCI compliance)
+- Disability/medical info collected from students (privacy, regulation).
+- EAR, ITAR, 10 CFR Part 810 data (export-controlled; regulation).
+- GLBA-regulated student loan and financial aid info (privacy).
+- Financial/accounting/payroll records (official records; integrity).
+- Human subject research data with individual identifiers (privacy, regulation).
+- Individually identifiable genetic info (privacy, regulation).
+- Information requiring P4-level protection by contract.
+- Passwords, PINs, passphrases to access/manage P2–P4 data or IT resources (operational integrity).
+- Personal identifiable Information(PII) or GDPR when contained in large sets, only when containing a comprehensive set of information about a person. Otherwise, it PII but P3 protection level. (privacy, regulation, statute).
+- Private encryption keys (operational integrity).
+- PHI, medical records (HIPAA, CMIA, IPA).
+- Research classified as P4 by IRB or requiring high-security environments (academic integrity).
+- Sensitive identifiable research data or research covered by Certificates of Confidentiality or Common Rule (privacy, regulation).
+- Social Security Numbers (regulation, statute).
 
-Please format your response as follows:
+**PROTECTION LEVEL 3 (P3)** – Moderately sensitive data:
+- Animal research protocols (academic integrity, safety).
+- Attorney-client privileged information (legal protection, statute).
+- Building entry records from automated key card systems (protective information).
+- Certain federal data requiring FISMA compliance.
+- Export-Controlled Research (EAR and ITAR). Note: EAR can be P3 or P4. Contact the Export Control Office for a determination.
+- IT security documents, exception requests, system security plans (protective info).
+- Personal identifiable Information(PII) when PII not as comprehensive as P4. If you can't tell how comprehensive PII is, put it as P3 where institutional_information_type is PII(regulation, statute).
+- Research classified as P3 by IRB (academic integrity).
+- Security camera recordings/body-worn video in sensitive areas (protective info).
+- Student education records (FERPA). Only applies to education related records. Other student data falls under Personal identifiable Information(PII)
+- Student special services records. These records may contain information needed to provid services or plan accommodations, but for which the student has an expectation of privacy. (FERPA).
+- UC personnel records (privacy). This doesn't apply to info in the Purchase documents themselves as part of making the deal but applies to sharing data as part of the service itself 
+
+**PROTECTION LEVEL 2 (P2)** – Low-to-moderate sensitivity:
+- Building plans/physical plant info (operational integrity, protective info).
+- Non-sensitive calendar info (no P3/P4 content).
+- De-identified patient info with negligible re-identification risk (academic integrity).
+- Exams (questions/answers) (academic integrity).
+- Meeting notes without P3/P4 info (operational integrity).
+- Patent applications/work papers not under secrecy order (academic/operational integrity).
+- Research using publicly available data (operational integrity).
+- Routine business records/emails without P3/P4 data (operational integrity).
+- UC directory info (if no FERPA block requested) (operational integrity).
+- Unpublished drafts or research not containing P3/P4 info (academic integrity).
+
+**PROTECTION LEVEL 1 (P1)** – Public information:
+- Course catalogs.
+- Hours of operation.
+- Parking regulations.
+- Press releases.
+- Public event calendars.
+- Public-facing websites with unrestricted Institutional Information.
+- Published research.
+
+---
+
+**OUTPUT REQUIREMENTS:**
+
+Respond in **strict, valid JSON only** with the following keys:
+
+- `"data_shared"`: a boolean – true if data is shared/present; false if not.
+- `"protection_level"`: one of "P1", "P2", "P3", "P4", or null if data_shared is false.
+- `"information_exchanged":`: The information being exchanged with the supplier.
+- `"institutional_information_type"`: the most relevant institutional information type from the guide, or null if data_shared is false.
+- `"justification"`: a short explanation (1–2 sentences) for the assigned protection level or null if data_shared is false.
+- `"chain_of_thought"`: a detailed reasoning process showing how you analyzed the text, what cues led you to conclude data was or wasn’t shared, and why you assigned the chosen protection level.
+
+NOTE: If the university isn't sharing the data itself but will be recommending it to students, then Data Security checks should still be applied. 
+If there is software that might be purchased by students, then it probably involves Payment Card Industry (PCI) concerns, which is a P4 protection level and it takes priority over other types of INSTITUTIONAL INFORMATION TYPE
+
+**Example outputs:**
 
 ```json
 {
-  "document service description": "Explain the nature of the service and summarize the information in your own words",
-  "llm_protection_level": "P1/P2/P3/P4",
-  "information_exchanged": "From the service description, infer what information is being provided to the party doing the service",
-  "all_extracted_service_information": [
-    "Direct quote 1 from any part of the PO/SOW/Invoice/other that led you to your classification",
-    "Direct quote 2..."
-  ],
-  "inferences": [
-    "Inference 1 from industry knowledge",
-    "Inference 2 if applicable"
-  ],
-  "information_gaps": "List any missing information that would help with classification"
+  "data_shared": false,
+  "protection_level": null,
+  "information_exchanged": null,
+  "institutional_information_type": null,
+  "justification": null,
+  "chain_of_thought": "After reviewing the text, there was no mention of any data types or categories from the protection levels."
 }
+```
+
+or
+
+```json
+{
+  "data_shared": true,
+  "protection_level": "P4",
+  "information_exchanged": "First names and last names of employees",
+  "institutional_information_type": "Credit card cardholder information",
+  "justification": "The text includes credit card numbers, which fall under PCI and thus Protection Level 4.",
+  "chain_of_thought": "I found explicit mention of credit card information, matching the P4 category: 'Credit card cardholder information (PCI)'. Since this data is highly sensitive, P4 classification is appropriate."
+}
+```
 
 Parsed documents:
 {parsed_data}

@@ -3,8 +3,10 @@ import os
 import tempfile
 import io
 from PIL import Image
+from PyPDF2 import PdfReader, PdfWriter
 
 MAX_CHUNK_SIZE_MB = 4.5
+MAX_PDF_PAGES = 50
 
 
 def get_file_size_mb(file) -> float:
@@ -13,6 +15,25 @@ def get_file_size_mb(file) -> float:
     size = file.tell() / (1024 * 1024)
     file.seek(pos)
     return size
+
+
+def trim_pdf(file: io.BytesIO, max_pages=MAX_PDF_PAGES) -> io.BytesIO:
+    file.seek(0)
+    reader = PdfReader(file)
+    total_pages = len(reader.pages)
+
+    if total_pages <= max_pages:
+        file.seek(0)
+        return file  # No trimming needed
+
+    writer = PdfWriter()
+    for i in range(max_pages):
+        writer.add_page(reader.pages[i])
+
+    trimmed_pdf = io.BytesIO()
+    writer.write(trimmed_pdf)
+    trimmed_pdf.seek(0)
+    return trimmed_pdf
 
 
 def compress_pdf(file: io.BytesIO, quality: str = "screen") -> io.BytesIO:
@@ -39,7 +60,7 @@ def compress_pdf(file: io.BytesIO, quality: str = "screen") -> io.BytesIO:
         except subprocess.CalledProcessError as e:
             print(f"Ghostscript compression failed: {e}")
             file.seek(0)
-            return file  # return original if compression fails
+            return file  # Return original if compression fails
 
         with open(output_path, "rb") as f:
             compressed = io.BytesIO(f.read())
@@ -69,10 +90,17 @@ def compress_file_if_needed(file, filename: str) -> io.BytesIO:
     size_mb = get_file_size_mb(file)
     ext = filename.lower().split(".")[-1]
 
+    if ext == "pdf":
+        # First, trim the PDF if needed
+        file = trim_pdf(file, max_pages=MAX_PDF_PAGES)
+
+    # Check if size still exceeds limit after trimming (or if no trimming was needed)
+    size_mb = get_file_size_mb(file)
     if size_mb <= MAX_CHUNK_SIZE_MB:
         file.seek(0)
         return file
 
+    # Apply compression based on file type
     if ext == "pdf":
         return compress_pdf(file)
     if ext in {"jpg", "jpeg", "png"}:
@@ -80,4 +108,3 @@ def compress_file_if_needed(file, filename: str) -> io.BytesIO:
 
     file.seek(0)
     return file
-

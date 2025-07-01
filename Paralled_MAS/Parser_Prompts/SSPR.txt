@@ -73,3 +73,4 @@ For each required section, indicate:
 
 # YOU HAVE TO INCLUDE Always Required Sections & Additional Required Sections by Funding Type
 ⚠️ **IMPORTANT**: Return only valid JSON. Do NOT include any explanation or notes before or after the JSON. No markdown. No commentary.
+In the end include Information to be exchanged between client and supplier if available

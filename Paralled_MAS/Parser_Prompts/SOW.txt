@@ -11,4 +11,5 @@ Total Cost/Budget (both for current term and total if specified)
 Payment Terms and Schedule
 Project Manager/Lead contacts for both parties
 Location of Services
+Information to be exchanged between client and supplier
 If any information isn't explicitly stated in the document, indicate 'Not specified' for that field. Present the extracted information in a clear, structured format with labeled fields.

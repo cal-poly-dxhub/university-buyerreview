@@ -9,4 +9,5 @@ Vendor Address
 Bill To Information
 Line Item Details (dates, descriptions, quantities, rates, amounts)
 Any reference numbers
+Information to be exchanged between client and supplier if available
 Present the extracted information in an organized format with appropriate sections and clear labels.

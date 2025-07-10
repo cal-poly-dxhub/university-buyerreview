@@ -22,7 +22,7 @@ def goods_services_classification(parsed_data) -> str:
         modelId=ModelRegistry.sonnet_3_7,
         messages=messages,
         inferenceConfig={
-            "temperature": 0
+            "temperature": 0.3
         }
     )
 
@@ -32,8 +32,8 @@ def goods_services_classification(parsed_data) -> str:
         if "text" in block:
             full_text += block["text"]
 
-    print()
-    print(full_text)
+    # print()
+    # print(full_text)
 
     return full_text
 
@@ -49,10 +49,7 @@ async def run_data_sec_classification(state: PipelineState) -> PipelineState:
     try:
         gs_result = goods_services_classification(parsed_data)
         print(gs_result)
-        if gs_result == "goods":
-            return {"goods": 0}
-        if gs_result == "uncertain":
-            return {"uncertain": 0}
+        # Continue to data security classification regardless of goods/services
     except:
         print("error")
 
@@ -67,7 +64,7 @@ async def run_data_sec_classification(state: PipelineState) -> PipelineState:
         modelId=ModelRegistry.sonnet_3_7,
         messages=messages,
         inferenceConfig={
-            "temperature": 0
+            "temperature": 0.5
         }
     )
 
@@ -77,8 +74,8 @@ async def run_data_sec_classification(state: PipelineState) -> PipelineState:
         if "text" in block:
             full_text += block["text"]
 
-    print()
-    print(full_text)
+    # print()
+    # print(full_text)
 
     parsed = try_parse_json_like(full_text)
     if not parsed:

@@ -18,4 +18,17 @@ uploaded_files = st.file_uploader(
 if uploaded_files and st.button("Run Full Pipeline"):
     with st.spinner("Running full document pipeline..."):
         pipeline = build_full_pipeline_graph()
-        asyncio.run(run_json_pipeline_with_stream(uploaded_files, pipeline))
+        final_state = asyncio.run(run_json_pipeline_with_stream(uploaded_files, pipeline))
+
+        pdf_bytes = final_state.get("pdf_summary")
+
+        if pdf_bytes:
+            st.success("✅ Summary PDF generated.")
+            st.download_button(
+                label="📄 Download Summary PDF",
+                data=pdf_bytes,
+                file_name="summary.pdf",
+                mime="application/pdf"
+            )
+        else:
+            st.warning("⚠️ No summary PDF found in pipeline output.")

@@ -11,6 +11,8 @@ def safe_for_json(obj, skip_keys=None):
 
     if isinstance(obj, float) and (obj != obj):  # NaN check
         return None
+    elif isinstance(obj, bytes):
+        return f"[{len(obj)} bytes]"
     elif isinstance(obj, pd.DataFrame):
         return obj.replace({np.nan: None}).to_dict(orient="records")
     elif isinstance(obj, dict):
@@ -69,7 +71,7 @@ async def run_json_pipeline_with_stream(uploaded_files, pipeline):
     st.sidebar.json(cumulative_state)
 
         # Just before download:
-    clean_output = safe_for_json(cumulative_state)
+    clean_output = safe_for_json(cumulative_state, skip_keys={"pdf_summary"})
     json_str = json.dumps(clean_output, indent=2)
 
     st.download_button(

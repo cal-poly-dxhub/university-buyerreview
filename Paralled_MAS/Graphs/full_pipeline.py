@@ -8,6 +8,7 @@ from Agents.union_job_classifier import union_job_check
 from Agents.pc_llm_mapping import pc_llm_mapping
 from Agents.phi_agreement_checker import phi_agreement_checker
 from Agents.data_sec_classification import run_data_sec_classification
+from Agents.summarize import summarize_and_generate_pdf
 from state import PipelineState
 
 
@@ -31,6 +32,7 @@ def build_full_pipeline_graph():
     graph.add_node("PHI Agreement Check", RunnableLambda(phi_agreement_checker))
     graph.add_node("LLM PC Classifier", RunnableLambda(pc_llm_mapping))
     graph.add_node("Data Security Classification", RunnableLambda(run_data_sec_classification))
+    graph.add_node("Generate Summary PDF", RunnableLambda(summarize_and_generate_pdf))
 
     # Entry
     graph.set_entry_point("Parse Documents")
@@ -45,14 +47,18 @@ def build_full_pipeline_graph():
 
     graph.add_conditional_edges("Check PO Exists", lambda s: s["po_check"], {
         "Yes": "Validate PO data",
-        "No": END
+        "No": "Generate Summary PDF"
     })
 
-    graph.add_edge("Checklist", END)
-    graph.add_edge("Validate PO data", END)
-    graph.add_edge("Check if Union Job", END)
-    graph.add_edge("PHI Agreement Check", END)
-    graph.add_edge("LLM PC Classifier", END)
-    graph.add_edge("Data Security Classification", END)
+    graph.add_edge("Checklist", "Generate Summary PDF")
+    graph.add_edge("Validate PO data", "Generate Summary PDF")
+    graph.add_edge("Check if Union Job", "Generate Summary PDF")
+    graph.add_edge("PHI Agreement Check", "Generate Summary PDF")
+    graph.add_edge("LLM PC Classifier", "Generate Summary PDF")
+    graph.add_edge("Data Security Classification", "Generate Summary PDF")
+
+    graph.add_edge("Generate Summary PDF", END)
+
+
 
     return graph.compile()

@@ -64,8 +64,7 @@ def query_bedrock_with_multiple_files(prompt, files, model_id=ModelRegistry.sonn
         messages=messages,
         inferenceConfig={
             "temperature": 0,
-            "top_p": 0,
-            "top_k": 1
+            "topP": 0
         }
     )
     content = response['output']['message']['content']

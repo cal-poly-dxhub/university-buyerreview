@@ -13,10 +13,11 @@ dependencies = [
     "langgraph>=0.4.1",
     "opensearch-py>=3.0.0",
     "pypdf2>=3.0.1",
-    "pyppeteer>=2.0.0",
     "python-dotenv>=1.1.0",
     "streamlit>=1.45.0",
     "watchdog>=6.0.0",
     "pillow>=11.2.1",
     "ghostscript>=0.8.1",
+    "markdown2>=2.5.3",
+    "weasyprint>=65.1",
 ]

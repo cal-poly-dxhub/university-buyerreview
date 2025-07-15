@@ -12,3 +12,4 @@ class PipelineState(TypedDict, total=False):
     phi_agreement: Any
     pc_mapping: Any
     data_security: Any
+    pdf_summary: bytes

@@ -52,100 +52,100 @@ uts a list of checks. This workflow contains many agents:
 
     #### Data Security Classification Agent
     - Classifies documents into security tiers (P1–P4) for data sensitivity.
-+    - Uses LLM reasoning to detect sensitive content in service information
-+    - Returns structured JSON indicating the classification level and reasoning behind it.
-+
-+    #### Purchasing Categories Mapping Agent
-+    - Classifies each purchase order into a purchasing category using an LLM to reason
-+
-+    ### PHI Agreement Check Agent
-+    - Determines if PHI (Protected Health Information) exists in purcahse order documents.
-+    - Scans text for HIPAA-related clauses and required agreement language.
-+
-+    #### Summarization Agent
-+    - Takes all checks from previous agents and generates a summary document that includes all the checks
-+
-+
-+## Deployment Steps
-+
-+### Prerequisites
-+- AWS CDK CLI, Docker (running), Python 3.x, Git, a CDK Bootstrapped environment
-+- AWS credentials configured
-+
-+### Step 1: Clone & Setup
-+```bash
-+git clone https://github.com/cal-poly-dxhub/university-buyerreview.git
-+cd Paralled_MAS
-+python -m venv .venv
-+source .venv/bin/activate
-+pip install -r requirements.txt
-+```
-+
-+### Step 2: Request Bedrock Model Access
-+In AWS Bedrock console → Model access, request access for:
-+- `anthropic.claude-3-5-sonnet-20241022-v2:0`
-+
-+### Step 3: Deploy Infrastructure
-+```bash
-+cd Paralled_MAS/cdk
-+python -m venv .venv
-+source .venv/bin/activate
-+pip install -r requirements.txt
-+cdk deploy
-+```
-+
-+### Step 4: Upload Documents & Run Processing
-+
-+#### Step 1:
-+In the AWS console, upload the purchase order documents to the s3 bucket named (077938161517-us-west-2-dxhub-ub-bkt)
-+Then retrieve the s3 uris from each document
-+
-+#### Step 2:
-+Use the following command to list your REST APIs and find the id of the 'document-processing' API.
-+```bash
-+aws apigateway get-rest-apis
-+```
-+
-+Your invoke URL will be the following
-+```bash
-+https://<restApiId>.execute-api.<region>.amazonaws.com/prod/process
-+```
-+
-+#### Step 3:
-+Then invoke the API with the invoke URL and the s3 uris retrieved earlier
-+```bash
-+curl -X POST https://<restApiId>.execute-api.<region>.amazonaws.com/prod/process \       
-+  -H 'Content-Type: application/json' \
-+  -d '{
-+  "job_id": "1756845945-5374f12e",
-+  "s3_uris": [
-+    <your-s3-uris>
-+  ],
-+  "metadata": {
-+
-+  }
-+}' | jq
-+```
-+
-+#### Step 4:
-+Once the API is invoked, the resulting summary document should be uploaded to the 077938161517-us-west-2-dxhub-results-bkt s3 bucket
-+
-+
-+
-+## Troubleshooting
-+- **Docker access**: `sudo usermod -aG docker $USER && newgrp docker`
-+- **CDK issues**: Check `aws sts get-caller-identity` and run `cdk bootstrap`
-+- **Model access**: Verify in Bedrock console
-+- **Processing fails**: Check Step Function logs in AWS Console
-+- **Chat issues**: Verify API key and endpoint accessibility
-+
-+## Known Issues
-+- Quick PoC with no intent verification or error checking
-+
-+## Support
-+For queries or issues:
-+- Darren Kraker, Sr Solutions Architect - dkraker@amazon.com
-+- Macej # ADD
-+- Adarsh Murugesan, Software Development Engineer Intern- admuruge@calpoly.edu
-+- Belal Eshenty, Software Development Engineer Intern- kmalunjk@calpoly.edu
-+- Noor Dh, Software Development Engineer Intern- kmalunjk@calpoly.edu
+    - Uses LLM reasoning to detect sensitive content in service information
+    - Returns structured JSON indicating the classification level and reasoning behind it.
+
+    #### Purchasing Categories Mapping Agent
+    - Classifies each purchase order into a purchasing category using an LLM to reason
+
+    ### PHI Agreement Check Agent
+    - Determines if PHI (Protected Health Information) exists in purcahse order documents.
+    - Scans text for HIPAA-related clauses and required agreement language.
+
+    #### Summarization Agent
+    - Takes all checks from previous agents and generates a summary document that includes all the checks
+
+
+## Deployment Steps
+
+### Prerequisites
+- AWS CDK CLI, Docker (running), Python 3.x, Git, a CDK Bootstrapped environment
+- AWS credentials configured
+
+### Step 1: Clone & Setup
+```bash
+git clone https://github.com/cal-poly-dxhub/university-buyerreview.git
+cd Paralled_MAS
+python -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+```
+
+### Step 2: Request Bedrock Model Access
+In AWS Bedrock console → Model access, request access for:
+- `anthropic.claude-3-5-sonnet-20241022-v2:0`
+
+### Step 3: Deploy Infrastructure
+```bash
+cd Paralled_MAS/cdk
+python -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+cdk deploy
+```
+
+### Step 4: Upload Documents & Run Processing
+
+#### Step 1:
+In the AWS console, upload the purchase order documents to the s3 bucket named 077938161517-us-west-2-dxhub-ub-bkt)
+Then retrieve the s3 uris from each document
+
+#### Step 2:
+Use the following command to list your REST APIs and find the id of the 'document-processing' API.
+```bash
+aws apigateway get-rest-apis
+```
+
+Your invoke URL will be the following
+```bash
+https://<restApiId>.execute-api.<region>.amazonaws.com/prod/process
+```
+
+#### Step 3:
+Then invoke the API with the invoke URL and the s3 uris retrieved earlier
+```bash
+curl -X POST https://<restApiId>.execute-api.<region>.amazonaws.com/prod/process \       
+  -H 'Content-Type: application/json' \
+  -d '{
+  "job_id": "1756845945-5374f12e",
+  "s3_uris": [
+    <your-s3-uris>
+  ],
+  "metadata": {
+
+  }
+}' | jq
+```
+
+#### Step 4:
+Once the API is invoked, the resulting summary document should be uploaded to the 077938161517-us-west-2-dxhub-results-bkt s3 bucket
+
+
+
+## Troubleshooting
+- **Docker access**: `sudo usermod -aG docker $USER && newgrp docker`
+- **CDK issues**: Check `aws sts get-caller-identity` and run `cdk bootstrap`
+- **Model access**: Verify in Bedrock console
+- **Processing fails**: Check Step Function logs in AWS Console
+- **Chat issues**: Verify API key and endpoint accessibility
+
+## Known Issues
+- Quick PoC with no intent verification or error checking
+
+## Support
+For queries or issues:
+- Darren Kraker, Sr Solutions Architect - dkraker@amazon.com
+- Maciej Zukowski, Software Development Engineer - zukomaci@amazon.com
+- Adarsh Murugesan, Software Development Engineer Intern - admuruge@calpoly.edu
+- Belal Elshenety, Software Development Engineer Intern - belshene@calpoly.edu
+- Noor Dhaliwal, Software Development Engineer Intern - rdhali07@calpoly.edu

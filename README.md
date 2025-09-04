@@ -25,8 +25,7 @@ Thanks for your interest in our solution.  Having specific examples of replicati
 
 (b) represents current AWS product offerings and practices, which are subject to change without notice, and
 
-(c) does not create any commitments or assurances from AWS and its affiliates, suppliers or licensors. AWS products or services are provided “as is” wi
-thout warranties, representations, or conditions of any kind, whether express or implied. The responsibilities and liabilities of AWS to its customers a
+(c) does not create any commitments or assurances from AWS and its affiliates, suppliers or licensors. AWS products or services are provided “as is” without warranties, representations, or conditions of any kind, whether express or implied. The responsibilities and liabilities of AWS to its customers a
 re controlled by AWS agreements, and this document is not part of, nor does it modify, any agreement between AWS and its customers.
 
 (d) is not to be considered a recommendation or viewpoint of AWS
@@ -58,7 +57,7 @@ uts a list of checks. This workflow contains many agents:
     #### Purchasing Categories Mapping Agent
     - Classifies each purchase order into a purchasing category using an LLM to reason
 
-    ### PHI Agreement Check Agent
+    #### PHI Agreement Check Agent
     - Determines if PHI (Protected Health Information) exists in purcahse order documents.
     - Scans text for HIPAA-related clauses and required agreement language.
 
@@ -75,10 +74,7 @@ uts a list of checks. This workflow contains many agents:
 ### Step 1: Clone & Setup
 ```bash
 git clone https://github.com/cal-poly-dxhub/university-buyerreview.git
-cd Paralled_MAS
-python -m venv .venv
-source .venv/bin/activate
-pip install -r requirements.txt
+cd university-buyerreview
 ```
 
 ### Step 2: Request Bedrock Model Access
@@ -87,7 +83,7 @@ In AWS Bedrock console → Model access, request access for:
 
 ### Step 3: Deploy Infrastructure
 ```bash
-cd Paralled_MAS/cdk
+cd university-buyerreview/cdk
 python -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
@@ -114,21 +110,18 @@ https://<restApiId>.execute-api.<region>.amazonaws.com/prod/process
 #### Step 3:
 Then invoke the API with the invoke URL and the s3 uris retrieved earlier
 ```bash
-curl -X POST https://<restApiId>.execute-api.<region>.amazonaws.com/prod/process \       
-  -H 'Content-Type: application/json' \
+curl -X POST \
+  "https://<restApiId>.execute-api.<region>.amazonaws.com/prod/process" \
+  -H "Content-Type: application/json" \
   -d '{
-  "job_id": "1756845945-5374f12e",
-  "s3_uris": [
-    <your-s3-uris>
-  ],
-  "metadata": {
-
-  }
-}' | jq
+    "job_id": "1756845945-5374f12e",
+    "s3_uris": [<your-s3-uris>],
+    "metadata": {}
+  }'
 ```
 
 #### Step 4:
-Once the API is invoked, the resulting summary document should be uploaded to the 077938161517-us-west-2-dxhub-results-bkt s3 bucket
+Once the API is invoked, the resulting summary document should be uploaded to the 077938161517-us-west-2-dxhub-results-bkt s3 bucket once the workflow is ran through. It should take 3-4 minutes.
 
 
 

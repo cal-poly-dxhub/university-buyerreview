@@ -169,7 +169,7 @@ class DocumentProcessingStack(Stack):
         asset = ecr_assets.DockerImageAsset(
             self,
             "LocalDockerImage",
-            directory="../lambda/po-workflow",  # folder with your Dockerfile and code
+            directory="../src/lambda/po-workflow",  # folder with your Dockerfile and code
         )
 
         push = ecrdeploy.ECRDeployment(
@@ -223,7 +223,7 @@ class DocumentProcessingStack(Stack):
             self, "JobIngestLambda",
             function_name="po-workflow-ingest",
             runtime=_lambda.Runtime.PYTHON_3_12,
-            code=_lambda.Code.from_asset("../lambda/ingest-lambda"),  # folder with app.py below
+            code=_lambda.Code.from_asset("../src/lambda/ingest-lambda"),  # folder with app.py below
             handler="app.handler",
             role=ingest_role,
             timeout=Duration.seconds(10),

@@ -1,0 +1,75 @@
+# Git and version control
+.git
+.gitignore
+.gitattributes
+
+# Python cache and virtual environments
+__pycache__
+*.pyc
+*.pyo
+*.pyd
+.Python
+.venv
+venv/
+env/
+ENV/
+
+# IDE and editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Jupyter notebook checkpoints
+.ipynb_checkpoints/
+
+# Logs
+*.log
+logs/
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+
+# Documentation and images (optional - remove if you need them)
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.svg
+*.ico
+
+# Test files (optional - remove if you need them)
+test_*
+*_test.py
+
+# Development files
+README.md
+*.md
+.env
+.env.local
+.env.*.local
+
+# Large data files (optional - remove if you need them)
+*.csv
+*.jsonl
+*.parquet
+*.h5
+*.hdf5
+
+# Archive files
+*.zip
+*.tar.gz
+*.rar
+*.7z 

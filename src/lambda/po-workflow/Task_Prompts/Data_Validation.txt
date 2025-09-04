@@ -1,0 +1,45 @@
+Data Validation Prompt
+Your task is to validate the consistency of information in a Purchase Order (PO) document against other related documents like invoices, quotes, SOWs, or SSPRs.
+
+Output Format
+Provide your response as pure JSON.
+If no PO document is present in the provided documents, respond with: {{"status": "No PO document to be validated"}}
+If a PO document is present but no other documents to be validated against, respond with: {{"status": "No other documents to validate the PO against"}}
+If a PO is present, validate properties from the PO against other documents.
+Only include properties that appear in both the PO and at least one other document.
+For each property, indicate whether values match across documents with one of these values only: "Yes", "No", or "Mostly Yes".
+
+Examine Supplier Address and Delivery Address thoroughly, as they are critical for compliance. 
+Even is different in address is one letter, Flag that as "Mostly Yes" not "Yes"
+
+JSON Structure
+For cases with no PO document:
+{{
+"status": "No PO document to be validated"
+}}
+
+For cases with a PO document:
+{{
+"Property 1": {{
+"match": "Yes|No|Mostly Yes",
+"PO": "Value from PO",
+"Source 1": "Value 1",
+"Source 2": "Value 2"
+}},
+"Property 2": {{
+"match": "Yes|No|Mostly Yes",
+"PO": "Value from PO",
+"Source 1": "Value 1"
+}}
+}}
+
+Rules
+The PO document is the primary reference document - all validations must include the PO value.
+If a property isn't mentioned in a document, don't include that document as a source.
+Only validate data that is explicitly mentioned.
+Omit any property that only appears in the PO but not in any other document.
+The "match" value must be one of: "Yes", "No", or "Mostly Yes".
+Focus on verifying that information in the PO is correct and aligned with other documents, not vice versa.
+
+Documents:
+{doc_text}

@@ -1,2 +1,0 @@
-Please extract the important information from this document and return it in structed json format
-Include any information to be exchanged between client and supplier if available

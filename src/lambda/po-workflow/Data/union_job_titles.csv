@@ -1,0 +1,269 @@
+Set ID,Job Code,Job Code Description,Union Code,Step,Hrly Rate,Pension,H&W Benefits,Total UC Cost,Deciphered Job Code Description
+SDCMP,009097,ACCESS REPR,EX,1,$23.01,$3.34,$9.13,$35.48,Access Representative
+SDCMP,009099,ACCESS REPR PRN,EX,1,$27.46,$3.98,$9.13,$40.57,Access Representative (Upon Request)
+SDCMP,009098,ACCESS REPR SR,EX,1,$26.18,$3.80,$9.13,$39.11,Access Representative Senior
+SDCMP,008893,ADMIN CARE CLIN PARTNER,EX,1,$26.18,$3.80,$9.13,$39.11,Admin Care Clinical Partner
+SDCMP,008887,ADMIN CARE PARTNER,EX,1,$26.18,$3.80,$9.13,$39.11,Admin Care Partner
+SDCMP,009033,ADMITTING WORKER,EX,1,$21.48,$3.11,$9.13,$33.73,Admitting Worker
+SDCMP,009031,ADMITTING WORKER PRN,EX,1,$23.80,$3.45,$9.13,$36.38,Admitting Worker (Upon Request)
+SDCMP,009032,ADMITTING WORKER SR,EX,1,$21.65,$3.14,$9.13,$33.92,Admitting Worker Senior
+SDCMP,008897,ANESTHESIA TCHN,EX,1,$31.98,$4.64,$9.13,$45.75,Anesthesia Technician
+SDCMP,008898,ANESTHESIA TCHN 2,EX,1,$35.35,$5.13,$9.13,$49.61,Anesthesia Technician Level 2
+SDCMP,009301,ANGIOGRAPHY TCHNO,EX,1,$51.76,$7.51,$9.13,$68.40,Angiography Technologist
+SDCMP,009300,ANGIOGRAPHY TCHNO LD,EX,1,$54.15,$7.85,$9.13,$71.13,Angiography Technologist Lead
+SDCMP,009526,ANML TCHN AST,SX,1,$20.05,$2.91,$9.13,$32.09,Animal Technician Assistant
+SDCMP,008475,AUTO ATTENDANT,SX,1,$20.05,$2.91,$9.13,$32.09,Automotive Attendant
+SDCMP,008487,AUTO EQUIP OPR,SX,1,$20.05,$2.91,$9.13,$32.09,Automotive Equipment Operator
+SDCMP,008485,AUTO EQUIP OPR PRN,SX,1,$24.66,$3.58,$9.13,$37.37,Automotive Equipment Operator (Upon Request)
+SDCMP,008486,AUTO EQUIP OPR SR,SX,1,$21.71,$3.15,$9.13,$33.99,Automotive Equipment Operator Senior
+SDCMP,008473,AUTO TCHN,SX,1,$28.03,$4.06,$9.13,$41.23,Automotive Technician
+SDCMP,008474,AUTO TCHN AST,SX,1,$22.28,$3.23,$9.13,$34.64,Automotive Technician Assistant
+SDCMP,008472,AUTO TCHN LD,SX,1,$28.58,$4.14,$9.13,$41.86,Automotive Technician Lead
+SDCMP,009157,BIOMED EQUIP TCHN 1,EX,1,$37.56,$5.45,$9.13,$52.14,Biomedical Equipment Technician Level 1
+SDCMP,009156,BIOMED EQUIP TCHN 2,EX,1,$42.33,$6.14,$9.13,$57.60,Biomedical Equipment Technician Level 2
+SDCMP,009155,BIOMED EQUIP TCHN 3,EX,1,$48.59,$7.05,$9.13,$64.77,Biomedical Equipment Technician Level 3
+SDCMP,009154,BIOMED EQUIP TCHN 4,EX,1,$55.84,$8.10,$9.13,$73.07,Biomedical Equipment Technician Level 4
+SDCMP,008213,BLDG MAINT WORKER,SX,1,$21.27,$3.08,$9.13,$33.49,Building Maintenance Worker
+SDCMP,008211,BLDG MAINT WORKER LD,SX,1,$27.52,$3.99,$9.13,$40.64,Building Maintenance Worker Lead
+SDCMP,008212,BLDG MAINT WORKER SR,SX,1,$24.13,$3.50,$9.13,$36.76,Building Maintenance Worker Senior
+SDCMP,008889,CARDIOVASCULAR TCHN,EX,1,$47.06,$6.82,$9.13,$63.02,Cardiovascular Technician
+SDCMP,009107,CATH LAB RADLG TCHNO,EX,1,$55.49,$8.05,$9.13,$72.67,Catheterization Laboratory Radiationiologic Technologist
+SDCMP,009391,CERT PHLEBOTOMY TCHN 1,EX,1,$24.78,$3.59,$9.13,$37.51,Certified Phlebotomy Technician Level 1
+SDCMP,009293,CERT PHLEBOTOMY TCHN 2,EX,1,$26.64,$3.86,$9.13,$39.63,Certified Phlebotomy Technician Level 2
+SDCMP,009294,CERT PHLEBOTOMY TCHN 3,EX,1,$30.40,$4.41,$9.13,$43.94,Certified Phlebotomy Technician Level 3
+SDCMP,005523,COOK,SX,1,$20.59,$2.99,$9.13,$32.71,Cook
+SDCMP,005538,COOK HOUSEKEEPER,SX,1,$20.05,$2.91,$9.13,$32.09,Cook Housekeeper
+SDCMP,005522,COOK SR,SX,1,$20.98,$3.04,$9.13,$33.15,Cook Senior
+SDCMP,009086,CT TCHNO,EX,1,$54.15,$7.85,$9.13,$71.13,CT Technologist
+SDCMP,009088,CT TCHNO LD,EX,1,$69.29,$10.05,$9.13,$88.47,CT Technologist Lead
+SDCMP,009102,CT TCHNO SR,EX,1,$58.12,$8.43,$9.13,$75.68,CT Technologist Senior
+SDCMP,009410,CTRL SVC TCHN 1,EX,1,$23.01,$3.34,$9.13,$35.48,Control Service Technician Level 1
+SDCMP,009411,CTRL SVC TCHN 2,EX,1,$23.70,$3.44,$9.13,$36.27,Control Service Technician Level 2
+SDCMP,009412,CTRL SVC TCHN LD 3,EX,1,$26.97,$3.91,$9.13,$40.01,Control Service Technician Lead Level 3
+SDCMP,005117,CUSTODIAN,SX,1,$20.05,$2.91,$9.13,$32.09,Custodian
+SDCMP,005113,CUSTODIAN LD,SX,1,$20.41,$2.96,$9.13,$32.50,Custodian Lead
+SDCMP,005116,CUSTODIAN SR,SX,1,$20.05,$2.91,$9.13,$32.09,Custodian Senior
+SDCMP,008988,CYTOGENETIC TCHNO 1,EX,1,$48.44,$7.02,$9.13,$64.60,Cytogenetic Technologist Level 1
+SDCMP,008987,CYTOGENETIC TCHNO 2,EX,1,$58.06,$8.42,$9.13,$75.61,Cytogenetic Technologist Level 2
+SDCMP,005066,DELIVERY WORKER,SX,1,$20.05,$2.91,$9.13,$32.09,Delivery Worker
+SDCMP,009190,DENTAL HYGIENIST,EX,1,$49.38,$7.16,$9.13,$65.67,Dental Hygienist
+SDCMP,005430,DIETETIC AST,EX,1,$22.02,$3.19,$9.13,$34.34,Dietetic Assistant
+SDCMP,009008,DOSIMETRIST,EX,1,$71.21,$10.33,$9.13,$90.67,Dosimetrist
+SDCMP,009007,DOSIMETRIST SR,EX,1,$77.33,$11.21,$9.13,$97.67,Dosimetrist Senior
+SDCMP,008483,DRIVER,SX,1,$20.05,$2.91,$9.13,$32.09,Driver
+SDCMP,009061,EEG TCHNO,EX,1,$39.80,$5.77,$9.13,$54.70,Electroencephalogram Technologist
+SDCMP,009059,EEG TCHNO PRN,EX,1,$49.02,$7.11,$9.13,$65.26,Electroencephalogram Technologist (Upon Request)
+SDCMP,009060,EEG TCHNO SR,EX,1,$43.52,$6.31,$9.13,$58.96,Electroencephalogram Technologist Senior
+SDCMP,008963,ELECTROCARDIOGRAPH TCHN,EX,1,$30.07,$4.36,$9.13,$43.56,Electricocardiograph Technician
+SDCMP,008962,ELECTROCARDIOGRAPH TCHN SR,EX,1,$33.28,$4.83,$9.13,$47.24,Electricocardiograph Technician Senior
+SDCMP,008920,EMERGENCY TRAUMA TCHN,EX,1,$23.31,$3.38,$9.13,$35.82,Emergency Trauma Technician
+SDCMP,008919,EMERGENCY TRAUMA TCHN SR,EX,1,$25.26,$3.66,$9.13,$38.05,Emergency Trauma Technician Senior
+SDCMP,005445,FOOD SVC MGR AST,SX,1,$24.78,$3.59,$9.13,$37.51,Food Service Mgr Assistant
+SDCMP,005652,FOOD SVC WORKER,SX,1,$20.05,$2.91,$9.13,$32.09,Food Service Worker
+SDCMP,005452,FOOD SVC WORKER LD,SX,1,$20.83,$3.02,$9.13,$32.98,Food Service Worker Lead
+SDCMP,005650,FOOD SVC WORKER PRN,SX,1,$20.41,$2.96,$9.13,$32.50,Food Service Worker (Upon Request)
+SDCMP,005651,FOOD SVC WORKER SR,SX,1,$20.05,$2.91,$9.13,$32.09,Food Service Worker Senior
+SDCMP,009399,GI ENDOSCOPY TCHN 1,EX,1,$31.79,$4.61,$9.13,$45.53,Gastrointestinal Endoscopy Technician Level 1
+SDCMP,009397,GI ENDOSCOPY TCHN 2,EX,1,$35.96,$5.21,$9.13,$50.31,Gastrointestinal Endoscopy Technician Level 2
+SDCMP,008134,GROUNDS EQUIP OPR,SX,1,$20.41,$2.96,$9.13,$32.50,Grounds Equipment Operator
+SDCMP,008133,GROUNDSKEEPER,SX,1,$20.05,$2.91,$9.13,$32.09,Groundskeeper
+SDCMP,008132,GROUNDSKEEPER LD,SX,1,$21.24,$3.08,$9.13,$33.45,Groundskeeper Lead
+SDCMP,004735,HEALTH INFO CODER 1,EX,1,$37.22,$5.40,$9.13,$51.75,Health Information Coder Level 1
+SDCMP,004734,HEALTH INFO CODER 2,EX,1,$39.19,$5.68,$9.13,$54.00,Health Information Coder Level 2
+SDCMP,004733,HEALTH INFO CODER 3,EX,1,$41.25,$5.98,$9.13,$56.36,Health Information Coder Level 3
+SDCMP,004732,HEALTH INFO CODER 4,EX,1,$45.39,$6.58,$9.13,$61.10,Health Information Coder Level 4
+SDCMP,009065,HISTO TCHNO 1,EX,1,$31.88,$4.62,$9.13,$45.63,Histology Technologist Level 1
+SDCMP,009066,HISTO TCHNO 2,EX,1,$38.21,$5.54,$9.13,$52.88,Histology Technologist Level 2
+SDCMP,009067,HISTO TCHNO 3,EX,1,$42.37,$6.14,$9.13,$57.65,Histology Technologist Level 3
+SDCMP,009057,HISTO TCHNO LD,EX,1,$44.50,$6.45,$9.13,$60.08,Histology Technologist Lead
+SDCMP,008905,HOSP AST,EX,1,$21.43,$3.11,$9.13,$33.67,Hospital Assistant
+SDCMP,008904,HOSP AST SR,EX,1,$21.48,$3.11,$9.13,$33.73,Hospital Assistant Senior
+SDCMP,009254,HOSP BLANK AID,EX,1,$21.43,$3.11,$9.13,$33.67,Hospital Blank Aid
+SDCMP,009253,HOSP BLANK AST 1,EX,1,$21.43,$3.11,$9.13,$33.67,Hospital Blank Assistant Level 1
+SDCMP,009252,HOSP BLANK AST 2,EX,1,$23.01,$3.34,$9.13,$35.48,Hospital Blank Assistant Level 2
+SDCMP,009251,HOSP BLANK AST 3,EX,1,$26.18,$3.80,$9.13,$39.11,Hospital Blank Assistant Level 3
+SDCMP,009000,HOSP BLANK AST 4,EX,1,$30.18,$4.38,$9.13,$43.69,Hospital Blank Assistant Level 4
+SDCMP,008976,HOSP LAB TCHN 1,EX,1,$29.14,$4.23,$9.13,$42.50,Hospital Laboratory Technician Level 1
+SDCMP,008975,HOSP LAB TCHN 2,EX,1,$31.13,$4.51,$9.13,$44.78,Hospital Laboratory Technician Level 2
+SDCMP,008974,HOSP LAB TCHN 3,EX,1,$37.60,$5.45,$9.13,$52.18,Hospital Laboratory Technician Level 3
+SDCMP,008973,HOSP LAB TCHN 4,EX,1,$41.94,$6.08,$9.13,$57.15,Hospital Laboratory Technician Level 4
+SDCMP,004688,HOSP MED TRANSCRIBER,EX,1,$23.58,$3.42,$9.13,$36.13,Hospital Medical Transcriber
+SDCMP,004687,HOSP MED TRANSCRIBER SR,EX,1,$30.79,$4.46,$9.13,$44.39,Hospital Medical Transcriber Senior
+SDCMP,009259,HOSP UNIT SVC CRD 1,EX,1,$21.48,$3.11,$9.13,$33.73,Hospital Unit Service Coordinator Level 1
+SDCMP,009258,HOSP UNIT SVC CRD 2,EX,1,$23.15,$3.36,$9.13,$35.64,Hospital Unit Service Coordinator Level 2
+SDCMP,009257,HOSP UNIT SVC CRD 3,EX,1,$25.75,$3.73,$9.13,$38.62,Hospital Unit Service Coordinator Level 3
+SDCMP,008476,HVY DUTY EQUIP TCHN,SX,1,$31.78,$4.61,$9.13,$45.52,Heavy Duty Equipment Technician
+SDCMP,008477,HVY DUTY EQUIP TCHN AST,SX,1,$27.40,$3.97,$9.13,$40.50,Heavy Duty Equipment Technician Assistant
+SDCMP,009043,INTERVENTNL RADLG TCHNO,EX,1,$57.70,$8.37,$9.13,$75.20,Interventional Radiationiologic Technologist
+SDCMP,009045,INTERVENTNL RADLG TCHNO LD,EX,1,$68.60,$9.95,$9.13,$87.68,Interventional Radiationiologic Technologist Lead
+SDCMP,004251,INTERVENTNL RADLG TCHNO PRI,EX,1,$64.23,$9.31,$9.13,$82.68,Interventional Radiationiologic Technologist Primary
+SDCMP,004250,INTERVENTNL RADLG TCHNO SR,EX,1,$60.59,$8.79,$9.13,$78.51,Interventional Radiationiologic Technologist Senior
+SDCMP,009450,IONM TCHNO,EX,1,$56.62,$8.21,$9.13,$73.96,Intraoperative Neurophysiological Monitoring Technologist
+SDCMP,009409,IONM TCHNO SR,EX,1,$61.87,$8.97,$9.13,$79.97,Intraoperative Neurophysiological Monitoring Technologist Senior
+SDCMP,008090,IRRIGATION SPEC,SX,1,$24.13,$3.50,$9.13,$36.76,Irrigation Specialist
+SDCMP,008091,IRRIGATION SPEC LD,SX,1,$25.79,$3.74,$9.13,$38.66,Irrigation Specialist Lead
+SDCMP,009606,LAB HELPER,SX,1,$20.05,$2.91,$9.13,$32.09,Laboratory Helper
+SDCMP,008076,LABORER,SX,1,$20.05,$2.91,$9.13,$32.09,Laborer
+SDCMP,008075,LABORER LD,SX,1,$20.05,$2.91,$9.13,$32.09,Laborer Lead
+SDCMP,009415,LIFT TEAM TCHN 1,EX,1,$21.43,$3.11,$9.13,$33.67,Lift Team Technician Level 1
+SDCMP,009416,LIFT TEAM TCHN 2,EX,1,$23.01,$3.34,$9.13,$35.48,Lift Team Technician Level 2
+SDCMP,005167,LIGHT FIXTURE ATTENDANT,SX,1,$20.05,$2.91,$9.13,$32.09,Light Fixture Attendant
+SDCMP,005821,LINEN SVC HEAD SR,SX,1,$20.17,$2.92,$9.13,$32.23,Linen Service Head Senior
+SDCMP,005822,LINEN SVC HEAD WORKER,SX,1,$20.05,$2.91,$9.13,$32.09,Linen Service Head Worker
+SDCMP,005833,LINEN SVC WORKER,SX,1,$20.05,$2.91,$9.13,$32.09,Linen Service Worker
+SDCMP,005832,LINEN SVC WORKER SR,SX,1,$20.05,$2.91,$9.13,$32.09,Linen Service Worker Senior
+SDCMP,004823,MAIL PROCESSOR,SX,1,$20.05,$2.91,$9.13,$32.09,Mail Processor
+SDCMP,004824,MAIL PROCESSOR AST,SX,1,$20.05,$2.91,$9.13,$32.09,Mail Processor Assistant
+SDCMP,004822,MAIL PROCESSOR SR,SX,1,$23.36,$3.39,$9.13,$35.88,Mail Processor Senior
+SDCMP,009089,MAMMOGRAPHY TCHNO,EX,1,$52.10,$7.55,$9.13,$68.79,Mammography Technologist
+SDCMP,009108,MAMMOGRAPHY TCHNO LD,EX,1,$62.13,$9.01,$9.13,$80.27,Mammography Technologist Lead
+SDCMP,008993,MED AST 1,EX,1,$21.38,$3.10,$9.13,$33.61,Medical Assistant Level 1
+SDCMP,008994,MED AST 2,EX,1,$24.10,$3.49,$9.13,$36.73,Medical Assistant Level 2
+SDCMP,009434,MED AST 3,EX,1,$27.48,$3.98,$9.13,$40.60,Medical Assistant Level 3
+SDCMP,009435,MED AST 4,EX,1,$30.24,$4.38,$9.13,$43.76,Medical Assistant Level 4
+SDCMP,005126,MED CTR COOK,SX,1,$20.59,$2.99,$9.13,$32.71,Medical Center Cook
+SDCMP,005125,MED CTR COOK SR,SX,1,$20.98,$3.04,$9.13,$33.15,Medical Center Cook Senior
+SDCMP,005087,MED CTR CUSTODIAN,SX,1,$20.05,$2.91,$9.13,$32.09,Medical Center Custodian
+SDCMP,005085,MED CTR CUSTODIAN LD,SX,1,$20.41,$2.96,$9.13,$32.50,Medical Center Custodian Lead
+SDCMP,005086,MED CTR CUSTODIAN SR,SX,1,$20.05,$2.91,$9.13,$32.09,Medical Center Custodian Senior
+SDCMP,008644,MED CTR DEV TCHN 1,EX,1,$22.70,$3.29,$9.13,$35.12,Medical Center Development Technician Level 1
+SDCMP,008643,MED CTR DEV TCHN 2,EX,1,$24.44,$3.54,$9.13,$37.12,Medical Center Development Technician Level 2
+SDCMP,008642,MED CTR DEV TCHN 3,EX,1,$29.23,$4.24,$9.13,$42.60,Medical Center Development Technician Level 3
+SDCMP,008641,MED CTR DEV TCHN 4,EX,1,$30.69,$4.45,$9.13,$44.27,Medical Center Development Technician Level 4
+SDCMP,008640,MED CTR DEV TCHN 5,EX,1,$32.22,$4.67,$9.13,$46.02,Medical Center Development Technician Level 5
+SDCMP,008683,MED CTR ELECTR TCHN,EX,1,$33.78,$4.90,$9.13,$47.81,Medical Center Electric Technician
+SDCMP,008681,MED CTR ELECTR TCHN PRN,EX,1,$39.59,$5.74,$9.13,$54.46,Medical Center Electric Technician (Upon Request)
+SDCMP,008682,MED CTR ELECTR TCHN SR,EX,1,$35.65,$5.17,$9.13,$49.95,Medical Center Electric Technician Senior
+SDCMP,005131,MED CTR FOOD SVC WORKER,SX,1,$20.05,$2.91,$9.13,$32.09,Medical Center Food Service Worker
+SDCMP,005093,MED CTR FOOD SVC WORKER LD,SX,1,$20.83,$3.02,$9.13,$32.98,Medical Center Food Service Worker Lead
+SDCMP,005129,MED CTR FOOD SVC WORKER PRN,SX,1,$20.41,$2.96,$9.13,$32.50,Medical Center Food Service Worker (Upon Request)
+SDCMP,005130,MED CTR FOOD SVC WORKER SR,SX,1,$20.05,$2.91,$9.13,$32.09,Medical Center Food Service Worker Senior
+SDCMP,008673,MED CTR LAB MECHN,EX,1,$38.75,$5.62,$9.13,$53.50,Medical Center Laboratory Mechanic
+SDCMP,008674,MED CTR LAB MECHN HELPER,EX,1,$28.60,$4.15,$9.13,$41.88,Medical Center Laboratory Mechanic Helper
+SDCMP,008671,MED CTR LAB MECHN PRN,EX,1,$44.96,$6.52,$9.13,$60.61,Medical Center Laboratory Mechanic (Upon Request)
+SDCMP,008672,MED CTR LAB MECHN SR,EX,1,$42.08,$6.10,$9.13,$57.31,Medical Center Laboratory Mechanic Senior
+SDCMP,005292,MED CTR SCRTY OFCR,SX,1,$21.12,$3.06,$9.13,$33.31,Medical Center Security Officer
+SDCMP,005294,MED CTR SCRTY OFCR SR,SX,1,$23.89,$3.46,$9.13,$36.49,Medical Center Security Officer Senior
+SDCMP,005079,MED CTR STOREKEEPER,SX,1,$20.05,$2.91,$9.13,$32.09,Medical Center Storekeeper
+SDCMP,005080,MED CTR STOREKEEPER AST,SX,1,$20.05,$2.91,$9.13,$32.09,Medical Center Storekeeper Assistant
+SDCMP,005076,MED CTR STOREKEEPER LD,SX,1,$28.19,$4.09,$9.13,$41.41,Medical Center Storekeeper Lead
+SDCMP,005077,MED CTR STOREKEEPER SR,SX,1,$22.68,$3.29,$9.13,$35.10,Medical Center Storekeeper Senior
+SDCMP,005075,MED CTR STOREKEEPER SR LD,SX,1,$30.28,$4.39,$9.13,$43.80,Medical Center Storekeeper Senior Lead
+SDCMP,005078,MED CTR STORES WORKER,SX,1,$20.83,$3.02,$9.13,$32.98,Medical Center Stores Worker
+SDCMP,009607,MED LAB TCHN,EX,1,$40.99,$5.94,$9.13,$56.07,Medical Laboratory Technician
+SDCMP,009212,MED OFC SVC CRD 1,EX,1,$20.22,$2.93,$9.13,$32.28,Medical Office Service Coordinator Level 1
+SDCMP,009213,MED OFC SVC CRD 2,EX,1,$23.01,$3.34,$9.13,$35.48,Medical Office Service Coordinator Level 2
+SDCMP,009214,MED OFC SVC CRD 3,EX,1,$26.18,$3.80,$9.13,$39.11,Medical Office Service Coordinator Level 3
+SDCMP,009216,MED OFC SVC CRD 4,EX,1,$30.18,$4.38,$9.13,$43.69,Medical Office Service Coordinator Level 4
+SDCMP,009263,MED RCDS ADM,EX,1,$26.55,$3.85,$9.13,$39.53,Medical Records Administrator
+SDCMP,009264,MED RCDS ADM AST,EX,1,$23.15,$3.36,$9.13,$35.64,Medical Records Administrator Assistant
+SDCMP,009266,MED RCDS TCHN,EX,1,$24.61,$3.57,$9.13,$37.31,Medical Records Technician
+SDCMP,009267,MED RCDS TCHN AST,EX,1,$21.48,$3.11,$9.13,$33.73,Medical Records Technician Assistant
+SDCMP,008914,MENTAL HEALTH Practitioner,EX,1,$27.63,$4.01,$9.13,$40.77,Mental Health Practitioner
+SDCMP,008913,MENTAL HEALTH Practitioner SR,EX,1,$28.62,$4.15,$9.13,$41.90,Mental Health Practitioner Senior
+SDCMP,009085,MRI TCHNO,EX,1,$54.15,$7.85,$9.13,$71.13,MRI Technologist
+SDCMP,009083,MRI TCHNO LD,EX,1,$69.29,$10.05,$9.13,$88.47,MRI Technologist Lead
+SDCMP,009079,MRI TCHNO SR,EX,1,$58.12,$8.43,$9.13,$75.68,MRI Technologist Senior
+SDCMP,008922,NURSE AID SR,EX,1,$22.93,$3.32,$9.13,$35.39,Nurse Aid Senior
+SDCMP,009562,NURSERY TCHN,SX,1,$20.05,$2.91,$9.13,$32.09,Nursery Technician
+SDCMP,009561,NURSERY TCHN SR,SX,1,$23.15,$3.36,$9.13,$35.64,Nursery Technician Senior
+SDCMP,008949,OCCUPATIONAL THER CERT AST 1,EX,1,$28.71,$4.16,$9.13,$42.00,Occupational Therapy Certified Assistant Level 1
+SDCMP,008948,OCCUPATIONAL THER CERT AST 2,EX,1,$31.13,$4.51,$9.13,$44.78,Occupational Therapy Certified Assistant Level 2
+SDCMP,008947,OCCUPATIONAL THER CERT AST 3,EX,1,$41.41,$6.00,$9.13,$56.55,Occupational Therapy Certified Assistant Level 3
+SDCMP,009228,OPS ROOM SUPP AST,EX,1,$23.01,$3.34,$9.13,$35.48,Operations Room Support Assistant
+SDCMP,008929,ORTHOPEDIC TCHN,EX,1,$23.62,$3.42,$9.13,$36.18,Orthopedic Technician
+SDCMP,008927,ORTHOPEDIC TCHN PRN,EX,1,$26.78,$3.88,$9.13,$39.80,Orthopedic Technician (Upon Request)
+SDCMP,008928,ORTHOPEDIC TCHN SR,EX,1,$25.53,$3.70,$9.13,$38.36,Orthopedic Technician Senior
+SDCMP,005334,PARKING REPR,SX,1,$20.30,$2.94,$9.13,$32.38,Parking Representative
+SDCMP,005332,PARKING REPR LD,SX,1,$22.75,$3.30,$9.13,$35.18,Parking Representative Lead
+SDCMP,005333,PARKING REPR SR,SX,1,$21.50,$3.12,$9.13,$33.75,Parking Representative Senior
+SDCMP,004665,PAT BILLER 1,EX,1,$24.94,$3.62,$9.13,$37.69,Patient Biller Level 1
+SDCMP,004664,PAT BILLER 2,EX,1,$26.66,$3.87,$9.13,$39.66,Patient Biller Level 2
+SDCMP,004663,PAT BILLER 3,EX,1,$27.88,$4.04,$9.13,$41.05,Patient Biller Level 3
+SDCMP,004662,PAT BILLER 4,EX,1,$28.62,$4.15,$9.13,$41.90,Patient Biller Level 4
+SDCMP,009272,PAT CARE DIALYSIS TCHN 1,EX,1,$25.90,$3.76,$9.13,$38.79,Patient Care Dialysis Technician Level 1
+SDCMP,009271,PAT CARE DIALYSIS TCHN 2,EX,1,$29.81,$4.32,$9.13,$43.26,Patient Care Dialysis Technician Level 2
+SDCMP,008912,PAT ESCORT,EX,1,$21.43,$3.11,$9.13,$33.67,Patient Escort
+SDCMP,008911,PAT ESCORT SR,EX,1,$21.47,$3.11,$9.13,$33.72,Patient Escort Senior
+SDCMP,004719,PAT RCDS ABSTRACTOR 1,EX,1,$23.58,$3.42,$9.13,$36.13,Patient Records Abstractor Level 1
+SDCMP,004718,PAT RCDS ABSTRACTOR 2,EX,1,$27.92,$4.05,$9.13,$41.10,Patient Records Abstractor Level 2
+SDCMP,004717,PAT RCDS ABSTRACTOR 3,EX,1,$33.62,$4.87,$9.13,$47.63,Patient Records Abstractor Level 3
+SDCMP,004716,PAT RCDS ABSTRACTOR 4,EX,1,$35.31,$5.12,$9.13,$49.56,Patient Records Abstractor Level 4
+SDCMP,009423,PAT TRANSPORT TCHN 1,EX,1,$21.43,$3.11,$9.13,$33.67,Patient Transport Technician Level 1
+SDCMP,009424,PAT TRANSPORT TCHN 2,EX,1,$23.01,$3.34,$9.13,$35.48,Patient Transport Technician Level 2
+SDCMP,009425,PAT TRANSPORT TCHN LD 3,EX,1,$26.18,$3.80,$9.13,$39.11,Patient Transport Technician Lead Level 3
+SDCMP,009029,PERFUSIONIST AST,EX,1,$32.53,$4.72,$9.13,$46.38,Perfusionist Assistant
+SDCMP,009510,PERFUSIONIST EX,EX,1,$77.47,$11.23,$9.13,$97.84,Perfusionist Ex
+SDCMP,009508,PERFUSIONIST PRN EX,EX,1,$95.45,$13.84,$9.13,$118.42,Perfusionist (Upon Request) Ex
+SDCMP,009509,PERFUSIONIST SR EX,EX,1,$85.97,$12.47,$9.13,$107.57,Perfusionist Senior Ex
+SDCMP,009185,PERINATAL TCHN 1,EX,1,$30.49,$4.42,$9.13,$44.04,Perinatal Technician Level 1
+SDCMP,009186,PERINATAL TCHN 2,EX,1,$33.55,$4.86,$9.13,$47.55,Perinatal Technician Level 2
+SDCMP,008086,PEST CNTRL OPR,SX,1,$22.16,$3.21,$9.13,$34.51,Pest Control Operator
+SDCMP,009283,PHARMACY TCHN 1,EX,1,$23.34,$3.38,$9.13,$35.86,Pharmacy Technician Level 1
+SDCMP,009282,PHARMACY TCHN 2,EX,1,$25.09,$3.64,$9.13,$37.86,Pharmacy Technician Level 2
+SDCMP,009281,PHARMACY TCHN 3,EX,1,$30.90,$4.48,$9.13,$44.51,Pharmacy Technician Level 3
+SDCMP,008946,PHYS THER AST 1,EX,1,$28.71,$4.16,$9.13,$42.00,Physical Therapy Assistant Level 1
+SDCMP,008945,PHYS THER AST 2,EX,1,$31.13,$4.51,$9.13,$44.78,Physical Therapy Assistant Level 2
+SDCMP,008944,PHYS THER AST 3,EX,1,$39.02,$5.66,$9.13,$53.81,Physical Therapy Assistant Level 3
+SDCMP,009092,POLYSOMNOGRAPHY TCHNO,EX,1,$30.79,$4.46,$9.13,$44.39,Polysomnography Technologist
+SDCMP,009090,POLYSOMNOGRAPHY TCHNO PRN,EX,1,$44.32,$6.43,$9.13,$59.88,Polysomnography Technologist (Upon Request)
+SDCMP,009091,POLYSOMNOGRAPHY TCHNO SR,EX,1,$36.93,$5.35,$9.13,$51.42,Polysomnography Technologist Senior
+SDCMP,005328,PROCTOR,SX,1,$21.12,$3.06,$9.13,$33.31,Proctor
+SDCMP,005329,PROCTOR SR,SX,1,$23.89,$3.46,$9.13,$36.49,Proctor Senior
+SDCMP,009042,PROSTHETIST ORTHOTIST,EX,1,$40.22,$5.83,$9.13,$55.18,Prosthetist Orthotist
+SDCMP,009044,PROSTHETIST ORTHOTIST AST,EX,1,$26.18,$3.80,$9.13,$39.11,Prosthetist Orthotist Assistant
+SDCMP,009041,PROSTHETIST ORTHOTIST SR,EX,1,$41.58,$6.03,$9.13,$56.74,Prosthetist Orthotist Senior
+SDCMP,008926,PSYCHIATRIC TCHN,EX,1,$30.40,$4.41,$9.13,$43.94,Psychiatric Technician
+SDCMP,008925,PSYCHIATRIC TCHN SR,EX,1,$34.20,$4.96,$9.13,$48.29,Psychiatric Technician Senior
+SDCMP,009173,PULMONARY TCHN 1,EX,1,$45.45,$6.59,$9.13,$61.17,Pulmonary Technician Level 1
+SDCMP,009174,PULMONARY TCHN 2,EX,1,$46.34,$6.72,$9.13,$62.19,Pulmonary Technician Level 2
+SDCMP,009175,PULMONARY TCHN 3,EX,1,$46.56,$6.75,$9.13,$62.44,Pulmonary Technician Level 3
+SDCMP,009209,PULMONARY TCHN 4,EX,1,$47.70,$6.92,$9.13,$63.75,Pulmonary Technician Level 4
+SDCMP,009013,RAD THER TCHNO,EX,1,$56.60,$8.21,$9.13,$73.94,Radiation Therapy Technologist
+SDCMP,009011,RAD THER TCHNO CHF ASC,EX,1,$74.68,$10.83,$9.13,$94.64,Radiation Therapy Technologist Chf Asc
+SDCMP,009012,RAD THER TCHNO SR,EX,1,$65.16,$9.45,$9.13,$83.74,Radiation Therapy Technologist Senior
+SDCMP,009179,RADLG AST 1,EX,1,$23.01,$3.34,$9.13,$35.48,Radiationiologic Assistant Level 1
+SDCMP,009180,RADLG AST 2,EX,1,$26.18,$3.80,$9.13,$39.11,Radiationiologic Assistant Level 2
+SDCMP,009073,RADLG EQUIP SPEC,EX,1,$42.08,$6.10,$9.13,$57.31,Radiationiologic Equipment Specialist
+SDCMP,009072,RADLG EQUIP SPEC SR,EX,1,$40.41,$5.86,$9.13,$55.40,Radiationiologic Equipment Specialist Senior
+SDCMP,009023,RADLG TCHNO,EX,1,$40.70,$5.90,$9.13,$55.73,Radiationiologic Technologist
+SDCMP,009021,RADLG TCHNO PRN,EX,1,$52.86,$7.66,$9.13,$69.66,Radiationiologic Technologist (Upon Request)
+SDCMP,009022,RADLG TCHNO SR,EX,1,$46.83,$6.79,$9.13,$62.75,Radiationiologic Technologist Senior
+SDCMP,005419,REG DIETETIC TCHN,EX,1,$28.00,$4.06,$9.13,$41.19,Registered Dietetic Technician
+SDCMP,009049,REG RESP THER 1,EX,1,$46.56,$6.75,$9.13,$62.44,Registered Respiratory Therapy Level 1
+SDCMP,009428,REHAB AID 1,EX,1,$21.43,$3.11,$9.13,$33.67,Rehab Aid Level 1
+SDCMP,009429,REHAB AID 2,EX,1,$23.01,$3.34,$9.13,$35.48,Rehab Aid Level 2
+SDCMP,009430,REHAB AID LD 3,EX,1,$26.18,$3.80,$9.13,$39.11,Rehab Aid Lead Level 3
+SDCMP,004762,REPROGRAPHICS TCHN LD,SX,1,$24.90,$3.61,$9.13,$37.64,Reprographics Technician Lead
+SDCMP,004763,REPROGRAPHICS TCHN PRN,SX,1,$20.99,$3.04,$9.13,$33.17,Reprographics Technician (Upon Request)
+SDCMP,009055,RESP CARE PRACT APPLCNT,EX,1,$35.68,$5.17,$9.13,$49.99,Respiratory Care Practitioner Applcnt
+SDCMP,009054,RESP CARE PRACT TCHN,EX,1,$45.45,$6.59,$9.13,$61.17,Respiratory Care Practitioner Technician
+SDCMP,009050,RESP THER 1,EX,1,$46.34,$6.72,$9.13,$62.19,Respiratory Therapy Level 1
+SDCMP,009048,RESP THER 2,EX,1,$47.70,$6.92,$9.13,$63.75,Respiratory Therapy Level 2
+SDCMP,005327,SCRTY GUARD,SX,1,$21.12,$3.06,$9.13,$33.31,Security Guard
+SDCMP,004021,SPORTS AST,SX,1,$20.05,$2.91,$9.13,$32.09,Sports Assistant
+SDCMP,009265,STERILE PROCESSING TCHN 1,EX,1,$24.82,$3.60,$9.13,$37.55,Sterile Processing Technician Level 1
+SDCMP,009218,STERILE PROCESSING TCHN 2,EX,1,$26.92,$3.90,$9.13,$39.96,Sterile Processing Technician Level 2
+SDCMP,009219,STERILE PROCESSING TCHN 3,EX,1,$30.63,$4.44,$9.13,$44.20,Sterile Processing Technician Level 3
+SDCMP,008865,STERILE PROCESSING TCHN 4,EX,1,$35.84,$5.20,$9.13,$50.17,Sterile Processing Technician Level 4
+SDCMP,005064,STOREKEEPER,SX,1,$20.05,$2.91,$9.13,$32.09,Storekeeper
+SDCMP,005065,STOREKEEPER AST,SX,1,$20.05,$2.91,$9.13,$32.09,Storekeeper Assistant
+SDCMP,005061,STOREKEEPER LD,SX,1,$28.19,$4.09,$9.13,$41.41,Storekeeper Lead
+SDCMP,005062,STOREKEEPER SR,SX,1,$22.68,$3.29,$9.13,$35.10,Storekeeper Senior
+SDCMP,005060,STOREKEEPER SR LD,SX,1,$30.28,$4.39,$9.13,$43.80,Storekeeper Senior Lead
+SDCMP,005063,STORES WORKER,SX,1,$20.83,$3.02,$9.13,$32.98,Stores Worker
+SDCMP,008931,SURGICAL TCHN,EX,1,$31.68,$4.59,$9.13,$45.41,Surgical Technician
+SDCMP,008793,SURGICAL TCHN PRN,EX,1,$40.12,$5.82,$9.13,$55.07,Surgical Technician (Upon Request)
+SDCMP,008930,SURGICAL TCHN SR,EX,1,$36.49,$5.29,$9.13,$50.91,Surgical Technician Senior
+SDCMP,009298,TELEMETRY TCHN,EX,1,$24.64,$3.57,$9.13,$37.34,Telemetry Technician
+SDCMP,008083,TREE TRIM,SX,1,$22.17,$3.21,$9.13,$34.52,Tree Trim
+SDCMP,008967,ULTRASOUND TCHNO,EX,1,$48.54,$7.04,$9.13,$64.71,Ultrasound Technologist
+SDCMP,009184,ULTRASOUND TCHNO LD,EX,1,$74.39,$10.79,$9.13,$94.31,Ultrasound Technologist Lead
+SDCMP,008965,ULTRASOUND TCHNO PRN,EX,1,$62.37,$9.04,$9.13,$80.55,Ultrasound Technologist (Upon Request)
+SDCMP,008966,ULTRASOUND TCHNO SR,EX,1,$56.70,$8.22,$9.13,$74.05,Ultrasound Technologist Senior
+SDCMP,008934,UROLOGY TCHN,EX,1,$32.50,$4.71,$9.13,$46.34,Urology Technician
+SDCMP,008933,UROLOGY TCHN SR,EX,1,$34.17,$4.95,$9.13,$48.26,Urology Technician Senior
+SDCMP,008917,VOC NURSE,EX,1,$30.90,$4.48,$9.13,$44.51,Vocational Nurse
+SDCMP,008916,VOC NURSE SR,EX,1,$34.20,$4.96,$9.13,$48.29,Vocational Nurse Senior
+SDCMP,009338,VOLUNTEER SVC CRD 1,EX,1,$26.18,$3.80,$9.13,$39.11,Volunteer Service Coordinator Level 1
+SDCMP,009339,VOLUNTEER SVC CRD AST,EX,1,$23.94,$3.47,$9.13,$36.54,Volunteer Service Coordinator Assistant

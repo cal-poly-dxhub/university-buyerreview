@@ -1,0 +1,16 @@
+{
+  "name": "get_UC_cost",
+  "description": "Returns the official UC cost for a given union job title from the reference table.",
+  "inputSchema": {
+    "json": {
+      "type": "object",
+      "properties": {
+        "job_title": {
+          "type": "string",
+          "description": "The job title to look up in the UC union job reference table."
+        }
+      },
+      "required": ["job_title"]
+    }
+  }
+}

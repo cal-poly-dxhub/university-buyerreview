@@ -1,0 +1,223 @@
+Purchasing Category,Exceeds Amount,Cost Center (FinU),Buyer Name,Buyer Email,"Risk Threshold 
+(High, Medium, Low)",100% Restricted,Risk Assessment Notes,Blink Description
+Carpet and Flooring Services,,,"Aguilar, Catalina",c7aguilar@ucsd.edu,High,Full Restricted,Covered Service,"Carpet and Floor Cleaning (Approved by Labor Relations), Carpet and Flooring Installation, Flood Remediation, Office Floor Re-Design Services"
+Carpet and Flooring Supplies,,,"Aguilar, Catalina",c7aguilar@ucsd.edu,Low,,,"Wax Products for Floor, Carpet for Remodeling Classroom, Floor Tiles, Flooring Materials, Repair Supplies"
+Elevator Maintenance Services,,,"Aguilar, Catalina",c7aguilar@ucsd.edu,Medium,,Prevailing wage $15K+,Elevator Repair and Inspection Services
+Facility Electrical Equipment,,,"Aguilar, Catalina",c7aguilar@ucsd.edu,Low,,"Usually people use the facility equipment inventorial purchasing category, so these are for smaller items","Circuit breakers, transformers, panelboards (electrical panels), generators, uninterruptible power supply (UPS), lighting control systems, fuses. "
+Facility Electrical Services,,,"Aguilar, Catalina",c7aguilar@ucsd.edu,Medium,,Might need DIR project number $15K+,"AC Power Plugs and Sockets, Circuit Breakers, Electronic Connectors, Wires and cables, electrical outlets, switches, light bulbs, electrical panels, fuses, surge protectors. "
+Facility Electrical Supplies,,,"Aguilar, Catalina",c7aguilar@ucsd.edu,Low,,,"Circuits, Resistors, Fuses, Batteries, Relays"
+Facility Equipment Maintenance/Repair Service,,,"Aguilar, Catalina",c7aguilar@ucsd.edu,Medium,,Might need DIR project. Dept often uses this category as a catch-all category,Tools/Equipment Repair Services
+Facility Equipment over 5K (Inventorial),,,"Aguilar, Catalina",c7aguilar@ucsd.edu,High,Full Restricted,Inventory,"Motors, Pumps, Landscape Equipment"
+Facility Equipment under 5K,,,"Aguilar, Catalina",c7aguilar@ucsd.edu,Low,,,"Motors, Pumps, Landscape Equipment"
+Facility Repair Parts and Materials,,,"Aguilar, Catalina",c7aguilar@ucsd.edu,Low,,,"Other Repair Parts and Materials Not Covered Under Plumbing, Electrical, HVAC, Alarm/Fire, Painting"
+Facility Signage,,,"Aguilar, Catalina",c7aguilar@ucsd.edu,Medium,,"Depending if there is installation of signage on building included with the job, may need DIR #","Design and Creation of Directional, Building Signs, Door Plaques"
+Facility Testing/Diagnostic Services,,,"Aguilar, Catalina",c7aguilar@ucsd.edu,Medium,,Might need DIR #,"Relay Testing, Structural Testing, Inspections"
+Fire Alarm Equip/Fire Equip over 5K (Inventorial),,,"Aguilar, Catalina",c7aguilar@ucsd.edu,High,Full Restricted,Inventory,Fire Alarm or Extinguishers
+Fire Alarm Equipment/Fire Equipment under 5K,,,"Aguilar, Catalina",c7aguilar@ucsd.edu,Low,,,Fire Alarm or Extinguishers
+Fire Alarm/Equipment Maintenance Services,,,"Aguilar, Catalina",c7aguilar@ucsd.edu,Medium,,Might need DIR# or additional documentation,Fire Alarm Repair Services
+Fire Alarm/Fire Equipment Supplies,,,"Aguilar, Catalina",c7aguilar@ucsd.edu,Low,,,Fire Alarm or Equipment Repair Supplies
+HVAC Equipment Maintenance Services,,,"Aguilar, Catalina",c7aguilar@ucsd.edu,Medium,,Might need DIR # for $15K+,Repair Services for Lab Refrigerators/HVAC
+HVAC/Refrigeration Equipment over 5K (Inventorial),,,"Aguilar, Catalina",c7aguilar@ucsd.edu,High,Full Restricted,Inventory,"Lab Refrigerators, AC Units, Cooling Units"
+HVAC/Refrigeration Equipment under 5K,,,"Aguilar, Catalina",c7aguilar@ucsd.edu,Low,,,"Lab Refrigerators, AC Units, Cooling Units"
+HVAC/Refrigeration Supplies over 5K (Inventorial),,,"Aguilar, Catalina",c7aguilar@ucsd.edu,High,Full Restricted,Inventory,Repair Supplies for Lab Refrigerators/HVAC
+HVAC/Refrigeration Supplies under 5K,,,"Aguilar, Catalina",c7aguilar@ucsd.edu,Low,,,Repair Supplies for Lab Refrigerators
+Painting and Decorating Supplies,,,"Aguilar, Catalina",c7aguilar@ucsd.edu,Low,,,"Paint, Primer, Brushes, Paint Tape"
+Plumbing Services,,,"Aguilar, Catalina",c7aguilar@ucsd.edu,Medium,,"Depends on if the scope of work truly applies to this Covered Service description: Building Maintenance (Excluding Skilled Crafts (K7) Such as Plumbing, Carpentry, and Electrical)","Pipe Repair, Plumbing Installation (Approved by Labor Relations)"
+Plumbing Supplies,,,"Aguilar, Catalina",c7aguilar@ucsd.edu,Low,,,Supplies For Pipe Repair or Plumbing Installation
+Recharge - UCSD STORE Water Cooler Rental,,,"Aguilar, Catalina",c7aguilar@ucsd.edu,Low,,,"Water Cooler Rentals, Recurring Water Delivery Through STORE"
+Events Services (Nontaxable),,,"Black, Jozshua",jjblack@ucsd.edu,Medium,Full Restricted,Probable Covered Service,"Event Equipment and Site Rental, Event Management Services, Audio Visual Services and Equipment Rentals, Balloon Artists, Animals on Campus, Fencing"
+Events Services (Taxable),,,"Black, Jozshua",jjblack@ucsd.edu,Medium,Full Restricted,,Taxable Goods Purchased for an Event
+Parking/Valet Services,,,"Black, Jozshua",jjblack@ucsd.edu,High,Fully Restricted,Covered Service,Valets For Special Events (Approved by Labor Relations)
+Security Services,,,"Black, Jozshua",jjblack@ucsd.edu,High,Fully Restricted,Covered Service,"Supplemental Security Personal (Approved by Labor Relations), Psychological Evaluations, Background Checks"
+Security Services - Crowd Control,,,"Black, Jozshua",jjblack@ucsd.edu,Low,,,"Security and Crowd Control at Large-Scale Sporting Events, Concerts, VIP Events, Etc."
+Trade Shows/Exhibits,,,"Black, Jozshua",jjblack@ucsd.edu,Low,,,"Trade Shows, Participation in Exhibits"
+Cell Phone Services,,,"Bunker, Andrew",abunker@ucsd.edu,Low,,,Reserved for ITS
+Cloud Computing Services,,,"Bunker, Andrew",abunker@ucsd.edu,Medium,,,"Amazon Web Services, Microsoft Azure"
+Data Circuits/Internet,,,"Bunker, Andrew",abunker@ucsd.edu,Medium,,,Reserved for ITS
+Desktop/Laptop/Workstations over 5K (Inventorial),,,"Bunker, Andrew",abunker@ucsd.edu,Medium,Full Restricted,,"Desktop, Laptop, Tablets, iPads"
+Desktop/Laptop/Workstations under 5K,,,"Bunker, Andrew",abunker@ucsd.edu,Medium,,,"Desktop, Laptop, Tablets, iPads"
+IT Peripherals/Accessories over 5K (Inventorial),,,"Bunker, Andrew",abunker@ucsd.edu,Medium,Full Restricted,Inventory,"Hard Drives, Memory"
+IT Peripherals/Accessories under 5K,,,"Bunker, Andrew",abunker@ucsd.edu,Medium,,,"Monitors, Keyboard, Mice, Web Cams"
+IT Programming Services,,,"Bunker, Andrew",abunker@ucsd.edu,High,,,"Software Developers, Website Development, IT Consulting Services"
+IT Technical Services,,,"Bunker, Andrew",abunker@ucsd.edu,High,,,"IT Project Resource: BSA, Project Manager, Operation, Maintenance, & Repair of IT Systems"
+IT/Telecom Hardware Maintenance or Support,,,"Bunker, Andrew",abunker@ucsd.edu,Medium,,,Extended IT Hardware Warranty
+Local/Long Distance Telephone,,,"Bunker, Andrew",abunker@ucsd.edu,Low,,,Reserved for ITS
+Network Hardware over 5K (Inventorial),,,"Bunker, Andrew",abunker@ucsd.edu,Medium,Fully Restricted,Inventory,"Network Switches, Routers, Wireless Access Points"
+Network Hardware under 5K,,,"Bunker, Andrew",abunker@ucsd.edu,Medium,Fully Restricted,,"Network Switches, Routers, Wireless Access Points"
+Other IT Hardware over 5K (Inventorial),,,"Bunker, Andrew",abunker@ucsd.edu,Medium,Fully Restricted,Inventory,"Hardware Not Falling Under Peripherals, Network Hardware, Or Desktops/Laptops/Workstations"
+Other IT Hardware under 5K,,,"Bunker, Andrew",abunker@ucsd.edu,Medium,,,"Hardware Not Falling Under Peripherals, Network Hardware, Or Desktops/Laptops/Workstations"
+Other Voice/Data,,,"Bunker, Andrew",abunker@ucsd.edu,Low,,,Reserved For ITS
+Servers over 5K (Inventorial),,,"Bunker, Andrew",abunker@ucsd.edu,Medium,Fully Restricted,Inventory,Computer Servers
+Servers under 5K,,,"Bunker, Andrew",abunker@ucsd.edu,Medium,,,Computer Servers
+Software - Download,,,"Bunker, Andrew",abunker@ucsd.edu,High,Fully Restricted,Data Security/Privacy,On Premises Software (No Media)
+Software - SaaS/Cloud,,,"Bunker, Andrew",abunker@ucsd.edu,High,Fully Restricted,Data Security/Privacy,"Software as a Service (SaaS) Licenses, Web-Hosted, On-Demand, or Web-Based Softwares"
+Storage Hardware over 5K (Inventorial),,,"Bunker, Andrew",abunker@ucsd.edu,Medium,Fully Restricted,,"Storage Array, Nas Server, Jbod's"
+Storage Hardware under 5K,,,"Bunker, Andrew",abunker@ucsd.edu,Low,,,"Storage Array, Nas Server, Jbod's"
+Telecom Audio Visual Equip over 5K (Inventorial),,,"Bunker, Andrew",abunker@ucsd.edu,Low,Fully Restricted,,"Purchased Displays, Cameras, Video Equipment, Projectors"
+Telecom Audio Visual Equipment under 5K,,,"Bunker, Andrew",abunker@ucsd.edu,Low,,,"Purchased Displays, Cameras, Video Equipment, Projectors"
+Telecom Contractor Provided Materials,,,"Bunker, Andrew",abunker@ucsd.edu,Low,,,Cabling Materials
+Telecom Voice Equipment over 5K (Inventorial),,,"Bunker, Andrew",abunker@ucsd.edu,Medium,Fully Restricted,,"LIMS, Voice Switch Hardware"
+Telecom Voice Equipment under 5K,,,"Bunker, Andrew",abunker@ucsd.edu,Low,,,Telephone Desk Sets
+Carpet and Flooring Services,,5000045,"Contemprato, Joycelyn",jcontemprato@ucsd.edu,High,Full Restricted,Prevailing Wage $15K+; Probable Covered Services if Carpet and Floor Cleaning,"Carpet and Floor Cleaning (Approved by Labor Relations), Carpet and Flooring Installation, Flood Remediation, Office Floor Re-Design Services"
+Carpet and Flooring Supplies,,5000045,"Contemprato, Joycelyn",jcontemprato@ucsd.edu,Low,,,"Wax Products for Floor, Carpet for Remodeling Classroom, Floor Tiles, Flooring Materials, Repair Supplies"
+Elevator Maintenance Services,,5000045,"Contemprato, Joycelyn",jcontemprato@ucsd.edu,Medium,,`,Elevator Repair and Inspection Services
+Furniture over 5K (Inventorial),,5000045,"Contemprato, Joycelyn",jcontemprato@ucsd.edu,Medium,Full Restricted,Inventory,"Wood Conference Tables, Modular Furniture"
+Furniture under 5K,,5000045,"Contemprato, Joycelyn",jcontemprato@ucsd.edu,Low,,,"Chairs, Workstations Accessories, Modular Furniture"
+Kitchen Equipment Maintenance,,,"Contemprato, Joycelyn",jcontemprato@ucsd.edu,Medium,,,"Repair Services for Refrigerators, Microwaves, Coffee Machines"
+Kitchen Equipment over 5K (Inventorial),,,"Contemprato, Joycelyn",jcontemprato@ucsd.edu,Medium,Full Restricted,Inventory,"Refrigerators, Microwaves, Coffee Machines"
+Kitchen Equipment under 5K,,,"Contemprato, Joycelyn",jcontemprato@ucsd.edu,Low,,,"Refrigerators, Microwaves, Coffee Machines"
+Kitchen Supplies over 5K (Inventorial),,,"Contemprato, Joycelyn",jcontemprato@ucsd.edu,Medium,Full Restricted,Inventory,"Repair Supplies for Refrigerators, Microwaves, Coffee Machines"
+Kitchen Supplies under 5K,,,"Contemprato, Joycelyn",jcontemprato@ucsd.edu,Low,,,"Repair Supplies for Refrigerators, Microwaves, Coffee Machines"
+Laundry Services - University Property,,5000045,"Contemprato, Joycelyn",jcontemprato@ucsd.edu,High,,"Covered Service. 
+If it's rental, this is not covered services.","Customer Owned Goods (COG) Laundry of UC Owned Linens Uniforms, Bedding, Etc."
+Painting and Decorating Supplies,,5000045,"Contemprato, Joycelyn",jcontemprato@ucsd.edu,Low,,,"Paint, Primer, Brushes, Paint Tape"
+Plumbing Services,,5000045,"Contemprato, Joycelyn",jcontemprato@ucsd.edu,Medium,,Prevailing wage $15K+,"Pipe Repair, Plumbing Installation (Approved by Labor Relations)"
+Plumbing Supplies,,5000045,"Contemprato, Joycelyn",jcontemprato@ucsd.edu,Low,,,Supplies For Pipe Repair or Plumbing Installation
+Utilities - Cable TV,,,"Contemprato, Joycelyn",jcontemprato@ucsd.edu,High,,"Electrician or Sound & Signal Tech, depends of SOW, possible Prevailiang wage $15K+",Cable TV Installation or Sound and Signal Servcies
+Clinical Trial Digital Gift Cards,,,"Cruz, John",j4cruz@ucsd.edu,Low,,,
+Clinical Trials Supplies,,,"Cruz, John",j4cruz@ucsd.edu,Low,,,"Test Tubes, Labelers, Diagnostic Equipment, Study-Related Drugs"
+DNA/RNA/Oligo Sequencing Services,,,"Cruz, John",j4cruz@ucsd.edu,Low,,,"ELISA assay, RNA Oligo Purification, IDT Oligo, M-MuLV Reverse Transcriptase"
+DNA/RNA/Oligos/Antibodies,,,"Cruz, John",j4cruz@ucsd.edu,Low,,,"Immunoprecipitation Kit, GSK3 antibody, ARAF"
+Lab Equipment Maintenance/Repair Parts,,,"Cruz, John",j4cruz@ucsd.edu,Medium,,,A Replacement Part that must be Purchased for an Equipment Repair
+Lab Equipment Maintenance/Repair Services,,,"Cruz, John",j4cruz@ucsd.edu,Medium,,,"Service Agreements, Equipment Repair (Labor)"
+Lab Equipment over 5K (Inventorial),,,"Cruz, John",j4cruz@ucsd.edu,High,Full Restricted,Inventory,"Centrifuges, ULT Freezers, Microscope Systems"
+Lab Equipment under 5K,,,"Cruz, John",j4cruz@ucsd.edu,Low,,,"Thermal Cyclers, Hotplates, Balances, Multichannel Pipettes"
+Lab Supplies,,,"Cruz, John",j4cruz@ucsd.edu,Low,,,"Test Tubes, Pipette Tips, Gloves, Masks, Consumables"
+Lab Testing Kits/Assays,,,"Cruz, John",j4cruz@ucsd.edu,Low,,,"Testing Kits, Assays, Library Prep Kits, Sequencing Kits"
+Lab Testing/Diagnostic Services,,,"Cruz, John",j4cruz@ucsd.edu,Medium,,,"Sample Analysis Services, Data Analysis Services, Lab Tests, Studies Performed by Supplier"
+Sports/Fitness/Recreation Equipment under 5K,,,"Cruz, John",j4cruz@ucsd.edu,Low,,,"Exercise Equipment, Sports Field Equipment"
+Food/Beverage,,,"Grey, Margaret",mygrey@ucsd.edu,Medium,Full Restricted,"Most low value, agreement purchasing (punchout) is reasonable to flow through. The biggest pause comes with blanket POs for suppliers and meeting / entertainment requisitions that should flow through Concur. Use of the gift expenditure type is also a red flag. ","Coffee, Snacks, and Drinks. Not to be Confused with�Meeting & Entertainment services."
+Services - Real Estate,,,"Little, Patrick",plittle@ucsd.edu,Medium,,Not applicable to Procrement ,Real Estate Services
+Clinical Trials Supplies,75000,,"Loop, Makena",mloop@ucsd.edu,Low,,,"Test Tubes, Labelers, Diagnostic Equipment, Study-Related Drugs"
+DNA/RNA/Oligo Sequencing Services,75000,,"Loop, Makena",mloop@ucsd.edu,Low,,,"ELISA assay, RNA Oligo Purification, IDT Oligo, M-MuLV Reverse Transcriptase"
+DNA/RNA/Oligos/Antibodies,75000,,"Loop, Makena",mloop@ucsd.edu,Low,,,"Immunoprecipitation Kit, GSK3 antibody, ARAF"
+Lab Animals,,,"Loop, Makena",mloop@ucsd.edu,High,Full Restricted,,"Mice, Rats, Swine"
+Lab Animals Services,,,"Loop, Makena",mloop@ucsd.edu,Medium,,,"Domestic Animal Transfer, Serum Samples Diagnostic, Fetal Genetic Engineering"
+Lab Animals Supplies,,,"Loop, Makena",mloop@ucsd.edu,Low,,,"Feeders, Pellets, Brittle, Ear Tags"
+Lab Equipment Maintenance/Repair Parts,75000,,"Loop, Makena",mloop@ucsd.edu,Medium,,,A Replacement Part that must be Purchased for an Equipment Repair
+Lab Equipment Maintenance/Repair Services,75000,,"Loop, Makena",mloop@ucsd.edu,Medium,,,"Service Agreements, Equipment Repair (Labor)"
+Lab Equipment over 5K (Inventorial),75000,,"Loop, Makena",mloop@ucsd.edu,High,Full Restricted,Inventory,"Centrifuges, ULT Freezers, Microscope Systems"
+Lab Equipment under 5K,75000,,"Loop, Makena",mloop@ucsd.edu,Low,,,"Thermal Cyclers, Hotplates, Balances, Multichannel Pipettes"
+Lab Supplies,75000,,"Loop, Makena",mloop@ucsd.edu,Low,,,"Test Tubes, Pipette Tips, Gloves, Masks, Consumables"
+Lab Testing Kits/Assays,75000,,"Loop, Makena",mloop@ucsd.edu,Low,,,"Testing Kits, Assays, Library Prep Kits, Sequencing Kits"
+Lab Testing/Diagnostic Services,75000,,"Loop, Makena",mloop@ucsd.edu,Medium,,,"Sample Analysis Services, Data Analysis Services, Lab Tests, Studies Performed by Supplier"
+Document Storage/Shredding,,,"Mendoza, Alma",armendoza@ucsd.edu,High,Fully Restricted,Billing Issues ,"Shredding: One Time Purge, Recurring Weekly, Monthly, Etc. Shredding Charges. Data Storage: Clinical Trial Research Documents, HR Information, and Financial Reports"
+Furniture over 5K (Inventorial),5000,,"Mendoza, Alma",armendoza@ucsd.edu,High,Full Restricted,Inventory,"Wood Conference Tables, Modular Furniture"
+Furniture under 5K,15000,,"Mendoza, Alma",armendoza@ucsd.edu,Medium,Full Restricted,DIR determination after 15K,"Chairs, Workstations Accessories, Modular Furniture"
+Installation - Taxable,15000,,"Mendoza, Alma",armendoza@ucsd.edu,Medium,Full Restricted,DIR determination after 15K,
+Mail/Postage/Messenger,,,"Mendoza, Alma",armendoza@ucsd.edu,High,Full Restricted,Probable Covered Service,Messenger/Mail/Postage Services for Specialized Promotional Materials
+Packaging Materials,,,"Mendoza, Alma",armendoza@ucsd.edu,Low,,,"Bubble Wrap, Packing Boxes, and Tapes, May Be Considered MRO Not Office Supplies"
+Printer/Copier Rental,,,"Mendoza, Alma",armendoza@ucsd.edu,Medium,Full Restricted,Probable Covered Service,
+Services - Moving/Relocation,,,"Mendoza, Alma",armendoza@ucsd.edu,High,Fully Restricted,Probable Covered Service,Commercial Relocation -�Moving from One Building�to (Approved by Labor Relations); Household Relocation for New Employee to Join UCSD
+Services - Advertising/Public Relations/Promotions,,,"Morris, Joshua",jrm024@ucsd.edu,Medium,,Potential risk with Google Analytics or similar tracking student data,"Advertising for University Accomplishments, Departments, and Events, Logo Design/Development, Design Consultation"
+Services - Advisory,,,"Morris, Joshua",jrm024@ucsd.edu,Medium,Fully Restricted,Independent Contractor restrictions,Professional/Technical Advice or Recommendations for University Challenges
+Services - Audit,,,"Morris, Joshua",jrm024@ucsd.edu,Medium,,Appendix - Data Security & Privacy required for institutional data,Taxation and Audit Support
+Services - Editorial & Publication Support,,,"Morris, Joshua",jrm024@ucsd.edu,Low,,Work for Hire implications,Online Support for Editorial Publications
+Services - Engineering/Design,,,"Morris, Joshua",jrm024@ucsd.edu,Medium,,Work for Hire implications,"Building Design, Project or Equipment Design"
+Services - Field Research,,,"Morris, Joshua",jrm024@ucsd.edu,Medium,Fully Restricted,,Off-Site Research at a Non UC Location (paying a guide to find gorillas in Uganda or a company to count butterflies in South America)
+Services - Financial,,,"Morris, Joshua",jrm024@ucsd.edu,Medium,,Appendix - Data Security & Privacy required for institutional data,"Professional Services Banking, Taxes, Accounting"
+Services - Humanitarian,,,"Morris, Joshua",jrm024@ucsd.edu,Low,,"Some PI's do not ""advertise"" the good things they facilitate",Off-Site Material and Logistic Assistance�that provides a quantifiable benefit to the community and world
+Services - Legal,,,"Morris, Joshua",jrm024@ucsd.edu,Medium,,Must be pre-approved for outside legal services by Campus Counsel,External Legal Services Approved by Campus Counsel
+Services - Marketing,,,"Morris, Joshua",jrm024@ucsd.edu,Medium,,Potential risk with Google Analytics or similar tracking student data,"Public Relations Support, Surveying, Polling"
+Services - Media/Digital,,,"Morris, Joshua",jrm024@ucsd.edu,Medium,,Work for Hire implications; Appendix - Data Security if given any access to our systems,"Digital Photography Services, Photographers, Design, Photobooths, Video/Film Production"
+Services - Recruiting,,,"Morris, Joshua",jrm024@ucsd.edu,Medium,Fully Restricted,Executive recruitment options from ERS and 25+ options from UCOP BEFORE adding new supplier,"Recruitment of Patients, Clinical Trial Participants, New Staff:  Job Postings"
+Services - Temporary Employment,,,"Morris, Joshua",jrm024@ucsd.edu,Medium,Fully Restricted,Covered Service implications; competition with TES,Temporary Staffing Provided by Commercial Entities
+Services - Transcription,,,"Morris, Joshua",jrm024@ucsd.edu,Medium,Fully Restricted,PHI & Data Security,Conversion of Spoken Word into Written Language
+Services - Translation/Interpreter,,,"Morris, Joshua",jrm024@ucsd.edu,Medium,Fully Restricted,PHI & Data Security,Multilingual Communication for Oral and/or Written Language
+Clinical Trials Supplies,125000,,"Myers, Shawnee",sdmyers@ucsd.edu,Low,,,"Test Tubes, Labelers, Diagnostic Equipment, Study-Related Drugs"
+Controlled Substances/Narcotics,,,"Myers, Shawnee",sdmyers@ucsd.edu,High,Full Restricted,,"All DEA-Scheduled Substances, DEA List 1 Chemicals, CA Precursor Chemicals, and items such as Acetic Anhydride, Benzyl Chloride, Acetone, Hydrochloric Acid"
+DNA/RNA/Oligo Sequencing Services,125000,,"Myers, Shawnee",sdmyers@ucsd.edu,Low,,,"ELISA assay, RNA Oligo Purification, IDT Oligo, M-MuLV Reverse Transcriptase"
+DNA/RNA/Oligos/Antibodies,125000,,"Myers, Shawnee",sdmyers@ucsd.edu,Low,,,"Immunoprecipitation Kit, GSK3 antibody, ARAF"
+Drugs/Pharmaceutical Products,,,"Myers, Shawnee",sdmyers@ucsd.edu,Medium,,,"Neosporin, Benadryl, Rimantadine, Proleukin"
+Firearms/Ammunition over 5K (Inventorial),,,"Myers, Shawnee",sdmyers@ucsd.edu,High,Full Restricted,Inventory,Guns and Ammunition
+Firearms/Ammunition under 5K,,,"Myers, Shawnee",sdmyers@ucsd.edu,High,Full Restricted,,Guns and Ammunition
+Installation - Non-Taxable,,,"Myers, Shawnee",sdmyers@ucsd.edu,Medium,,,
+Lab Equipment Capital Lease,,,"Myers, Shawnee",sdmyers@ucsd.edu,High,,,Capital Equipment Leases
+Lab Equipment Maintenance/Repair Parts,125000,,"Myers, Shawnee",sdmyers@ucsd.edu,Medium,,,A Replacement Part that must be Purchased for an Equipment Repair
+Lab Equipment Maintenance/Repair Services,125000,,"Myers, Shawnee",sdmyers@ucsd.edu,Medium,,,"Service Agreements, Equipment Repair (Labor)"
+Lab Equipment over 5K (Inventorial),125000,,"Myers, Shawnee",sdmyers@ucsd.edu,High,Full Restricted,Inventory,"Centrifuges, ULT Freezers, Microscope Systems"
+Lab Equipment Rental/Operating Lease,,,"Myers, Shawnee",sdmyers@ucsd.edu,High,,,"Lab Equipment Rentals, Scope Rental"
+Lab Equipment under 5K,125000,,"Myers, Shawnee",sdmyers@ucsd.edu,Low,,,"Thermal Cyclers, Hotplates, Balances, Multichannel Pipettes"
+Lab Supplies,125000,,"Myers, Shawnee",sdmyers@ucsd.edu,Low,,,"Test Tubes, Pipette Tips, Gloves, Masks, Consumables"
+Lab Testing Kits/Assays,125000,,"Myers, Shawnee",sdmyers@ucsd.edu,Low,,,"Testing Kits, Assays, Library Prep Kits, Sequencing Kits"
+Lab Testing/Diagnostic Services,125000,,"Myers, Shawnee",sdmyers@ucsd.edu,Medium,,,"Sample Analysis Services, Data Analysis Services, Lab Tests, Studies Performed by Supplier"
+Sports/Fitness/Rec Equip over 5K (Inventorial),,,"Myers, Shawnee",sdmyers@ucsd.edu,High,Fully Restricted,,"Exercise Equipment, Sports Field Equipment"
+Lab Gases,,,"Okuma, Jay",jokuma@ucsd.edu,Medium,,,"Dry Ice, Liquid Nitrogen, Helium"
+Personal Protective Equipment Supplies,,,"Okuma, Jay",jokuma@ucsd.edu,Low,,,"Gloves, Goggles, Masks, Gowns"
+Pest Control Services,,,"Okuma, Jay",jokuma@ucsd.edu,Medium,Fully Restricted,,Pest Extermination and fumigation (Approved by Labor Relations)
+Uniform/Linen Rental Services,,,"Okuma, Jay",,Medium,Fully Restricted,,"Laundry Of Linen, Rental & Laundry of Uniforms, Bedding, Medical Gowns"
+Clinical Trials Supplies,25000,,"Orozco, Andrea",anorozco@ucsd.edu,Low,,,"Test Tubes, Labelers, Diagnostic Equipment, Study-Related Drugs"
+DNA/RNA/Oligo Sequencing Services,25000,,"Orozco, Andrea",anorozco@ucsd.edu,Low,,,"ELISA assay, RNA Oligo Purification, IDT Oligo, M-MuLV Reverse Transcriptase"
+DNA/RNA/Oligos/Antibodies,25000,,"Orozco, Andrea",anorozco@ucsd.edu,Low,,,"Immunoprecipitation Kit, GSK3 antibody, ARAF"
+Lab Chemicals/Reagents,,,"Orozco, Andrea",anorozco@ucsd.edu,Low,,,"Ethyl Alcohol, Hydrogen Peroxide, Sodium Chloride"
+Lab Equipment Maintenance/Repair Parts,25000,,"Orozco, Andrea",anorozco@ucsd.edu,Medium,,,A Replacement Part that must be Purchased for an Equipment Repair
+Lab Equipment Maintenance/Repair Services,25000,,"Orozco, Andrea",anorozco@ucsd.edu,Medium,,,"Service Agreements, Equipment Repair (Labor)"
+Lab Equipment over 5K (Inventorial),25000,,"Orozco, Andrea",anorozco@ucsd.edu,High,Full Restricted,Inventory,"Centrifuges, ULT Freezers, Microscope Systems"
+Lab Equipment under 5K,25000,,"Orozco, Andrea",anorozco@ucsd.edu,Low,,,"Thermal Cyclers, Hotplates, Balances, Multichannel Pipettes"
+Lab Supplies,25000,,"Orozco, Andrea",anorozco@ucsd.edu,Low,,,"Test Tubes, Pipette Tips, Gloves, Masks, Consumables"
+Lab Testing Kits/Assays,25000,,"Orozco, Andrea",anorozco@ucsd.edu,Low,,,"Testing Kits, Assays, Library Prep Kits, Sequencing Kits"
+Lab Testing/Diagnostic Services,25000,,"Orozco, Andrea",anorozco@ucsd.edu,Medium,,,"Sample Analysis Services, Data Analysis Services, Lab Tests, Studies Performed by Supplier"
+Medical/Surgical Supplies,,,"Orozco, Andrea",anorozco@ucsd.edu,Low,,,"Scalpels, Gowns, Syringes, Lumbar Kits, HIV Test Kit"
+Construction Labor,,,"Oshima, Gary",gmoshima@ucsd.edu,High,,,"Plumbing, Electrical, Demolition"
+Construction Materials,,,"Oshima, Gary",gmoshima@ucsd.edu,High,,,"Electrical, Building Insulation, Rails, Panels, Wood Slide Door"
+Locks and Security Equip over 5K (Inventorial),,,"Oshima, Gary",gmoshima@ucsd.edu,High,Fully Restricted,Inventory,Security Locking Systems
+Locks and Security Equipment under 5K,,,"Oshima, Gary",gmoshima@ucsd.edu,Low,,,"Key, Security Locks"
+Locks and Security System Maintenance Services,,,"Oshima, Gary",gmoshima@ucsd.edu,High,,,Repair Services for Security Locking Systems
+Laundry Services - University Property,,,Paolo Resurreccion,presurreccion@ucsd.edu,High,,Covered Service,"Customer Owned Goods (COG) Laundry of UC Owned Linens Uniforms, Bedding, Etc."
+Clinical Trials Services,,,"Ramirez-Fimbres, Marcela",mramirezfimbres@ucsd.edu,Medium,Full Restricted,,"Clinical Conductor Site Software applications, assay diagnostic to determine clinical trial endpoint, storage of clinical trial records, clinical trial consent form translation"
+Services - Clinical,,,"Ramirez-Fimbres, Marcela",mramirezfimbres@ucsd.edu,Medium,,,"Clinical Trial Services, Observation and Treatment of the Actual Patient"
+Services - Instructional/Training/Development,,,"Ramirez-Fimbres, Marcela",mramirezfimbres@ucsd.edu,Low,,,"Department Retreats and Training, Extension Instructors Under 12 Calendar Days"
+Services - Medical,,,"Ramirez-Fimbres, Marcela",mramirezfimbres@ucsd.edu,Medium,Fully Restricted,PHI & Data Security,"Medical Analysis Services, Ambulances, Body Transportation"
+Services - Medical Coding/Billing,,,"Ramirez-Fimbres, Marcela",mramirezfimbres@ucsd.edu,Medium,Fully Restricted,Covered Service,Help to Submit and Receive Payment for Patient Billing
+Automotive Fuel,,,"Resurreccion, Paolo",presurreccion@ucsd.edu,Medium,,"Usually purchased in bulk ($$$), need to review monthly average invoicing","Unleaded, Diesel, Gasoline"
+Chartered Bus/Rail,,,"Resurreccion, Paolo",presurreccion@ucsd.edu,High,Full Restricted,Elevated insurance requirements for chartered passenger transport,"Bus Transportation, Chartered Vehicles"
+Facility Chemicals and Lubricants,,,"Resurreccion, Paolo",presurreccion@ucsd.edu,Low,,"Usually for vehicle lubricants, oils for Fleet maintenance","Grease, Oil, Lubricants"
+Facility Equipment Lease/Rental,,,"Resurreccion, Paolo",presurreccion@ucsd.edu,Medium,,Larger equipment rental may require additional review (e.g. if supplier requires UC to show evidence of insurance coverage while equipment is in our custody),"Forklifts, Scissor Lifts, Cranes"
+Facility Tools over 5K (Inventorial),,,"Resurreccion, Paolo",presurreccion@ucsd.edu,High,Full Restricted,Inventory,"Handtools, Flashlights, Toolsets, Powertools"
+Facility Tools under 5K,,,"Resurreccion, Paolo",presurreccion@ucsd.edu,Low,,,"Handtools, Flashlights, Toolsets, Powertools"
+Hazardous Waste Disposal,,,"Resurreccion, Paolo",presurreccion@ucsd.edu,High,Full Restricted,Hazmat,"Medical Waste Syringes, Repair Shops Equipment, Oil"
+Janitorial Equipment over 5K (Inventorial),,,"Resurreccion, Paolo",presurreccion@ucsd.edu,High,Full Restricted,Inventory,"Carpet Cleaning Machines, Vacuums, Floor Scrubbers, sterilizing or decontamination equipment"
+Janitorial Equipment under 5K,,,"Resurreccion, Paolo",presurreccion@ucsd.edu,Low,,,"Carpet Cleaning Machines, Vacuums, Floor Scrubbers, sterilizing or decontamination equipment"
+Janitorial Services,,,"Resurreccion, Paolo",presurreccion@ucsd.edu,High,Full Restricted,Covered Service,"Cleaning, Custodial, Janitorial Labor (Approved by Labor Relations)"
+Janitorial Supplies,,,"Resurreccion, Paolo",presurreccion@ucsd.edu,Low,,,"Cleaning Supplies, Carpeting, Flooring, Bathroom Supplies"
+Landscape Maintenance Services,,,"Resurreccion, Paolo",presurreccion@ucsd.edu,High,Full Restricted,Covered Service,"Arborists/Tree Removal or Trimming, Watering Plans, Professional Window Cleaning, Grounds Keeping (Approved by Labor Relations)"
+Landscape Maintenance Supplies,,,"Resurreccion, Paolo",presurreccion@ucsd.edu,Low,,,"Materials/Supplies/Parts: Sprinklers, Fertilizers, Sod, Plants, Irrigation Parts/Systems, Water Readers, Hose, Pipes"
+"Laundry/Uniform/Linen Services 
+(this one may have been discontinued)",,,"Resurreccion, Paolo",presurreccion@ucsd.edu,Medium,Fully Restricted,"Covered Service. 
+If it's rental, this is not covered services.","Laundry of linen, Rental & Laundry of Uniforms, bedding, medical gowns"
+Laundry/Uniform/Linen Supplies,,,"Resurreccion, Paolo",presurreccion@ucsd.edu,Low,,,"Logo Mats, Linen, Uniforms, Medical Gowns"
+Material Handling Equipment over 5K (Inventorial),,,"Resurreccion, Paolo",presurreccion@ucsd.edu,High,Fully Restricted,Inventory,"Pallet Jacks, Dollies, Conveyor Belts"
+Material Handling Equipment under 5K,,,"Resurreccion, Paolo",presurreccion@ucsd.edu,Low,,,"Pallet Jacks, Dollies, Conveyor Belts"
+Non-Hazardous Waste Disposal,,,"Resurreccion, Paolo",presurreccion@ucsd.edu,Low,,,"Removal of Goods that are not Dangerous or Hazardous, Porta-Potty Rentals for An Event"
+Other Building Repair/Maintenance,,,"Resurreccion, Paolo",presurreccion@ucsd.edu,Low,,,"Not Electrical, HVAC, Or Plumbing"
+Parking/Transportation Supplies,,,"Resurreccion, Paolo",presurreccion@ucsd.edu,Low,,,"Placards, Traffic Cones, Validation"
+Pool/Spa Maintenance,,,"Resurreccion, Paolo",presurreccion@ucsd.edu,Low,,,"Cleaning Services, Chlorine"
+Pool/Spa Supplies,,,"Resurreccion, Paolo",presurreccion@ucsd.edu,Low,,,"Chlorine, Skimmer Vacuum Cleaning Systems"
+Public Transit,,,"Resurreccion, Paolo",presurreccion@ucsd.edu,High,,"MTS U-Pass program, Preuss school bus, etc. Orders are typically over $1M","San Diego School Services, Preuss School"
+Recharge - UCSD Fleet Services Vehicle Rentals,,,"Resurreccion, Paolo",presurreccion@ucsd.edu,Low,,,Vehicles Rented Through Fleet Services
+Recharge - UCSD Transportation Parking Permits,,,"Resurreccion, Paolo",presurreccion@ucsd.edu,Low,,,Parking Permits for Visitors
+Rideshare/Limo/Taxi Services,,,"Resurreccion, Paolo",presurreccion@ucsd.edu,Medium,,Usually for Lyft Pass programs for the year. Review insurance.,"Limo, Taxi, or Rideshare Transportation/Driver Services. Not to be confused with�Meeting & Entertainment services."
+Utilities - Electricity,,,"Resurreccion, Paolo",presurreccion@ucsd.edu,Medium,,,Electrical Building Services
+Utilities - Water/Sewage,,,"Resurreccion, Paolo",presurreccion@ucsd.edu,Medium,,,Water & Sewer Building Services
+Vehicle Lease,,,"Resurreccion, Paolo",presurreccion@ucsd.edu,High,,"Fleet wants to centralize vehicle leasing program soon, so any direct dept lease needs to be directed to Fleet Services moving forward.",Leased Vehicles Not Managed Through UC San Diego Fleet Services
+Vehicle Maintenance And Repair Services,,,"Resurreccion, Paolo",presurreccion@ucsd.edu,Low,,As long as Fleet is the one using this and not other UCSD depts trying to circumvent using Fleet's maintenance services. Fleet uses this to contract out for more complex jobs.,"Oil Checks, Maintenance, or Repair on Vehicles"
+Vehicle Purchase over 5K (Inventorial),,,"Resurreccion, Paolo",presurreccion@ucsd.edu,High,Fully Restricted,New Vehicle Request Form required. UC and CA state zero-emission fleet  requirements in place. https://transportation.ucsd.edu/departments/fleet/new.html,Vehicles Purchased (Not Leased)
+Vehicle Purchase under 5K,,,"Resurreccion, Paolo",presurreccion@ucsd.edu,High,Fully Restricted,What vehicle is under $5K??? Never seen this being used. Set to 'high' since all vehicles brought onto campus require the New Vehicle Request Form.,Vehicles Purchased (Not Leased)
+Vehicle Rental,,,"Resurreccion, Paolo",presurreccion@ucsd.edu,Medium,,"Vehicle rental agreement review, if any",Vehicles Rented (Not Leased) With No Driver Services
+Vehicle Repair Parts/Materials,,,"Resurreccion, Paolo",presurreccion@ucsd.edu,Low,,,"Repair Supplies, Maintenance, or Vehicle Repair"
+Books,,,"Salcedo, Sarah",snsalcedo@ucsd.edu,Low,,,Printed Publications
+Office Equipment over 5K (Inventorial),,,"Salcedo, Sarah",snsalcedo@ucsd.edu,Medium,Fully Restricted,,"Scan, Printer, Fax Multi-Function Machine"
+Office Equipment under 5K,,,"Salcedo, Sarah",snsalcedo@ucsd.edu,Low,,,"Fax Machines, HP Printers, Shredding Machines, Safes"
+Office Supplies,,,"Salcedo, Sarah",snsalcedo@ucsd.edu,Low,,,Paper Trucks or Printed Envelopes Over $5k
+Printed/Copied Materials,,,"Salcedo, Sarah",snsalcedo@ucsd.edu,Medium,,,Printing or Copying Services not Related to Printer or Copier Rental or available via�Imprints
+Printer/Copier Maintenance,,,"Salcedo, Sarah",snsalcedo@ucsd.edu,Medium,Fully Restricted,Agreement Review ,Maintenance Or Repair on Printers and Copiers
+Promotional Items/Merchandise,,,"Salcedo, Sarah",snsalcedo@ucsd.edu,High,Fully Restricted,,"Logos, T-Shirts, Department Swag, Event Tchotchkes"
+Chartered Vessel,,,"Tolentino, Megan",m2tolentino@ucsd.edu,High,Full Restricted,,Hired or Freighted Ships
+Handling,,,"Tolentino, Megan",m2tolentino@ucsd.edu,Medium,,,"Package Handling, Packing, or Tracking Services"
+Marine/Ship Equipment over 5K (Inventorial),,,"Tolentino, Megan",m2tolentino@ucsd.edu,High,Fully Restricted,Inventory,"Radar Equipment, GPS Receivers"
+Marine/Ship Equipment under 5K,,,"Tolentino, Megan",m2tolentino@ucsd.edu,Low,,,"Radar Equipment, GPS Receivers"
+Marine/Ship Fuel,,,"Tolentino, Megan",m2tolentino@ucsd.edu,Medium,,,Fuel For Ships or Marine Vessels
+Marine/Ship Repair,,,"Tolentino, Megan",m2tolentino@ucsd.edu,Medium,,,Repair Services for Ships or Marine Vessels
+Marine/Ship Services,,,"Tolentino, Megan",m2tolentino@ucsd.edu,Medium,,,Services for Ships and Marine Vessels Other than Repairs
+Marine/Ship Supplies,,,"Tolentino, Megan",m2tolentino@ucsd.edu,Low,,,"Ship Safety Supplies, Life Jackets, Lifeboats"
+Shipping,,,"Tolentino, Megan",m2tolentino@ucsd.edu,Medium,,,Package Shipping Services

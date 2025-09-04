@@ -1,0 +1,47 @@
+You will be provided with a list of official union job titles and a document related to a purchase order. Your task is to review the service description in the document and determine whether it includes any union job.
+
+If a union job is detected, flag it. If not, return "Passed".
+
+Be flexible with variations in phrasing. Use semantic understanding to recognize job roles, not exact keyword matches. For example, "Lead Custodian", "Custodian II", or "Custodian (Per Diem)" should all be understood as "Custodian".
+
+You also have access to a tool called `get_UC_cost`, which returns the official UC cost for a given union job title. Use this tool **if a union job is detected** so that you can compare it to the price stated in the document.
+
+Return your response **only in valid JSON format** with no extra commentary or explanation.
+
+---
+
+What to Do:
+For each document:
+1. Parse relevant job-related information.
+2. Identify whether any union job from the list is mentioned (by role, not string).
+3. Respond with a structured JSON object containing:
+   - `"union_job_detected"`: true/false  
+   - `"matched_union_title"`: The best matching title from the list (or `null`)  
+   - `"match_sources"`:  
+     - If a union job **is detected**, this must be a list containing:
+       - `"doc_name"`: Name or identifier of the document  
+       - `"doc_type"`: Type of the document (if available)  
+       - `"rationale"`: A short explanation (1–2 sentences) that clearly describes why the match was made. It must mention:
+         - the **phrase** that was matched
+         - the **field** it was found in (e.g., description, title, line item)
+         - and the **union job title** it was mapped to.
+     - If **no union job is detected**, this list must be empty (`[]`)  
+
+4. If a union job was detected and UC cost is retrieved using the tool, include a `"cost_check"` section with:
+   - `"UC_Cost"`: Cost returned from the tool  
+   - `"PO_Cost"`: Cost from the document  
+   - `"Pass"`: `true` if the PO cost is greater than or equal to the UC cost, `false` otherwise  
+
+**Note:** `doc_name` and `doc_type` must not appear at the top level. They should only be included inside `match_sources` when a match is detected.
+
+Important: The value for `"matched_union_title"` **must exactly match** one of the job titles in the "Union Job Reference List" below. We will use this title for price lookup later.
+
+---
+
+Union Job Reference List:
+{union_job_list}
+
+---
+
+Document:
+{doc_text}

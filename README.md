@@ -93,8 +93,7 @@ cdk deploy
 ### Step 4: Upload Documents & Run Processing
 
 #### Step 1:
-In the AWS console, upload the purchase order documents to the s3 bucket named 077938161517-us-west-2-dxhub-ub-bkt)
-Then retrieve the s3 uris from each document
+In the AWS console, go to the Cloudformation Stack named DocumentProcessingStack, and click on the "Outputs" tab. Locate the DocumentsBucketName key, then navigate to the S3 bucket specified by its value. Upload any purchase order related documents to that s3-bucket. Then retrieve the s3 uris from each document (note: we will need these uris to invoke the API)
 
 #### Step 2:
 Use the following command to list your REST APIs and find the id of the 'document-processing' API.
@@ -121,7 +120,7 @@ curl -X POST \
 ```
 
 #### Step 4:
-Once the API is invoked, the resulting summary document should be uploaded to the 077938161517-us-west-2-dxhub-results-bkt s3 bucket once the workflow is ran through. It should take 3-4 minutes.
+Once the API is invoked, go to the Cloudformation Stack named DocumentProcessingStack, and click on the "Outputs" tab. Locate the ResultsBucketName key, then navigate to the S3 bucket specified by its value. The resulting summary should be uploaded to that s3 bucket once the workflow is ran through. It should take 3-4 minutes, depending on document size and number of documents.
 
 
 

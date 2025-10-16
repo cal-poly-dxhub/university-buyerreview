@@ -42,8 +42,7 @@ ict adherence to security best practices
 **All work produced is open source. More information can be found in the GitHub repo.**
 
 ## PO Workflow automation overview
-- The [DxHub](https://dxhub.calpoly.edu/challenges/) developed an agentic solution that takes in documents detailing a specific purcahse order and outp
-uts a list of checks. This workflow contains many agents:
+- The [DxHub](https://dxhub.calpoly.edu/challenges/) developed an agentic solution that takes in documents detailing a specific purchase order and outputs a list of checks. This workflow contains many agents:
 
     #### Document Parser Agent
     - Classifies document type and uses tooling to determine which prompt to use to parse each document

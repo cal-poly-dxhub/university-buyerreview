@@ -57,7 +57,7 @@ ict adherence to security best practices
     - Classifies each purchase order into a purchasing category using an LLM to reason
 
     #### PHI Agreement Check Agent
-    - Determines if PHI (Protected Health Information) exists in purcahse order documents.
+    - Determines if PHI (Protected Health Information) exists in purchase order documents.
     - Scans text for HIPAA-related clauses and required agreement language.
 
     #### Summarization Agent
